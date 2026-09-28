@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Inspect &amp; Read System · Kevin Duijm</title>
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;text-wrap:pretty;background:radial-gradient(1200px 720px at 82% -160px,color-mix(in srgb,var(--color-accent-900) 75%,transparent),transparent 60%),var(--color-bg)}
+a{color:var(--color-accent-300)}
+a:hover{color:var(--color-accent-200)}
+</style>
+</helmet>
+
+<div data-progress="" style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--color-accent);z-index:60;box-shadow:0 0 12px var(--color-accent)"></div>
+
+<nav class="nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:22px;padding:12px clamp(20px,5vw,72px);background:color-mix(in srgb,var(--color-bg) 72%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+  <a href="index.html" class="nav-brand" style="text-decoration:none;color:var(--color-text);display:flex;align-items:baseline;gap:8px;margin-right:auto">Kevin Duijm <span style="font-size:13px;color:var(--color-neutral-500)">Tech Designer</span></a>
+  <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+    <a href="index.html#work" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Work</a>
+    <a href="index.html#about" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">About</a>
+    <a href="#contact" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Contact</a>
+    <a class="btn btn-primary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_a306e20312dd456db6c5788342e7ade1.pdf" target="_blank">Resume</a>
+  </div>
+</nav>
+
+<div style="position:fixed;right:clamp(12px,2vw,28px);bottom:clamp(20px,5vh,40px);z-index:55;display:flex;flex-direction:column;gap:10px">
+  <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/in/kevin-duijm-4b60b3211/" target="_blank" aria-label="LinkedIn" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-linkedin-logo" style="font-size:20px"></i></a>
+  <a class="btn btn-secondary btn-icon" href="https://buckothefur.itch.io/" target="_blank" aria-label="itch.io" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-game-controller" style="font-size:20px"></i></a>
+  <a class="btn btn-secondary btn-icon" href="mailto:kevin.duijm@gmail.com" aria-label="Email" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-envelope-simple" style="font-size:20px"></i></a>
+</div>
+<a data-totop="" href="#top" aria-label="Back to top" class="btn btn-secondary btn-icon" style="position:fixed;left:clamp(12px,2vw,28px);bottom:clamp(20px,5vh,40px);z-index:55;width:44px;height:44px;border-radius:999px;background:color-mix(in srgb,var(--color-bg) 55%,transparent);backdrop-filter:blur(8px);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.7,.2,1)"><i class="ph ph-arrow-up" style="font-size:20px"></i></a>
+
+<section id="top" data-screen-label="Inspect Hero" style="position:relative;height:min(92vh,900px);min-height:560px;overflow:hidden">
+  <div data-hero-media="" style="position:absolute;inset:0;transform:scale(1.06);will-change:transform">
+    <img src="https://static.wixstatic.com/media/0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <video data-hero-video="" src="media/inspect-read-v2.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--color-bg) 0%,color-mix(in srgb,var(--color-bg) 70%,transparent) 32%,color-mix(in srgb,var(--color-bg) 25%,transparent) 70%,color-mix(in srgb,var(--color-bg) 55%,transparent) 100%)"></div>
+  <div data-hero-text="" style="position:absolute;left:0;right:0;bottom:clamp(40px,8vh,80px);max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:16px">
+    <a data-hl="" href="index.html#work" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--color-neutral-300);text-decoration:none" style-hover="color:var(--color-accent-300)"><i class="ph ph-arrow-left"></i>Back to projects</a>
+    <div data-hl="" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-300)"><span>2025</span><span style="width:4px;height:4px;border-radius:50%;background:var(--color-accent)"></span><span>Tech Designer · Solo</span></div>
+    <h1 data-hl="" style="margin:0;font-size:clamp(40px,7vw,112px);line-height:.95;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100);text-shadow:0 8px 40px rgba(0,0,0,.45)">Inspect &amp; Read System</h1>
+    <p data-hl="" style="margin:0;font-size:clamp(16px,1.4vw,19px);line-height:1.6;max-width:52ch;color:var(--color-neutral-200)">A Resident Evil Village inspired item inspection and note reading tool, built to drop into any Unreal Engine 5 project.</p>
+    <div data-hl="" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+      <a class="btn btn-primary" href="#pipelinedoc"><i class="ph ph-book-open"></i> How-to guide</a>
+      <a class="btn btn-secondary" href="#research"><i class="ph ph-magnifying-glass"></i> Game research</a>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:8px clamp(20px,5vw,72px) 0">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px 28px;padding:24px 0;position:relative">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--color-neutral-800) 48px calc(100% - 48px),transparent)"></div>
+    <sc-for list="{{ facts }}" as="f" hint-placeholder-count="5">
+      <div data-reveal="up" data-delay="{{ f.delay }}" style="display:flex;gap:12px;align-items:center">
+        <i class="ph {{ f.icon }}" style="font-size:22px;color:var(--color-accent)"></i>
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-500)">{{ f.k }}</span><span style="font-size:15px">{{ f.v }}</span></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:flex;gap:clamp(32px,5vw,72px);align-items:flex-start">
+  <aside data-toc="" style="position:sticky;top:88px;padding-top:72px;flex:0 0 190px;display:flex;flex-direction:column;gap:4px">
+    <span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-500);margin-bottom:8px">On this page</span>
+    <sc-for list="{{ toc }}" as="t" hint-placeholder-count="8">
+      <a href="{{ t.href }}" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px;text-decoration:none;color:{{ t.color }};transition:color .2s" style-hover="color:var(--color-accent-300)"><span style="width:{{ t.bar }};height:1px;background:var(--color-accent);transition:width .3s cubic-bezier(.2,.7,.2,1)"></span>{{ t.label }}</a>
+    </sc-for>
+  </aside>
+
+  <main style="flex:1 1 0;min-width:0;display:flex;flex-direction:column">
+    <section id="about" data-sec="" data-screen-label="About" style="padding:72px 0 40px;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">About</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:26ch">Recreating Resident Evil Village’s inspection and note reading in UE5.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+        <div data-reveal="up" style="padding:24px;border-radius:14px;background:var(--color-surface);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px">
+          <i class="ph ph-tree-structure" style="font-size:26px;color:var(--color-accent)"></i>
+          <h3 style="margin:0;font-size:20px">Actor inheritance</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">Blueprint inheritance makes it easy to create new items to inspect.</p>
+        </div>
+        <div data-reveal="up" data-delay="0.06" style="padding:24px;border-radius:14px;background:var(--color-surface);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px">
+          <i class="ph ph-game-controller" style="font-size:26px;color:var(--color-accent)"></i>
+          <h3 style="margin:0;font-size:20px">Common UI</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">Controller support, with UI that changes based on the input device.</p>
+        </div>
+        <div data-reveal="up" data-delay="0.12" style="padding:24px;border-radius:14px;background:var(--color-surface);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px">
+          <i class="ph ph-puzzle-piece" style="font-size:26px;color:var(--color-accent)"></i>
+          <h3 style="margin:0;font-size:20px">Modular</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">Set up for easy integration and expansion: new items, extra examinable points and readable notes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" data-sec="" data-screen-label="Project Showcase" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Project showcase</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">A tool for any Unreal Engine 5 project.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">As Tech Designer, my goal was to build a tool that could be implemented into any Unreal Engine 5 project. I chose an item inspection and note reading system, benchmarked against Resident Evil Village.</p>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video data-card-video="" src="media/inspect-read-v2.mp4" poster="https://static.wixstatic.com/media/0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">The inspection system in action.</figcaption>
+      </figure>
+    </section>
+
+    <section id="highlights" data-sec="" data-screen-label="Project Highlights" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Project highlights</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">What I built</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+        <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="7">
+          <div data-reveal="up" data-delay="{{ h.delay }}" style="display:flex;gap:14px;padding:18px;border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
+            <i class="ph {{ h.icon }}" style="font-size:22px;color:var(--color-accent);flex:none;margin-top:1px"></i>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:15px;line-height:1.5">{{ h.text }}</span>
+              <sc-if value="{{ h.hasSub }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;line-height:1.55;color:var(--color-neutral-400)">{{ h.sub }}</span></sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="inspect" data-sec="" data-screen-label="Inspect System" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Item inspection system</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">View, rotate, zoom and examine.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I designed an interactive item inspection system that lets players view, rotate, zoom and closely examine objects, feeding their curiosity and pulling them deeper into the world.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
+        <sc-for list="{{ inspectTrip }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:10px"><i class="ph {{ b.icon }}" style="color:var(--color-accent)"></i>{{ b.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="read" data-sec="" data-screen-label="Read System" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Note reading system</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Multi-page notes for environmental storytelling.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">The note reading system lets players inspect and read in-game notes. It supports multi-page text and plugs straight into the item inspection framework.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
+        <sc-for list="{{ readTrip }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:10px"><i class="ph {{ b.icon }}" style="color:var(--color-accent)"></i>{{ b.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="commonui" data-sec="" data-screen-label="Common UI" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Controller support with Common UI</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">UI that follows your input device.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">The inspection and reading UI has full controller support, and switches its prompts depending on the input device.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
+        <sc-for list="{{ uiTrip }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:10px"><i class="ph {{ b.icon }}" style="color:var(--color-accent)"></i>{{ b.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <a data-reveal="up" class="btn btn-secondary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_3945fc8e20c94434af9ff4f11e82f561.pdf" target="_blank" style="align-self:flex-start"><i class="ph ph-file-pdf"></i> Engine research document <i class="ph ph-arrow-up-right"></i></a>
+    </section>
+
+    <section id="research" data-sec="" data-screen-label="Game Research" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Target game research</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Breaking down Resident Evil Village.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I researched Resident Evil Village’s inspection system in depth: how it works, what the player experiences, and how it helps the player progress.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
+        <sc-for list="{{ researchTrip }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:10px"><i class="ph {{ b.icon }}" style="color:var(--color-accent)"></i>{{ b.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <a data-reveal="up" class="btn btn-secondary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_cba28df5848042eba9fa337669bcb50a.pdf" target="_blank" style="align-self:flex-start"><i class="ph ph-file-pdf"></i> Game research document <i class="ph ph-arrow-up-right"></i></a>
+    </section>
+
+    <section id="pipelinedoc" data-sec="" data-screen-label="Pipeline Doc" style="padding:40px 0 72px;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Pipeline documentation</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">A how-to guide for the tool.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I wrote a how-to document covering how to import the tool, create new content and adjust it. It also introduces the demo and gym levels where you can try every feature.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
+        <sc-for list="{{ pipeTrip }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:10px"><i class="ph {{ b.icon }}" style="color:var(--color-accent)"></i>{{ b.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <a data-reveal="up" class="btn btn-secondary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_bab4377ff8054dbea5b13372e76ccca6.pdf" target="_blank" style="align-self:flex-start"><i class="ph ph-file-pdf"></i> Pipeline documentation <i class="ph ph-arrow-up-right"></i></a>
+    </section>
+
+  </main>
+</div>
+
+<section id="contact" data-screen-label="Contact" style="max-width:1200px;margin:0 auto;padding:72px clamp(20px,5vw,72px) 48px;position:relative">
+  <div style="position:absolute;top:0;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px calc(100% - 48px),transparent)"></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Contact</div>
+      <p data-reveal="up" style="margin:0;font-size:18px;color:var(--color-neutral-300)">I'm looking for a tech design internship starting February 2027. Let's talk.</p>
+      <a data-reveal="up" href="mailto:kevin.duijm@gmail.com" style="align-self:flex-start;font-size:clamp(22px,2.8vw,34px);font-weight:500;letter-spacing:-.01em;line-height:1.3;color:var(--color-text);text-decoration:none;background:linear-gradient(var(--color-accent),var(--color-accent)) no-repeat left bottom / 0% 2px;transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s" style-hover="background-size:100% 2px;color:var(--color-accent-200)">kevin.duijm@gmail.com</a>
+    </div>
+    <a data-reveal="up" class="btn btn-primary" href="index.html#work"><i class="ph ph-arrow-left"></i> Back to projects</a>
+  </div>
+  <footer style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:72px;font-size:13px;color:var(--color-neutral-500)">
+    <span>© 2026 Kevin Duijm · Allround Tech Designer</span>
+    <a href="#top" style="color:var(--color-neutral-400);text-decoration:none">Back to top ↑</a>
+  </footer>
+</section>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Hyena&quot;,&quot;options&quot;:[&quot;Nocturne&quot;,&quot;Blu&quot;,&quot;Hyena&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colors&quot;}}">
+const BLU = {
+  '--color-bg': '#0a1830', '--color-surface': '#10254a', '--color-text': '#eef7fc', '--color-divider': '#25497a',
+  '--color-accent': '#9b4dff', '--color-accent-200': '#ddc8ff', '--color-accent-300': '#c4a0ff', '--color-accent-400': '#b070f0',
+  '--color-accent-600': '#7e1ee6', '--color-accent-700': '#5a00b8', '--color-accent-800': '#3d1480', '--color-accent-900': '#26104f',
+  '--color-neutral-100': '#e6f3fb', '--color-neutral-200': '#c7e3f4', '--color-neutral-300': '#a9d8f0', '--color-neutral-400': '#7fb3d6',
+  '--color-neutral-500': '#5b8cb8', '--color-neutral-600': '#3b6796', '--color-neutral-700': '#25497a', '--color-neutral-800': '#183560', '--color-neutral-900': '#10264a',
+  '--color-section': '#1356a8', '--color-section-glow': '#8f10f0', '--color-section-ghost': '#3f97db',
+};
+const HYENA = {
+  '--color-bg': '#1b191d', '--color-surface': '#27242a', '--color-text': '#f5eff5', '--color-divider': '#3f3b44',
+  '--color-accent': '#e46be8', '--color-accent-200': '#f8d2f6', '--color-accent-300': '#f1a8ef', '--color-accent-400': '#ea88eb',
+  '--color-accent-600': '#c81fae', '--color-accent-700': '#9c168a', '--color-accent-800': '#5e1456', '--color-accent-900': '#3a0f36',
+  '--color-neutral-100': '#f1edf1', '--color-neutral-200': '#dad5db', '--color-neutral-300': '#bfb9c0', '--color-neutral-400': '#9d989f',
+  '--color-neutral-500': '#7e7a80', '--color-neutral-600': '#625e64', '--color-neutral-700': '#4a474d', '--color-neutral-800': '#353238', '--color-neutral-900': '#27242a',
+  '--color-section': '#4a1846', '--color-section-glow': '#19e39a', '--color-section-ghost': '#e46be8',
+};
+const TOC = [['about', 'About'], ['showcase', 'Showcase'], ['highlights', 'Highlights'], ['inspect', 'Inspect system'], ['read', 'Read system'], ['commonui', 'Common UI'], ['research', 'Game research'], ['pipelinedoc', 'Pipeline doc']];
+
+class Component extends DCLogic {
+  state = { active: 'about', yt: false };
+  applyPalette() {
+    const st = document.documentElement.style, pal = { Blu: BLU, Hyena: HYENA }[this.props.palette ?? 'Hyena'];
+    Object.keys(BLU).forEach(k => pal ? st.setProperty(k, pal[k]) : st.removeProperty(k));
+  }
+  componentDidMount() {
+    this.applyPalette();
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    addEventListener('resize', this.onScroll);
+    this.onKey = e => { if (e.key === 'Escape' && this.state.yt) this.closeYt(); };
+    addEventListener('keydown', this.onKey);
+    document.querySelectorAll('[data-hl]').forEach((el, i) => {
+      el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.filter = 'blur(6px)';
+      const d = 0.1 + i * 0.09;
+      el.style.transition = `opacity .9s ${d}s cubic-bezier(.2,.7,.2,1), transform .9s ${d}s cubic-bezier(.2,.7,.2,1), filter .9s ${d}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none'; }));
+    });
+    const v = document.querySelector('[data-hero-video]');
+    if (v) { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); }
+    setTimeout(() => { this.scan(); this.tick(); }, 60);
+  }
+  componentDidUpdate() { if (this._pal !== this.props.palette) { this._pal = this.props.palette; this.applyPalette(); } }
+  componentWillUnmount() { removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); removeEventListener('keydown', this.onKey); this.io && this.io.disconnect(); }
+  scan() {
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      const d = +el.getAttribute('data-delay') || 0, ease = 'cubic-bezier(.2,.7,.2,1)';
+      el.style.transition = `opacity .9s ${d}s ${ease}, transform .9s ${d}s ${ease}, clip-path 1.2s ${d}s cubic-bezier(.7,0,.2,1)`;
+      if (el.getAttribute('data-reveal') === 'clip') el.style.clipPath = 'inset(0 100% 0 0 round 14px)';
+      else { el.style.opacity = 0; el.style.transform = 'translateY(36px)'; }
+      this.io.observe(el);
+    });
+  }
+  show(el) {
+    el.style.opacity = ''; el.style.transform = ''; el.style.clipPath = 'inset(0 0 0 0 round 14px)';
+    el.querySelectorAll('[data-count]').forEach(n => this.countUp(n));
+    setTimeout(() => { el.style.transition = ''; if (el.getAttribute('data-reveal') === 'clip') el.style.clipPath = ''; }, 1400);
+  }
+  countUp(n) {
+    const end = +n.getAttribute('data-count'), suf = n.getAttribute('data-suffix') || '', t0 = performance.now();
+    const fmt = v => end >= 1000 ? (v >= end ? Math.round(v / 1000) : (v / 1000).toFixed(1)) + 'K' : Math.round(v);
+    const step = now => { const p = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - p, 3); n.textContent = fmt(end * e) + suf; if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  tick() {
+    const H = innerHeight, doc = document.documentElement;
+    const bar = document.querySelector('[data-progress]');
+    if (bar) bar.style.width = (scrollY / Math.max(1, doc.scrollHeight - H) * 100) + '%';
+    const top = document.querySelector('[data-totop]');
+    if (top) { const on = scrollY > H * 0.8; top.style.opacity = on ? 1 : 0; top.style.transform = on ? 'none' : 'translateY(12px)'; top.style.pointerEvents = on ? 'auto' : 'none'; }
+    const hero = document.querySelector('#top');
+    if (hero) {
+      const p = Math.min(1, Math.max(0, scrollY / hero.offsetHeight));
+      const m = document.querySelector('[data-hero-media]');
+      if (m) m.style.transform = `translateY(${p * 30}%) scale(${1.06 + p * 0.08})`;
+      const tx = document.querySelector('[data-hero-text]');
+      if (tx) { tx.style.opacity = Math.max(0, 1 - p * 1.6); tx.style.transform = `translateY(${-p * 80}px)`; }
+      const v = document.querySelector('[data-hero-video]');
+      if (v && !this.state.yt) { if (p >= 1 && !v.paused) v.pause(); else if (p < 1 && v.paused) { const pr = v.play(); if (pr) pr.catch(() => {}); } }
+    }
+    const toc = document.querySelector('[data-toc]');
+    if (toc) toc.style.display = innerWidth < 900 ? 'none' : 'flex';
+    let active = TOC[0][0];
+    document.querySelectorAll('[data-sec]').forEach(s => { if (s.getBoundingClientRect().top < H * 0.4) active = s.id; });
+    if (active !== this.state.active) this.setState({ active });
+  }
+  closeYt() {
+    this.setState({ yt: false });
+    const v = document.querySelector('[data-hero-video]');
+    if (v) { const p = v.play(); if (p) p.catch(() => {}); }
+  }
+  renderVals() {
+    return {
+      toc: TOC.map(([id, label]) => ({ href: '#' + id, label, color: id === this.state.active ? 'var(--color-text)' : 'var(--color-neutral-400)', bar: id === this.state.active ? '20px' : '0px' })),
+      facts: [
+        { icon: 'ph-cube', k: 'Engine', v: 'Unreal Engine 5', delay: 0 },
+        { icon: 'ph-graduation-cap', k: 'Type', v: 'University project', delay: 0.05 },
+        { icon: 'ph-user', k: 'Team', v: 'Solo', delay: 0.1 },
+        { icon: 'ph-ghost', k: 'Genre', v: 'Puzzle horror', delay: 0.15 },
+        { icon: 'ph-timer', k: 'Duration', v: '8 weeks', delay: 0.2 },
+      ],
+      highlights: [
+        ['ph-magnifying-glass', 'Extensive research into the target game, Resident Evil Village'],
+        ['ph-book-open', 'Extensive engine research into what was needed to recreate the system'],
+        ['ph-cube-focus', 'Item inspection system', 'Rotate, move, zoom in and out, reset position and close. Items can be inspected further to give the player an item in return.'],
+        ['ph-note', 'Note reading system', 'Multiple pages of text, customisable text, and the choice to read on inspect or on further inspection.'],
+        ['ph-flask', 'A demo level and a gym level'],
+        ['ph-tree-structure', 'A BaseItem Blueprint that developers can make child Blueprints from'],
+        ['ph-file-text', 'Pipeline documentation as a guide to using the tool'],
+      ].map(([icon, text, sub], i) => ({ icon, text, sub: sub || '', hasSub: !!sub, delay: (i % 2) * 0.06 })),
+      inspectTrip: [
+        { icon: 'ph-wrench', title: 'Method used', text: "With Blueprint inheritance I built a BaseItem and InspectItem system backed by Render Targets, custom input handling and dynamic UI. It supports smooth inspection, contextual feedback icons and multi-page notes in one modular framework.", delay: 0 },
+        { icon: 'ph-lightbulb', title: 'Motivation', text: "A tactile, discovery-driven experience that matches the atmosphere and pacing. Clear visuals and responsive controls reinforce player agency and environmental storytelling.", delay: 0.08 },
+      ],
+      readTrip: [
+        { icon: 'ph-wrench', title: 'Method used', text: "Built on a BaseNote Blueprint derived from the inspection system, it shows text through a custom widget when examined. Notes can open automatically or require closer inspection, so designers control how story details are revealed.", delay: 0 },
+        { icon: 'ph-lightbulb', title: 'Motivation', text: "To strengthen world-building and immersion through interactive storytelling, rewarding curiosity by tying lore directly into gameplay.", delay: 0.08 },
+      ],
+      uiTrip: [
+        { icon: 'ph-wrench', title: 'Method used', text: "Unreal Engine 5’s Common UI plugin, which makes it easy to set up different versions of UI elements for each input device.", delay: 0 },
+        { icon: 'ph-lightbulb', title: 'Motivation', text: "I wanted to experiment with Common UI as a Tech Designer, and Resident Evil games are mostly played on controller.", delay: 0.08 },
+        { icon: 'ph-arrow-counter-clockwise', title: 'Looking back', text: "Common UI is a great tool, but it is still in beta, so it is not entirely risk-free.", delay: 0.16 },
+      ],
+      researchTrip: [
+        { icon: 'ph-wrench', title: 'Method used', text: "I analysed item inspection scenarios step by step and made flowcharts to replicate the order of functionality. I made wireframes of inputs and the actions they trigger, and mapped the game into a large Zubek model to see what supports the player experience.", delay: 0 },
+        { icon: 'ph-lightbulb', title: 'Motivation', text: "I wanted to learn how to replicate this functionality efficiently, along with the player experience and feel it supports.", delay: 0.08 },
+        { icon: 'ph-arrow-counter-clockwise', title: 'Looking back', text: "I was too direct at first and struggled with how to research properly. Talking it through with lecturers made it clear which sources I needed.", delay: 0.16 },
+      ],
+      pipeTrip: [
+        { icon: 'ph-wrench', title: 'Method used', text: "A document that explains how to use the feature and build on it, with a changelog showing when it was last updated.", delay: 0 },
+        { icon: 'ph-lightbulb', title: 'Motivation', text: "It was my first time documenting my work for others to use, and good practice in leaving a paper trail, since you never know who will want to pick it up.", delay: 0.08 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Sunbeat City · Kevin Duijm</title>
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;text-wrap:pretty;background:radial-gradient(1200px 720px at 82% -160px,color-mix(in srgb,var(--color-accent-900) 75%,transparent),transparent 60%),var(--color-bg)}
+a{color:var(--color-accent-300)}
+a:hover{color:var(--color-accent-200)}
+</style>
+</helmet>
+
+<div data-progress="" style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--color-accent);z-index:60;box-shadow:0 0 12px var(--color-accent)"></div>
+
+<nav class="nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:22px;padding:12px clamp(20px,5vw,72px);background:color-mix(in srgb,var(--color-bg) 72%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+  <a href="index.html" class="nav-brand" style="text-decoration:none;color:var(--color-text);display:flex;align-items:baseline;gap:8px;margin-right:auto">Kevin Duijm <span style="font-size:13px;color:var(--color-neutral-500)">Tech Designer</span></a>
+  <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+    <a href="index.html#work" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Work</a>
+    <a href="index.html#about" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">About</a>
+    <a href="#contact" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Contact</a>
+    <a class="btn btn-primary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_a306e20312dd456db6c5788342e7ade1.pdf" target="_blank">Resume</a>
+  </div>
+</nav>
+
+<div style="position:fixed;right:clamp(12px,2vw,28px);bottom:clamp(20px,5vh,40px);z-index:55;display:flex;flex-direction:column;gap:10px">
+  <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/in/kevin-duijm-4b60b3211/" target="_blank" aria-label="LinkedIn" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-linkedin-logo" style="font-size:20px"></i></a>
+  <a class="btn btn-secondary btn-icon" href="https://buckothefur.itch.io/" target="_blank" aria-label="itch.io" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-game-controller" style="font-size:20px"></i></a>
+  <a class="btn btn-secondary btn-icon" href="mailto:kevin.duijm@gmail.com" aria-label="Email" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-envelope-simple" style="font-size:20px"></i></a>
+</div>
+<a data-totop="" href="#top" aria-label="Back to top" class="btn btn-secondary btn-icon" style="position:fixed;left:clamp(12px,2vw,28px);bottom:clamp(20px,5vh,40px);z-index:55;width:44px;height:44px;border-radius:999px;background:color-mix(in srgb,var(--color-bg) 55%,transparent);backdrop-filter:blur(8px);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.7,.2,1)"><i class="ph ph-arrow-up" style="font-size:20px"></i></a>
+
+<section id="top" data-screen-label="Sunbeat Hero" style="position:relative;height:min(92vh,900px);min-height:560px;overflow:hidden">
+  <div data-hero-media="" style="position:absolute;inset:0;transform:scale(1.06);will-change:transform">
+    <img src="https://static.wixstatic.com/media/0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <video data-hero-video="" src="media/sunbeat-city-v2.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--color-bg) 0%,color-mix(in srgb,var(--color-bg) 70%,transparent) 32%,color-mix(in srgb,var(--color-bg) 25%,transparent) 70%,color-mix(in srgb,var(--color-bg) 55%,transparent) 100%)"></div>
+  <div data-hero-text="" style="position:absolute;left:0;right:0;bottom:clamp(40px,8vh,80px);max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:16px">
+    <a data-hl="" href="index.html#work" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--color-neutral-300);text-decoration:none" style-hover="color:var(--color-accent-300)"><i class="ph ph-arrow-left"></i>Back to projects</a>
+    <div data-hl="" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-300)"><span>2025</span><span style="width:4px;height:4px;border-radius:50%;background:var(--color-accent)"></span><span>Technical Game Designer</span></div>
+    <h1 data-hl="" style="margin:0;font-size:clamp(48px,9vw,140px);line-height:.95;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100);text-shadow:0 8px 40px rgba(0,0,0,.45)">Sunbeat City</h1>
+    <p data-hl="" style="margin:0;font-size:clamp(16px,1.4vw,19px);line-height:1.6;max-width:52ch;color:var(--color-neutral-200)">A first-person parkour game set in a Solarpunk city, where every move you make plays along to the music.</p>
+    <div data-hl="" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+      <button class="btn btn-primary" onClick="{{ openYt }}"><i class="ph ph-play"></i> Watch trailer</button>
+      <a class="btn btn-secondary" href="https://buas.itch.io/sunbeat-city" target="_blank"><i class="ph ph-game-controller"></i> Itch.io page</a>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:8px clamp(20px,5vw,72px) 0">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px 28px;padding:24px 0;position:relative">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--color-neutral-800) 48px calc(100% - 48px),transparent)"></div>
+    <sc-for list="{{ facts }}" as="f" hint-placeholder-count="5">
+      <div data-reveal="up" data-delay="{{ f.delay }}" style="display:flex;gap:12px;align-items:center">
+        <i class="ph {{ f.icon }}" style="font-size:22px;color:var(--color-accent)"></i>
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-500)">{{ f.k }}</span><span style="font-size:15px">{{ f.v }}</span></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:flex;gap:clamp(32px,5vw,72px);align-items:flex-start">
+  <aside data-toc="" style="position:sticky;top:88px;padding-top:72px;flex:0 0 190px;display:flex;flex-direction:column;gap:4px">
+    <span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-500);margin-bottom:8px">On this page</span>
+    <sc-for list="{{ toc }}" as="t" hint-placeholder-count="5">
+      <a href="{{ t.href }}" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px;text-decoration:none;color:{{ t.color }};transition:color .2s" style-hover="color:var(--color-accent-300)"><span style="width:{{ t.bar }};height:1px;background:var(--color-accent);transition:width .3s cubic-bezier(.2,.7,.2,1)"></span>{{ t.label }}</a>
+    </sc-for>
+  </aside>
+
+  <main style="flex:1 1 0;min-width:0;display:flex;flex-direction:column">
+    <section id="about" data-sec="" data-screen-label="About" style="padding:72px 0 40px;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">About</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">A parkour game across the rooftops of a Solarpunk city.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+        <div data-reveal="up" class="card" style="padding:24px;border-radius:14px;background:var(--color-surface);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px">
+          <i class="ph ph-target" style="font-size:26px;color:var(--color-accent)"></i>
+          <h3 style="margin:0;font-size:20px">Your goal</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">Collect lost instruments to help set up a festival, so the city lights up with music and the town is happy again.</p>
+        </div>
+        <div data-reveal="up" data-delay="0.08" class="card" style="padding:24px;border-radius:14px;background:var(--color-surface);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px">
+          <i class="ph ph-music-notes" style="font-size:26px;color:var(--color-accent)"></i>
+          <h3 style="margin:0;font-size:20px">Musical movement</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">Every movement you make generates a new note that plays along to the music coming from the city.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="reception" data-sec="" data-screen-label="Reception" style="padding:40px 0;display:flex;flex-direction:column;gap:24px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Reception</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px">
+        <div data-reveal="up" style="display:flex;flex-direction:column;gap:8px"><span data-count="750" data-suffix="+" style="font-size:clamp(44px,5vw,72px);font-weight:500;letter-spacing:-.02em;line-height:1">750+</span><span style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-400)">Downloads on itch.io</span></div>
+        <div data-reveal="up" data-delay="0.08" style="display:flex;flex-direction:column;gap:8px"><span data-count="25000" data-suffix="+" style="font-size:clamp(44px,5vw,72px);font-weight:500;letter-spacing:-.02em;line-height:1">25K+</span><span style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-400)">Views on TikTok</span></div>
+      </div>
+    </section>
+
+    <section id="projectrole" data-sec="" data-screen-label="Project Role" style="padding:40px 0;display:flex;flex-direction:column;gap:24px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Project role</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12">Technical Game Designer</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">As Tech Designer I was responsible for creating dynamic traversal level ingredients and interactive world elements. That meant:</p>
+      <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px 32px">
+        <sc-for list="{{ role }}" as="r" hint-placeholder-count="9">
+          <li data-reveal="up" style="display:flex;gap:12px;font-size:15px;line-height:1.55;color:var(--color-neutral-200)"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:var(--color-accent);margin-top:9px"></span>{{ r }}</li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <section id="bouncingparasol" data-sec="" data-screen-label="Bouncing Parasol" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Bouncing Parasol</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:26ch">Turning city props into a momentum-driven traversal mechanic.</h2>
+      <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I designed, prototyped, implemented and iterated on the Bouncing Parasol traversal system. The parasols let players bounce across rooftops while keeping their momentum.</p>
+      <figure data-reveal="clip" class="lighten" style="margin:0;aspect-ratio:16/10;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_2e31177f91f84934be08cf45891b2ad0~mv2.png" alt="Bouncing Parasol in Sunbeat City" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px">
+        <sc-for list="{{ parasol }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:10px"><i class="ph {{ b.icon }}" style="color:var(--color-accent)"></i>{{ b.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+        <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_82e83e0bce77435a9920b70149bf6270f000.jpg" alt="Early parasol prototype" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Early parasol prototype, before the opening and closing was removed.</figcaption>
+        </figure>
+        <figure data-reveal="up" data-delay="0.08" style="margin:0;display:flex;flex-direction:column;gap:10px">
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_1517547c8c924e0faa7dac9e19ece8aff000.jpg" alt="Parasol bounce force with height indicator" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Adjustable bounce force, with a visual indicator of the height you can reach.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="earlyprototypes" data-sec="" data-screen-label="Early Prototypes" style="padding:40px 0 72px;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Early concept prototypes</div>
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Mission and traversal ideas from the concepting stage.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ concepts }}" as="c" hint-placeholder-count="3">
+              <div data-reveal="up" data-delay="{{ c.delay }}" style="display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-sm)"><i class="ph {{ c.icon }}" style="font-size:22px;color:var(--color-accent)"></i><span style="font-size:15px">{{ c.text }}</span></div>
+            </sc-for>
+          </div>
+          <p data-reveal="up" style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">We needed more goals and missions, so I came up with hacking billboards to advertise the festival and delivering newspapers to announce it. The drone was a parkour concept that was eventually scrapped.</p>
+        </div>
+        <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:2/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_a9d7709c5db2402bb18030aa86f2a433f000.jpg" alt="Drone prototype" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Drone prototype you could hang onto.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+</div>
+
+<section id="contact" data-screen-label="Contact" style="max-width:1200px;margin:0 auto;padding:72px clamp(20px,5vw,72px) 48px;position:relative">
+  <div style="position:absolute;top:0;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px calc(100% - 48px),transparent)"></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Contact</div>
+      <p data-reveal="up" style="margin:0;font-size:18px;color:var(--color-neutral-300)">I'm looking for a tech design internship starting February 2027. Let's talk.</p>
+      <a data-reveal="up" href="mailto:kevin.duijm@gmail.com" style="align-self:flex-start;font-size:clamp(22px,2.8vw,34px);font-weight:500;letter-spacing:-.01em;line-height:1.3;color:var(--color-text);text-decoration:none;background:linear-gradient(var(--color-accent),var(--color-accent)) no-repeat left bottom / 0% 2px;transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s" style-hover="background-size:100% 2px;color:var(--color-accent-200)">kevin.duijm@gmail.com</a>
+    </div>
+    <a data-reveal="up" class="btn btn-primary" href="index.html#work"><i class="ph ph-arrow-left"></i> Back to projects</a>
+  </div>
+  <footer style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:72px;font-size:13px;color:var(--color-neutral-500)">
+    <span>© 2026 Kevin Duijm · Allround Tech Designer</span>
+    <a href="#top" style="color:var(--color-neutral-400);text-decoration:none">Back to top ↑</a>
+  </footer>
+</section>
+
+<sc-if value="{{ ytOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeYt }}" style="position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,64px);background:color-mix(in srgb,var(--color-bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">
+  <div style="position:relative;width:min(1200px,100%);display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span style="font-size:clamp(18px,2vw,24px);font-weight:500">Sunbeat City trailer</span>
+      <button class="btn btn-secondary btn-icon" onClick="{{ closeYt }}" aria-label="Close video" style="border-radius:999px;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
+    </div>
+    <div style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);background:var(--color-surface)">
+      <iframe src="https://www.youtube-nocookie.com/embed/bynZWyCKVYQ?autoplay=1&amp;rel=0&amp;modestbranding=1&amp;playsinline=1&amp;start=11" title="Sunbeat City trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen="{{ true }}" style="width:100%;height:100%;border:0;display:block"></iframe>
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Hyena&quot;,&quot;options&quot;:[&quot;Nocturne&quot;,&quot;Blu&quot;,&quot;Hyena&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colors&quot;}}">
+const BLU = {
+  '--color-bg': '#0a1830', '--color-surface': '#10254a', '--color-text': '#eef7fc', '--color-divider': '#25497a',
+  '--color-accent': '#9b4dff', '--color-accent-200': '#ddc8ff', '--color-accent-300': '#c4a0ff', '--color-accent-400': '#b070f0',
+  '--color-accent-600': '#7e1ee6', '--color-accent-700': '#5a00b8', '--color-accent-800': '#3d1480', '--color-accent-900': '#26104f',
+  '--color-neutral-100': '#e6f3fb', '--color-neutral-200': '#c7e3f4', '--color-neutral-300': '#a9d8f0', '--color-neutral-400': '#7fb3d6',
+  '--color-neutral-500': '#5b8cb8', '--color-neutral-600': '#3b6796', '--color-neutral-700': '#25497a', '--color-neutral-800': '#183560', '--color-neutral-900': '#10264a',
+  '--color-section': '#1356a8', '--color-section-glow': '#8f10f0', '--color-section-ghost': '#3f97db',
+};
+const HYENA = {
+  '--color-bg': '#1b191d', '--color-surface': '#27242a', '--color-text': '#f5eff5', '--color-divider': '#3f3b44',
+  '--color-accent': '#e46be8', '--color-accent-200': '#f8d2f6', '--color-accent-300': '#f1a8ef', '--color-accent-400': '#ea88eb',
+  '--color-accent-600': '#c81fae', '--color-accent-700': '#9c168a', '--color-accent-800': '#5e1456', '--color-accent-900': '#3a0f36',
+  '--color-neutral-100': '#f1edf1', '--color-neutral-200': '#dad5db', '--color-neutral-300': '#bfb9c0', '--color-neutral-400': '#9d989f',
+  '--color-neutral-500': '#7e7a80', '--color-neutral-600': '#625e64', '--color-neutral-700': '#4a474d', '--color-neutral-800': '#353238', '--color-neutral-900': '#27242a',
+  '--color-section': '#4a1846', '--color-section-glow': '#19e39a', '--color-section-ghost': '#e46be8',
+};
+const TOC = [['about', 'About'], ['reception', 'Reception'], ['projectrole', 'Project role'], ['bouncingparasol', 'Bouncing Parasol'], ['earlyprototypes', 'Early prototypes']];
+
+class Component extends DCLogic {
+  state = { active: 'about', yt: false };
+  applyPalette() {
+    const st = document.documentElement.style, pal = { Blu: BLU, Hyena: HYENA }[this.props.palette ?? 'Hyena'];
+    Object.keys(BLU).forEach(k => pal ? st.setProperty(k, pal[k]) : st.removeProperty(k));
+  }
+  componentDidMount() {
+    this.applyPalette();
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    addEventListener('resize', this.onScroll);
+    this.onKey = e => { if (e.key === 'Escape' && this.state.yt) this.closeYt(); };
+    addEventListener('keydown', this.onKey);
+    document.querySelectorAll('[data-hl]').forEach((el, i) => {
+      el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.filter = 'blur(6px)';
+      const d = 0.1 + i * 0.09;
+      el.style.transition = `opacity .9s ${d}s cubic-bezier(.2,.7,.2,1), transform .9s ${d}s cubic-bezier(.2,.7,.2,1), filter .9s ${d}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none'; }));
+    });
+    const v = document.querySelector('[data-hero-video]');
+    if (v) { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); }
+    setTimeout(() => { this.scan(); this.tick(); }, 60);
+  }
+  componentDidUpdate() { if (this._pal !== this.props.palette) { this._pal = this.props.palette; this.applyPalette(); } }
+  componentWillUnmount() { removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); removeEventListener('keydown', this.onKey); this.io && this.io.disconnect(); }
+  scan() {
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      const d = +el.getAttribute('data-delay') || 0, ease = 'cubic-bezier(.2,.7,.2,1)';
+      el.style.transition = `opacity .9s ${d}s ${ease}, transform .9s ${d}s ${ease}, clip-path 1.2s ${d}s cubic-bezier(.7,0,.2,1)`;
+      if (el.getAttribute('data-reveal') === 'clip') el.style.clipPath = 'inset(0 100% 0 0 round 14px)';
+      else { el.style.opacity = 0; el.style.transform = 'translateY(36px)'; }
+      this.io.observe(el);
+    });
+  }
+  show(el) {
+    el.style.opacity = ''; el.style.transform = ''; el.style.clipPath = 'inset(0 0 0 0 round 14px)';
+    el.querySelectorAll('[data-count]').forEach(n => this.countUp(n));
+    setTimeout(() => { el.style.transition = ''; if (el.getAttribute('data-reveal') === 'clip') el.style.clipPath = ''; }, 1400);
+  }
+  countUp(n) {
+    const end = +n.getAttribute('data-count'), suf = n.getAttribute('data-suffix') || '', t0 = performance.now();
+    const fmt = v => end >= 1000 ? (v >= end ? Math.round(v / 1000) : (v / 1000).toFixed(1)) + 'K' : Math.round(v);
+    const step = now => { const p = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - p, 3); n.textContent = fmt(end * e) + suf; if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  tick() {
+    const H = innerHeight, doc = document.documentElement;
+    const bar = document.querySelector('[data-progress]');
+    if (bar) bar.style.width = (scrollY / Math.max(1, doc.scrollHeight - H) * 100) + '%';
+    const top = document.querySelector('[data-totop]');
+    if (top) { const on = scrollY > H * 0.8; top.style.opacity = on ? 1 : 0; top.style.transform = on ? 'none' : 'translateY(12px)'; top.style.pointerEvents = on ? 'auto' : 'none'; }
+    const hero = document.querySelector('#top');
+    if (hero) {
+      const p = Math.min(1, Math.max(0, scrollY / hero.offsetHeight));
+      const m = document.querySelector('[data-hero-media]');
+      if (m) m.style.transform = `translateY(${p * 30}%) scale(${1.06 + p * 0.08})`;
+      const tx = document.querySelector('[data-hero-text]');
+      if (tx) { tx.style.opacity = Math.max(0, 1 - p * 1.6); tx.style.transform = `translateY(${-p * 80}px)`; }
+      const v = document.querySelector('[data-hero-video]');
+      if (v && !this.state.yt) { if (p >= 1 && !v.paused) v.pause(); else if (p < 1 && v.paused) { const pr = v.play(); if (pr) pr.catch(() => {}); } }
+    }
+    const toc = document.querySelector('[data-toc]');
+    if (toc) toc.style.display = innerWidth < 900 ? 'none' : 'flex';
+    let active = TOC[0][0];
+    document.querySelectorAll('[data-sec]').forEach(s => { if (s.getBoundingClientRect().top < H * 0.4) active = s.id; });
+    if (active !== this.state.active) this.setState({ active });
+  }
+  closeYt() {
+    this.setState({ yt: false });
+    const v = document.querySelector('[data-hero-video]');
+    if (v) { const p = v.play(); if (p) p.catch(() => {}); }
+  }
+  renderVals() {
+    return {
+      ytOpen: this.state.yt,
+      openYt: () => { const v = document.querySelector('[data-hero-video]'); if (v) v.pause(); this.setState({ yt: true }); },
+      closeYt: e => { if (e.target === e.currentTarget || e.currentTarget.tagName === 'BUTTON') this.closeYt(); },
+      toc: TOC.map(([id, label]) => ({ href: '#' + id, label, color: id === this.state.active ? 'var(--color-text)' : 'var(--color-neutral-400)', bar: id === this.state.active ? '20px' : '0px' })),
+      facts: [
+        { icon: 'ph-cube', k: 'Engine', v: 'Unreal Engine 5', delay: 0 },
+        { icon: 'ph-graduation-cap', k: 'Type', v: 'University project', delay: 0.05 },
+        { icon: 'ph-users-three', k: 'Team', v: '20 developers', delay: 0.1 },
+        { icon: 'ph-game-controller', k: 'Genre', v: '3D platformer', delay: 0.15 },
+        { icon: 'ph-timer', k: 'Duration', v: '8 weeks', delay: 0.2 },
+      ],
+      role: [
+        'Concepting mission ideas',
+        'Concepting different traversal mechanics',
+        'Prototyping these traversal mechanics',
+        'Prototyping interactive world elements',
+        'Active participation in progress reviews and sprint planning',
+        'Setting up basic animations and models for artists to replace later',
+        'Designing and balancing the Bouncing Parasol traversal ingredient',
+        'Playtesting the parasol and iterating based on those playtests',
+        'Working with level designers on comfortable jump heights and player feel',
+      ],
+      parasol: [
+        { icon: 'ph-wrench', title: 'Method used', text: 'Built in Unreal Engine 5 with physics adjustments that keep airborne velocity while applying an upward impulse on impact. Through playtesting I tuned timing and responsiveness, and simplified the mechanic by removing the opening and closing to improve flow.', delay: 0 },
+        { icon: 'ph-lightbulb', title: 'Motivation', text: 'Designed to reinforce fluid movement and vertical exploration in a Mediterranean traversal setting. It turns ordinary city props into movement-based gameplay that fits the Solarpunk world.', delay: 0.08 },
+        { icon: 'ph-arrow-counter-clockwise', title: 'Looking back', text: 'The mechanic proved fun and intuitive, rewarding momentum-driven traversal while fitting the tone of the game.', delay: 0.16 },
+      ],
+      concepts: [
+        { icon: 'ph-drone', text: 'A flying drone you could hang onto', delay: 0 },
+        { icon: 'ph-newspaper', text: 'A newspaper bazooka to deliver newspapers around the city', delay: 0.06 },
+        { icon: 'ph-monitor', text: 'Hackable billboards to promote the festival in town', delay: 0.12 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
