@@ -40,12 +40,14 @@ a:hover{color:var(--color-accent-200)}
   <a class="btn btn-secondary btn-icon" href="mailto:kevin.duijm@gmail.com" aria-label="Email" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-envelope-simple" style="font-size:20px"></i></a>
 </div>
 
+<a data-totop="" href="#top" aria-label="Back to top" class="btn btn-secondary btn-icon" style="position:fixed;left:clamp(12px,2vw,28px);bottom:clamp(20px,5vh,40px);z-index:55;width:44px;height:44px;border-radius:999px;background:color-mix(in srgb,var(--color-bg) 55%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.7,.2,1)"><i class="ph ph-arrow-up" style="font-size:20px"></i></a>
+
 <section id="top" data-hero="" data-screen-label="Hero" style="position:relative;height:210vh">
   <div style="position:sticky;top:0;height:100vh;overflow:hidden">
     <div data-hero-frame="" style="position:absolute;inset:0;transform:scale(1.08);transform-origin:50% 40%;background:var(--color-surface);will-change:transform">
       <sc-for list="{{ clips }}" as="c" hint-placeholder-count="1">
         <sc-if value="{{ c.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ c.src }}" alt="{{ c.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ c.opacity }};transition:opacity .9s ease"></sc-if>
-        <sc-if value="{{ c.video }}" hint-placeholder-val="{{ false }}"><video data-src="{{ c.video }}" data-clip="{{ c.i }}" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ c.opacity }};transition:opacity .9s ease"></video></sc-if>
+        <sc-if value="{{ c.video }}" hint-placeholder-val="{{ false }}"><video data-src="{{ c.video }}" data-clip="{{ c.i }}" data-start="{{ c.startAt }}" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ c.opacity }};transition:opacity .9s ease"></video></sc-if>
       </sc-for>
       <div style="position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--color-bg) 88%,transparent) 0%,transparent 45%);pointer-events:none"></div>
       <div data-hero-scrim="" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,color-mix(in srgb,var(--color-bg) 55%,transparent) 0%,color-mix(in srgb,var(--color-bg) 78%,transparent) 100%);pointer-events:none"></div>
@@ -65,7 +67,7 @@ a:hover{color:var(--color-accent-200)}
       </div>
     </div>
     <div data-hero-text="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(10px,2.2vh,24px);padding:72px 20px clamp(80px,12vh,110px);box-sizing:border-box;pointer-events:none">
-      <div data-hl="" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--color-accent-300);padding:4px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--color-accent-800);background:color-mix(in srgb,var(--color-accent-900) 60%,transparent)"><span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent);box-shadow:0 0 10px var(--color-accent)"></span>Open to internships 2026/2027</div>
+      <div data-hl="" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--color-accent-300);padding:4px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--color-accent-800);background:color-mix(in srgb,var(--color-accent-900) 60%,transparent)"><span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent);box-shadow:0 0 10px var(--color-accent)"></span>Open to internships from Feb 2027</div>
       <h1 data-hl="" style="margin:0;flex:none;white-space:nowrap;font-size:min(clamp(40px,10vw,176px),16vh);line-height:1;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100);text-shadow:0 8px 40px rgba(0,0,0,.45)">Kevin Duijm</h1>
       <div data-hl="" style="display:flex;align-items:center;gap:4px;font-size:clamp(22px,2.8vw,40px);font-weight:500;letter-spacing:-.01em;min-height:1.3em">
         <span style="color:var(--color-accent-300)">{{ typedA }}</span><span style="color:var(--color-neutral-100)">{{ typedB }}</span><span style="display:inline-block;width:3px;height:1em;background:var(--color-accent);margin-left:3px;opacity:{{ caretOpacity }}"></span>
@@ -76,6 +78,8 @@ a:hover{color:var(--color-accent-200)}
         <a class="btn btn-ghost" href="#contact" style="white-space:nowrap;flex:none">Get in touch</a>
       </div>
     </div>
+    <button onClick="{{ prevClip }}" aria-label="Previous clip" class="btn btn-secondary btn-icon" style="position:absolute;left:clamp(12px,2vw,28px);top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:999px;background:color-mix(in srgb,var(--color-bg) 45%,transparent);backdrop-filter:blur(8px);z-index:2"><i class="ph ph-caret-left" style="font-size:22px"></i></button>
+    <button onClick="{{ nextClip }}" aria-label="Next clip" class="btn btn-secondary btn-icon" style="position:absolute;right:clamp(12px,2vw,28px);top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:999px;background:color-mix(in srgb,var(--color-bg) 45%,transparent);backdrop-filter:blur(8px);z-index:2"><i class="ph ph-caret-right" style="font-size:22px"></i></button>
     <a data-hero-hint="" href="#work" aria-label="Scroll down" style="position:absolute;left:50%;bottom:clamp(24px,5vh,48px);transform:translateX(-50%);width:26px;height:42px;border-radius:14px;box-shadow:inset 0 0 0 2px var(--color-neutral-300);display:flex;justify-content:center;padding-top:8px;box-sizing:border-box">{{ mouseDot }}</a>
   </div>
 </section>
@@ -94,6 +98,12 @@ a:hover{color:var(--color-accent-200)}
 </sc-if>
 
 <section id="work" data-screen-label="Work" style="padding:96px 0 40px;overflow:hidden">
+  <div data-work-bg="" aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .7s ease">
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="0">
+      <img data-bg-i="{{ $index }}" src="{{ p.bg }}" alt="" loading="lazy" style="position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;opacity:0;transform:scale(1.1);filter:blur(3px) saturate(1.1);transition:opacity .9s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)">
+    </sc-for>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--color-bg) 72%,transparent) 0%,color-mix(in srgb,var(--color-bg) 90%,transparent) 100%)"></div>
+  </div>
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
     <div data-reveal="up" style="display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Selected work</div>
   </div>
@@ -109,10 +119,10 @@ a:hover{color:var(--color-accent-200)}
     </div>
 
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
-      <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,4vw,64px);align-items:center;padding:56px 0;position:relative">
+      <article data-proj="{{ $index }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,4vw,64px);align-items:center;padding:56px 0;position:relative">
         <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--color-neutral-800) 48px calc(100% - 48px),transparent)"></div>
         <a href="{{ p.link }}" target="_blank" data-reveal="clip" style="order:{{ p.mediaOrder }};position:relative;display:block;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface);transition:box-shadow .3s,transform .4s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:var(--shadow-md);transform:translateY(-4px)">
-          <div class="lighten" style="position:absolute;inset:0">
+          <div class="lighten" data-zoom="" style="position:absolute;inset:0;will-change:transform">
             <sc-if value="{{ p.video }}" hint-placeholder-val="{{ false }}"><video data-src="{{ p.video }}" poster="{{ p.poster }}" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="width:100%;height:100%;object-fit:cover"></video></sc-if>
             <sc-if value="{{ p.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ p.media }}" alt="{{ p.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></sc-if>
           </div>
@@ -136,6 +146,7 @@ a:hover{color:var(--color-accent-200)}
             </sc-for>
           </ul>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px">
+            <sc-if value="{{ p.yt }}" hint-placeholder-val="{{ false }}"><button class="btn btn-primary" onClick="{{ p.openYt }}"><i class="ph ph-play"></i> Watch trailer</button></sc-if>
             <a class="btn btn-ghost" href="{{ p.link }}" target="_blank">{{ p.linkLabel }} <i class="ph ph-arrow-up-right"></i></a>
             <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}">
               <span class="tag tag-accent" style="display:inline-flex;gap:6px;align-items:center"><i class="ph ph-trophy"></i>{{ p.award }}</span>
@@ -158,9 +169,10 @@ a:hover{color:var(--color-accent-200)}
         <span class="tag tag-outline">Game systems</span>
         <span class="tag tag-outline">Live iteration</span>
       </div>
+      <a class="btn btn-secondary" href="https://www.nullxiety.dev/" target="_blank" style="align-self:flex-start">Visit nullxiety.dev <i class="ph ph-arrow-up-right"></i></a>
     </div>
     <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--color-section-ghost),0 24px 60px rgba(0,0,0,.45)">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(600px 300px at 70% 20%,color-mix(in srgb,var(--color-section-glow) 35%,transparent),transparent 70%),color-mix(in srgb,var(--color-bg) 55%,var(--color-section))"><i class="ph ph-cube" style="font-size:44px;color:var(--color-accent-300)"></i><span style="font-size:clamp(22px,2.6vw,32px);font-weight:500;letter-spacing:-.01em">Nullxiety</span><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Roblox experiences</span></div>
+      <a href="https://www.nullxiety.dev/" target="_blank" aria-label="Visit nullxiety.dev" style="display:block;width:100%;height:100%"><img src="media/nullxiety.png" alt="Nullxiety website: Multiplayer games with atmosphere." loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block"></a>
     </div>
   </div>
 </section>
@@ -190,11 +202,25 @@ a:hover{color:var(--color-accent-200)}
   </div>
 </section>
 
+<sc-if value="{{ ytOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeYt }}" style="position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,64px);background:color-mix(in srgb,var(--color-bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">
+  <div style="position:relative;width:min(1200px,100%);display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span style="font-size:clamp(18px,2vw,24px);font-weight:500">{{ ytTitle }}</span>
+      <button class="btn btn-secondary btn-icon" onClick="{{ closeYt }}" aria-label="Close video" style="border-radius:999px;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
+    </div>
+    <div style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);background:var(--color-surface)">
+      <iframe src="{{ ytSrc }}" title="{{ ytTitle }}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen="{{ true }}" style="width:100%;height:100%;border:0;display:block"></iframe>
+    </div>
+  </div>
+</div>
+</sc-if>
+
 <section id="contact" data-screen-label="Contact" style="max-width:1200px;margin:0 auto;padding:80px clamp(20px,5vw,72px) 48px;position:relative">
   <div style="position:absolute;top:0;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px calc(100% - 48px),transparent)"></div>
   <div data-reveal="up" style="display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent);margin-bottom:24px">Contact</div>
-  <p data-reveal="up" style="margin:0 0 12px;font-size:18px;color:var(--color-neutral-300)">Looking for a tech design intern for 2026/2027? Let's talk.</p>
-  <a data-reveal="up" href="mailto:kevin.duijm@gmail.com" style="display:inline-block;font-size:clamp(32px,6.4vw,84px);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--color-text);text-decoration:none;background:linear-gradient(var(--color-accent),var(--color-accent)) no-repeat left bottom / 0% 2px;transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s;word-break:break-word" style-hover="background-size:100% 2px;color:var(--color-accent-200)">kevin.duijm@gmail.com</a>
+  <p data-reveal="up" style="margin:0 0 12px;font-size:18px;color:var(--color-neutral-300)">I'm looking for a tech design internship starting February 2027. Let's talk.</p>
+  <a data-reveal="up" href="mailto:kevin.duijm@gmail.com" style="display:inline-block;font-size:clamp(22px,2.8vw,34px);font-weight:500;letter-spacing:-.01em;line-height:1.3;color:var(--color-text);text-decoration:none;background:linear-gradient(var(--color-accent),var(--color-accent)) no-repeat left bottom / 0% 2px;transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s;word-break:break-word" style-hover="background-size:100% 2px;color:var(--color-accent-200)">kevin.duijm@gmail.com</a>
   <div data-reveal="up" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:36px">
     <a class="btn btn-secondary" href="https://buckothefur.itch.io/" target="_blank"><i class="ph ph-game-controller"></i> itch.io</a>
     <a class="btn btn-secondary" href="https://www.linkedin.com/in/kevin-duijm-4b60b3211/" target="_blank"><i class="ph ph-linkedin-logo"></i> LinkedIn</a>
@@ -206,14 +232,14 @@ a:hover{color:var(--color-accent-200)}
   </footer>
 </section>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Hyena&quot;,&quot;options&quot;:[&quot;Nocturne&quot;,&quot;Blu&quot;,&quot;Hyena&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colors&quot;},&quot;reelSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:10,&quot;min&quot;:4,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero reel&quot;},&quot;revealMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;rise&quot;,&quot;options&quot;:[&quot;rise&quot;,&quot;scale&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Scroll animation&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Hyena&quot;,&quot;options&quot;:[&quot;Nocturne&quot;,&quot;Blu&quot;,&quot;Hyena&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colors&quot;},&quot;reelSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:10,&quot;min&quot;:4,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero reel&quot;},&quot;revealMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;rise&quot;,&quot;options&quot;:[&quot;rise&quot;,&quot;scale&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Scroll animation&quot;},&quot;projectMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Zoom + backdrop&quot;,&quot;options&quot;:[&quot;Zoom + backdrop&quot;,&quot;Off&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Scroll animation&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
 const W = 'https://static.wixstatic.com/media/';
 const CLIPS = [
-  { src: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-trailer.mp4', title: 'Chasing Whiskers', role: 'UX/UI & Marketing · 2026' },
-  { src: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-trailer.mp4', title: 'Sunbeat City', role: 'Tech Designer · UE5' },
-  { src: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-trailer.mp4', title: 'Baelorn', role: 'Tech Designer · UX/UI' },
-  { src: W + '0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif', video: 'media/inspect-read.mp4', title: 'Inspect & Read System', role: 'Tech Designer · UE5' },
-  { src: W + '0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg/v1/fill/w_1148,h_648,al_c,q_80,enc_avif,quality_auto/0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg', video: 'media/smart-city.mp4', title: 'Shaping the Smart City', role: 'XR Developer · Unity' },
+  { src: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4', title: 'Chasing Whiskers', role: 'UX/UI & Marketing · 2026' },
+  { src: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-v2.mp4', title: 'Sunbeat City', role: 'Tech Designer · UE5' },
+  { src: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-v2.mp4', title: 'Baelorn', role: 'Tech Designer · UX/UI' },
+  { src: W + '0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif', video: 'media/inspect-read-v2.mp4', title: 'Inspect & Read System', role: 'Tech Designer · UE5' },
+  { src: W + '0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg/v1/fill/w_1148,h_648,al_c,q_80,enc_avif,quality_auto/0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg', video: 'media/smart-city-v2.mp4', title: 'Shaping the Smart City', role: 'XR Developer · Unity' },
   { src: W + '0bf63b_b49b79e2dbe3441288feb3c1a6c8b3b9~mv2.gif', title: 'A Burning Addiction', role: 'Game Developer · Unity' },
   { src: W + '0bf63b_58abc09755c64b648bf2edfad195e7bd~mv2.gif', title: 'Rocky Rocket', role: 'Game Developer · Unity' },
 ];
@@ -222,28 +248,28 @@ const PROJECTS = [
     blurb: 'A cozy adventure where you play as grandma, chasing her lost cat through a portal into Catworld. Run errands for Ponpon at the Cat Café, dive to catch cats and collect them until you find your way home.',
     info: [['Type','Student'],['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive']],
     points: ['Responsible for all UX/UI in the game', 'Made the TikTok and Instagram content for our marketing', 'Released free on Steam in June 2026, published by BUAS'],
-    link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam', poster: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-trailer.mp4' },
-  { title: 'Sunbeat City', year: 2025, role: 'Tech Designer', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
+    link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam', poster: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4' },
+  { yt: 'bynZWyCKVYQ', ytStart: 11, title: 'Sunbeat City', year: 2025, role: 'Tech Designer', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
     blurb: 'A first-person parkour game across the rooftops of a Solarpunk city. Collect lost instruments and become a soloist to the soundtrack of the city, where every move you make plays a note.',
     info: [['Type','Student'],['Team','~21'],['Genre','FPS Platformer'],['Time','8 to 16 wks'],['Reception','750+ downloads']],
     points: ['Designed, prototyped and iterated the Bouncing Parasol traversal ingredient', 'Built dynamic level ingredients and interactive world elements', 'Concepted and prototyped mission ideas (drone, newspaper bazooka, hackable billboards)'],
-    link: 'https://kevinduijm.wixsite.com/home/sunbeat-city', linkLabel: 'Read case study', media: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-trailer.mp4' },
+    link: 'https://kevinduijm.wixsite.com/home/sunbeat-city', linkLabel: 'Read case study', media: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-v2.mp4' },
   { title: 'Inspect & Read System', year: 2025, role: 'Tech Designer', engine: 'Unreal Engine 5', tags: ['Unreal Engine', 'UX/UI'],
     blurb: 'A Resident Evil Village-inspired item inspection and note reading tool for any UE5 project, backed by target game research, engine research and a How-To pipeline document.',
     info: [['Type','Student'],['Team','Solo'],['Genre','Puzzle Horror'],['Time','~8 wks'],['Platform','PC']],
     points: ['Rotate, move, zoom and further-inspect items built on parent/child Blueprint actors', 'Multi-page, customisable note reading system', 'Controller support with input-aware UI via Common UI'],
-    link: 'https://kevinduijm.wixsite.com/home/inspect-and-read-system', linkLabel: 'Read case study', media: W + '0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif', video: 'media/inspect-read.mp4' },
-  { title: 'Baelorn', year: 2024, role: 'Tech Designer · UX/UI', engine: 'Unreal Engine 5', tags: ['Unreal Engine', 'UX/UI'],
+    link: 'https://kevinduijm.wixsite.com/home/inspect-and-read-system', linkLabel: 'Read case study', media: W + '0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif', video: 'media/inspect-read-v2.mp4' },
+  { yt: 'GfG2-8Y_BAo', title: 'Baelorn', year: 2024, role: 'Tech Designer · UX/UI', engine: 'Unreal Engine 5', tags: ['Unreal Engine', 'UX/UI'],
     blurb: 'A first-person horror take on Pac-Man. Collect runes, listen for the deer-like beasts hunting you through the maze, and turn night into day to fight back.',
     info: [['Type','Student'],['Team','~14'],['Genre','Horror FPS'],['Time','~8 wks'],['Reception','1.1K+ downloads']],
     points: ['Designed the animated HUD, lost-life and Game Over screens', 'Built the Day & Night switch for the power-up', 'Prototyped runes, streak multipliers and power-ups; ran marketing'],
     award: 'Nominated for 2nd Best Art, BUAS 2024',
-    link: 'https://kevinduijm.wixsite.com/home/baelorn', linkLabel: 'Read case study', media: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-trailer.mp4' },
-  { title: 'Shaping the Smart City', year: 2023, role: 'Unity 3D Intern · XR Developer', engine: 'Unity · iOS', tags: ['Unity', 'XR'],
+    link: 'https://kevinduijm.wixsite.com/home/baelorn', linkLabel: 'Read case study', media: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-v2.mp4' },
+  { yt: 'Zr9Xs1Rqrfg', title: 'Shaping the Smart City', year: 2023, role: 'Unity 3D Intern · XR Developer', engine: 'Unity · iOS', tags: ['Unity', 'XR'],
     blurb: 'An XR experience at Move Amsterdam by Pon that invites children to build the cities of tomorrow, introducing urban design, sustainable transport and the future of mobility.',
     info: [['Type','Internship'],['Team','3'],['Genre','XR Experience'],['Time','2 to 3 months'],['Platform','iOS']],
     points: ['Developed interactive XR features in Unity for iOS', 'Designed hands-on interactions for a young audience', 'Shipped in a public experience center'],
-    link: 'https://capitola.nl/project/pon-move/', linkLabel: 'Project site', media: W + '0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg/v1/fill/w_1148,h_648,al_c,q_80,enc_avif,quality_auto/0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg', video: 'media/smart-city.mp4' },
+    link: 'https://capitola.nl/project/pon-move/', linkLabel: 'Project site', media: W + '0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg/v1/fill/w_1148,h_648,al_c,q_80,enc_avif,quality_auto/0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg', video: 'media/smart-city-v2.mp4' },
   { title: 'A Burning Addiction', year: 2023, role: 'Game Developer', engine: 'Unity', tags: ['Unity'],
     blurb: 'A two-week Vampire Survivors-inspired arcade game, made solo during my Game Development study in Ede.',
     info: [['Type','Student'],['Team','Solo'],['Genre','Arcade'],['Time','2 to 3 wks'],['Platform','itch.io']],
@@ -289,6 +315,7 @@ class Component extends DCLogic {
     this.timer = setInterval(() => {
       const secs = this.props.reelSeconds ?? 10;
       const clip = CLIPS[this.state.idx];
+      if (this.state.yt) return;
       if (!this.preloaded) this.preloaded = this.preloadHero();
       this.playHero();
       if (clip.video) {
@@ -301,6 +328,8 @@ class Component extends DCLogic {
         return t >= 1 ? { idx: (s.idx + 1) % CLIPS.length, t: 0 } : { t };
       });
     }, 100);
+    this.onKey = e => { if (e.key === 'Escape' && this.state.yt) this.setState({ yt: null }); };
+    addEventListener('keydown', this.onKey);
     this.typeT = setInterval(() => this.typeStep(), 70);
     this.caretT = setInterval(() => this.setState(s => ({ caret: !s.caret })), 500);
     this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };
@@ -311,7 +340,8 @@ class Component extends DCLogic {
     this.introHero();
     this.vio = new IntersectionObserver(es => es.forEach(e => {
       const v = e.target;
-      if (e.isIntersecting) { if (!v.getAttribute('src')) { v.src = v.dataset.src; } v.muted = true; const pr = v.play(); if (pr) pr.catch(() => {}); }
+      v._inView = e.isIntersecting;
+      if (e.isIntersecting) this.playCard(v);
       else if (v.getAttribute('src')) v.pause();
     }), { rootMargin: '150px 0px' });
     setTimeout(() => { this.scan(); this.tick(); this.scanVids(); this.preloadHero(); this.playHero(); }, 60);
@@ -319,7 +349,7 @@ class Component extends DCLogic {
   preloadHero() {
     const vids = [...document.querySelectorAll('[data-hero-frame] video[data-src]')];
     if (!vids.length) return false;
-    vids.forEach(v => { if (!v.getAttribute('src')) { v.muted = true; v.preload = 'auto'; v.src = v.dataset.src; v.load(); } });
+    vids.forEach(v => { if (!v.getAttribute('src')) { const st = +v.dataset.start || 0; if (st) v.addEventListener('loadedmetadata', () => { try { v.currentTime = st; } catch (e) {} }, { once: true }); v.muted = true; v.preload = 'auto'; v.src = v.dataset.src; v.load(); } });
     return true;
   }
   heroVid(i) { return document.querySelector('[data-hero-frame] video[data-clip="' + i + '"]'); }
@@ -328,18 +358,50 @@ class Component extends DCLogic {
       const active = +v.dataset.clip === this.state.idx;
       if (active) {
         if (!v.getAttribute('src')) { v.muted = true; v.src = v.dataset.src; }
+        const st = +v.dataset.start || 0;
+        if (st && v.readyState > 0 && v.currentTime < st - 0.5) { try { v.currentTime = st; } catch (e) {} }
         if (v.paused) { const pr = v.play(); if (pr) pr.catch(() => {}); }
       } else if (!v.paused) v.pause();
     });
   }
+  projectFx(H) {
+    const on = (this.props.projectMotion ?? 'Off') !== 'Off';
+    const bg = document.querySelector('[data-work-bg]');
+    const arts = [...document.querySelectorAll('article[data-proj]')];
+    if (!on) {
+      if (bg) bg.style.opacity = 0;
+      arts.forEach(a => { const z = a.querySelector('[data-zoom]'); if (z) z.style.transform = ''; });
+      return;
+    }
+    let best = -1, bestD = 1e9;
+    arts.forEach(a => {
+      const r = a.getBoundingClientRect(), c = r.top + r.height / 2, d = (c - H / 2) / (H / 2 + r.height / 2);
+      const ad = Math.min(1, Math.abs(d));
+      const z = a.querySelector('[data-zoom]');
+      if (z) z.style.transform = 'scale(' + (1 + 0.14 * (1 - ad) * (1 - ad)).toFixed(4) + ')';
+      if (Math.abs(c - H / 2) < bestD && r.top < H * 0.75 && r.bottom > H * 0.25) { bestD = Math.abs(c - H / 2); best = +a.dataset.proj; }
+    });
+    if (bg) {
+      bg.style.opacity = best >= 0 ? 1 : 0;
+      bg.querySelectorAll('img[data-bg-i]').forEach(im => { const act = +im.dataset.bgI === best; im.style.opacity = act ? 1 : 0; im.style.transform = act ? 'scale(1)' : 'scale(1.1)'; });
+    }
+  }
+  playCard(v) {
+    v.muted = true; v.preload = 'auto';
+    if (!v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
+    else if (v.readyState === 0 && v.networkState !== 2) v.load();
+    if (!v._cp) { v._cp = true; v.addEventListener('canplay', () => { if (v._inView && v.paused) { const p = v.play(); if (p) p.catch(() => {}); } }); }
+    const pr = v.play(); if (pr) pr.catch(() => {});
+  }
   scanVids() { if (this.vio) document.querySelectorAll('video[data-src]:not([data-vo])').forEach(v => { if (v.closest('[data-hero-frame]')) return; v.setAttribute('data-vo', ''); v.muted = true; this.vio.observe(v); }); }
   componentDidUpdate() {
     const s = this.state, pal = this.props.palette;
+    if (this._pm !== this.props.projectMotion) { this._pm = this.props.projectMotion; this.tick(); }
     if (this._pal !== pal) { this._pal = pal; this.applyPalette(); }
     if (this._idx !== s.idx) {
       this._idx = s.idx;
       const v = this.heroVid(s.idx);
-      if (v && v.readyState > 0) { try { v.currentTime = 0; } catch (e) {} }
+      if (v && v.readyState > 0) { try { v.currentTime = +v.dataset.start || 0; } catch (e) {} }
     }
     if (this._filter !== s.filter) { const first = this._filter === undefined; this._filter = s.filter; if (!first) setTimeout(() => { this.scan(); this.scanVids(); }, 30); }
     this.playHero();
@@ -391,6 +453,8 @@ class Component extends DCLogic {
   tick() {
     const doc = document.documentElement, H = innerHeight, Wd = innerWidth;
     const bar = document.querySelector('[data-progress]');
+    const top = document.querySelector('[data-totop]');
+    if (top) { const on = scrollY > H * 1.2; top.style.opacity = on ? 1 : 0; top.style.transform = on ? 'none' : 'translateY(12px)'; top.style.pointerEvents = on ? 'auto' : 'none'; }
     if (bar) bar.style.width = (scrollY / Math.max(1, doc.scrollHeight - H) * 100) + '%';
     const hero = document.querySelector('[data-hero]');
     if (hero) {
@@ -407,6 +471,8 @@ class Component extends DCLogic {
       const cap = document.querySelector('[data-hero-cap]');
       if (cap) cap.style.opacity = Math.min(1, Math.max(0, (p - .25) * 3));
     }
+    document.querySelectorAll('#work video[data-vo]').forEach(v => { if (v._inView && (v.paused || v.readyState < 2)) this.playCard(v); });
+    this.projectFx(H);
     document.querySelectorAll('[data-px]').forEach(el => {
       const r = el.getBoundingClientRect();
       el.style.transform = `translateX(${(r.top - H / 2) * 0.5 - 80}px)`;
@@ -421,11 +487,17 @@ class Component extends DCLogic {
     const [wa, wb] = words[this.state.wi % words.length];
     const tn = this.state.tn;
     return {
+      prevClip: () => this.setState(s => ({ idx: (s.idx - 1 + CLIPS.length) % CLIPS.length, t: 0 })),
+      nextClip: () => this.setState(s => ({ idx: (s.idx + 1) % CLIPS.length, t: 0 })),
+      ytOpen: !!this.state.yt,
+      ytTitle: this.state.yt ? this.state.yt.title : '',
+      ytSrc: this.state.yt ? 'https://www.youtube-nocookie.com/embed/' + this.state.yt.id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=' + this.state.yt.start : '',
+      closeYt: e => { if (e.target === e.currentTarget || e.currentTarget.tagName === 'BUTTON') { this.setState({ yt: null }); document.querySelectorAll('video').forEach(v => { if (v.dataset.resume) { delete v.dataset.resume; v.play().catch(() => {}); } }); } },
       typedA: wa.slice(0, tn), typedB: wb.slice(0, Math.max(0, tn - wa.length)),
       caretOpacity: this.state.caret ? 1 : 0,
       mouseDot: React.createElement(Dot),
       showStats: this.props.showStats ?? true,
-      clips: CLIPS.map((c, i) => ({ ...c, video: c.video || '', isImg: true, i, opacity: i === idx ? 1 : 0, fill: i < idx ? '100%' : i === idx ? (t * 100).toFixed(1) + '%' : '0%', go: () => this.setState({ idx: i, t: 0 }) })),
+      clips: CLIPS.map((c, i) => ({ ...c, video: c.video || '', isImg: true, i, startAt: c.start || 0, opacity: i === idx ? 1 : 0, fill: i < idx ? '100%' : i === idx ? (t * 100).toFixed(1) + '%' : '0%', go: () => this.setState({ idx: i, t: 0 }) })),
       reelTitle: cur.title, reelRole: cur.role,
       reelCounter: String(idx + 1).padStart(2, '0') + ' / ' + String(CLIPS.length).padStart(2, '0'),
       stats: [
@@ -435,7 +507,7 @@ class Component extends DCLogic {
         { num: 180, suffix: '+', label0: '180+', label: 'Wishlists on itch.io', delay: 0.24 },
       ],
       filters: FILTERS.map(f => ({ label: f, count: f === 'All' ? PROJECTS.length : PROJECTS.filter(p => p.tags.includes(f)).length, cls: 'btn ' + (f === filter ? 'btn-primary' : 'btn-ghost'), pick: () => this.setState({ filter: f }) })),
-      projects: list.map((p, i) => ({ ...p, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', info: p.info.map(([k, v]) => ({ k, v })) })),
+      projects: list.map((p, i) => ({ ...p, bg: p.poster || p.media, yt: p.yt || '', openYt: () => { document.querySelectorAll('video').forEach(v => { if (!v.paused) { v.dataset.resume = '1'; v.pause(); } }); this.setState({ yt: { id: p.yt, start: p.ytStart || 0, title: p.title } }); }, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', info: p.info.map(([k, v]) => ({ k, v })) })),
       skills: ['Technical Game Design', 'Visual Scripting (Unreal)', 'Unity C#', 'Prototyping', 'Playtesting & Iteration', 'VR Development', 'AR Development', 'UX/UI Design', 'Design Documentation', 'Game Research', 'Scrum'],
       software: ['Unreal Engine', 'Unity', 'Roblox Studio', 'GitHub', 'Perforce', 'Blender', 'Figma', 'Miro', 'Teams', 'Kanbanflow'],
     };
