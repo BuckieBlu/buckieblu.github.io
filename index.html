@@ -1,290 +1,446 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
-body, html {
-  height: 100%;
-  color: #777;
-  line-height: 1.8;
-}
-
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url('/w3images/parallax1.jpg');
-  min-height: 100%;
-}
-
-/* Second image (Portfolio) */
-.bgimg-2 {
-  background-image: url("/w3images/parallax2.jpg");
-  min-height: 400px;
-}
-
-/* Third image (Contact) */
-.bgimg-3 {
-  background-image: url("/w3images/parallax3.jpg");
-  min-height: 400px;
-}
-
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-    min-height: 400px;
-  }
-}
-</style>
+<title>Kevin Duijm · Allround Tech Designer</title>
+<meta name="description" content="Portfolio of Kevin Duijm, Allround Tech Designer and Design & Production student at BUAS.">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;text-wrap:pretty;background:radial-gradient(1200px 720px at 82% -160px,color-mix(in srgb,var(--color-accent-900) 75%,transparent),transparent 60%),var(--color-bg)}
+a{color:var(--color-accent-300)}
+a:hover{color:var(--color-accent-200)}
+</style>
+</helmet>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PORTFOLIO</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
-    </a>
-  </div>
+<div data-progress="" style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--color-accent);z-index:60;box-shadow:0 0 12px var(--color-accent)"></div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+<nav class="nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:22px;padding:12px clamp(20px,5vw,72px);background:color-mix(in srgb,var(--color-bg) 72%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+  <a href="#top" class="nav-brand" style="text-decoration:none;color:var(--color-text);display:flex;align-items:baseline;gap:8px;margin-right:auto">Kevin Duijm <span style="font-size:13px;color:var(--color-neutral-500)">Tech Designer</span></a>
+  <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+    <a href="#work" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Work</a>
+    <a href="#now" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Nullxiety</a>
+    <a href="#about" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">About</a>
+    <a href="#contact" style="color:var(--color-neutral-300);text-decoration:none;font-size:14px" style-hover="color:var(--color-accent-300)">Contact</a>
+    <a class="btn btn-primary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_a306e20312dd456db6c5788342e7ade1.pdf" target="_blank">Resume</a>
   </div>
+</nav>
+
+<div style="position:fixed;right:clamp(12px,2vw,28px);bottom:clamp(20px,5vh,40px);z-index:55;display:flex;flex-direction:column;gap:10px">
+  <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/in/kevin-duijm-4b60b3211/" target="_blank" aria-label="LinkedIn" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-linkedin-logo" style="font-size:20px"></i></a>
+  <a class="btn btn-secondary btn-icon" href="https://buckothefur.itch.io/" target="_blank" aria-label="itch.io" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-game-controller" style="font-size:20px"></i></a>
+  <a class="btn btn-secondary btn-icon" href="mailto:kevin.duijm@gmail.com" aria-label="Email" style="border-radius:999px;width:44px;height:44px;backdrop-filter:blur(8px)"><i class="ph ph-envelope-simple" style="font-size:20px"></i></a>
 </div>
 
-<!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Kevin <span class="w3-hide-small">Duijm</span></span>
-  </div>
-</div>
-
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">ABOUT ME</h3>
-  <p class="w3-center"><em>I love photography</em></p>
-  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>My Name</b></p><br>
-      <img src="/w3images/avatar_hat.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
-    </div>
-
-    <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-  <p class="w3-large w3-center w3-padding-16">Im really good at:</p>
-  <p class="w3-wide"><i class="fa fa-camera"></i>Photography</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Web Design</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-photo"></i>Photoshop</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
-  </div>
-</div>
-
-<div class="w3-row w3-center w3-dark-grey w3-padding-16">
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">14+</span><br>
-    Partners
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">55+</span><br>
-    Projects Done
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">89+</span><br>
-    Happy Clients
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">150+</span><br>
-    Meetings
-  </div>
-</div>
-
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
-  </div>
-</div>
-
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">MY WORK</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
-
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="/w3images/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist over the mountains">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing">
-    </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
-  </div>
-</div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
-  </div>
-</div>
-
-<!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE I WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
-
-  <div class="w3-row w3-padding-32 w3-section">
-    <div class="w3-col m4 w3-container">
-      <img src="/w3images/map.jpg" class="w3-image w3-round" style="width:100%">
-    </div>
-    <div class="w3-col m8 w3-panel">
-      <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+<section id="top" data-hero="" data-screen-label="Hero" style="position:relative;height:210vh">
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden">
+    <div data-hero-frame="" style="position:absolute;inset:0;transform:scale(1.08);transform-origin:50% 40%;background:var(--color-surface);will-change:transform">
+      <sc-for list="{{ clips }}" as="c" hint-placeholder-count="1">
+        <sc-if value="{{ c.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ c.src }}" alt="{{ c.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ c.opacity }};transition:opacity .9s ease"></sc-if>
+        <sc-if value="{{ c.video }}" hint-placeholder-val="{{ false }}"><video data-src="{{ c.video }}" data-clip="{{ c.i }}" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ c.opacity }};transition:opacity .9s ease"></video></sc-if>
+      </sc-for>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--color-bg) 88%,transparent) 0%,transparent 45%);pointer-events:none"></div>
+      <div data-hero-scrim="" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,color-mix(in srgb,var(--color-bg) 55%,transparent) 0%,color-mix(in srgb,var(--color-bg) 78%,transparent) 100%);pointer-events:none"></div>
+      <div data-hero-cap="" style="position:absolute;left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,36px);display:flex;flex-direction:column;gap:12px;opacity:0">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <span style="font-size:13px;letter-spacing:.06em;color:var(--color-accent-300);font-feature-settings:'tnum' 1">{{ reelCounter }}</span>
+          <span style="font-size:clamp(18px,2vw,26px);font-weight:500;letter-spacing:-.01em">{{ reelTitle }}</span>
+          <span style="font-size:13px;color:var(--color-neutral-300)">{{ reelRole }}</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <sc-for list="{{ clips }}" as="c" hint-placeholder-count="6">
+            <button onClick="{{ c.go }}" aria-label="{{ c.title }}" style="flex:1;height:14px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;align-items:center">
+              <span style="display:block;width:100%;height:2px;border-radius:2px;background:color-mix(in srgb,var(--color-text) 22%,transparent);overflow:hidden"><span style="display:block;height:100%;width:{{ c.fill }};background:var(--color-text);transition:width .12s linear"></span></span>
+            </button>
+          </sc-for>
+        </div>
       </div>
-      <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
-      <form action="/action_page.php" target="_blank">
-        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+    </div>
+    <div data-hero-text="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(10px,2.2vh,24px);padding:72px 20px clamp(80px,12vh,110px);box-sizing:border-box;pointer-events:none">
+      <div data-hl="" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--color-accent-300);padding:4px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--color-accent-800);background:color-mix(in srgb,var(--color-accent-900) 60%,transparent)"><span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent);box-shadow:0 0 10px var(--color-accent)"></span>Open to internships 2026/2027</div>
+      <h1 data-hl="" style="margin:0;flex:none;white-space:nowrap;font-size:min(clamp(40px,10vw,176px),16vh);line-height:1;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100);text-shadow:0 8px 40px rgba(0,0,0,.45)">Kevin Duijm</h1>
+      <div data-hl="" style="display:flex;align-items:center;gap:4px;font-size:clamp(22px,2.8vw,40px);font-weight:500;letter-spacing:-.01em;min-height:1.3em">
+        <span style="color:var(--color-accent-300)">{{ typedA }}</span><span style="color:var(--color-neutral-100)">{{ typedB }}</span><span style="display:inline-block;width:3px;height:1em;background:var(--color-accent);margin-left:3px;opacity:{{ caretOpacity }}"></span>
+      </div>
+      <p data-hl="" style="margin:0;font-size:16px;line-height:1.6;max-width:48ch;color:var(--color-neutral-200)">Design &amp; Production student at BUAS · building Roblox games at Nullxiety.</p>
+      <div data-hl="" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;pointer-events:auto;margin-top:6px">
+        <a class="btn btn-primary" href="#work" style="white-space:nowrap;flex:none"><i class="ph ph-folder-open"></i> Portfolio</a>
+        <a class="btn btn-ghost" href="#contact" style="white-space:nowrap;flex:none">Get in touch</a>
+      </div>
+    </div>
+    <a data-hero-hint="" href="#work" aria-label="Scroll down" style="position:absolute;left:50%;bottom:clamp(24px,5vh,48px);transform:translateX(-50%);width:26px;height:42px;border-radius:14px;box-shadow:inset 0 0 0 2px var(--color-neutral-300);display:flex;justify-content:center;padding-top:8px;box-sizing:border-box">{{ mouseDot }}</a>
+  </div>
+</section>
+
+<sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:1200px;margin:0 auto;padding:72px clamp(20px,5vw,72px) 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+      <div data-reveal="up" data-delay="{{ s.delay }}" style="display:flex;flex-direction:column;gap:8px">
+        <span data-count="{{ s.num }}" data-suffix="{{ s.suffix }}" style="font-size:clamp(36px,3.6vw,52px);font-weight:500;letter-spacing:-.02em;line-height:1">{{ s.label0 }}</span>
+        <span style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-neutral-400)">{{ s.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<section id="work" data-screen-label="Work" style="padding:96px 0 40px;overflow:hidden">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+    <div data-reveal="up" style="display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Selected work</div>
+  </div>
+  <div data-px="" style="white-space:nowrap;font-size:clamp(64px,11vw,168px);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:transparent;-webkit-text-stroke:1px var(--color-neutral-700);padding:18px 0 8px;will-change:transform">Unreal · Unity · Roblox · UX/UI · XR · Prototyping · Unreal · Unity</div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+    <div data-reveal="up" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:24px 0 16px">
+      <h2 style="margin:0;font-size:clamp(28px,3vw,40px);max-width:22ch">Seven projects, from one-button arcade to games shipped on Steam.</h2>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button class="{{ f.cls }}" onClick="{{ f.pick }}">{{ f.label }} <span style="opacity:.55;font-feature-settings:'tnum' 1">{{ f.count }}</span></button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+      <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,4vw,64px);align-items:center;padding:56px 0;position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--color-neutral-800) 48px calc(100% - 48px),transparent)"></div>
+        <a href="{{ p.link }}" target="_blank" data-reveal="clip" style="order:{{ p.mediaOrder }};position:relative;display:block;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface);transition:box-shadow .3s,transform .4s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:var(--shadow-md);transform:translateY(-4px)">
+          <div class="lighten" style="position:absolute;inset:0">
+            <sc-if value="{{ p.video }}" hint-placeholder-val="{{ false }}"><video data-src="{{ p.video }}" poster="{{ p.poster }}" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="width:100%;height:100%;object-fit:cover"></video></sc-if>
+            <sc-if value="{{ p.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ p.media }}" alt="{{ p.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></sc-if>
           </div>
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+          <span style="position:absolute;top:12px;left:12px;font-size:12px;padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--color-bg) 78%,transparent);color:var(--color-neutral-200);backdrop-filter:blur(6px)">{{ p.engine }}</span>
+        </a>
+        <div data-reveal="up" style="order:1;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;gap:14px">
+            <span style="font-size:14px;color:var(--color-accent);font-feature-settings:'tnum' 1">{{ p.num }}</span>
+            <span style="font-size:13px;color:var(--color-neutral-400);font-feature-settings:'tnum' 1">{{ p.year }} · {{ p.role }}</span>
+          </div>
+          <h3 style="margin:0;font-size:clamp(26px,2.6vw,34px)">{{ p.title }}</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.7;color:var(--color-neutral-300);max-width:52ch">{{ p.blurb }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px 16px;padding:14px 0">
+            <sc-for list="{{ p.info }}" as="i" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-500)">{{ i.k }}</span><span style="font-size:14px">{{ i.v }}</span></div>
+            </sc-for>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ p.points }}" as="pt" hint-placeholder-count="3">
+              <li style="display:flex;gap:12px;font-size:14.5px;line-height:1.55;color:var(--color-neutral-200)"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:var(--color-accent);margin-top:9px"></span>{{ pt }}</li>
+            </sc-for>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px">
+            <a class="btn btn-ghost" href="{{ p.link }}" target="_blank">{{ p.linkLabel }} <i class="ph ph-arrow-up-right"></i></a>
+            <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}">
+              <span class="tag tag-accent" style="display:inline-flex;gap:6px;align-items:center"><i class="ph ph-trophy"></i>{{ p.award }}</span>
+            </sc-if>
           </div>
         </div>
-        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-        <button class="w3-button w3-black w3-right w3-section" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
-      </form>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="now" data-screen-label="Nullxiety" style="position:relative;background:radial-gradient(900px 420px at 85% -40%,color-mix(in srgb,var(--color-section-glow) 70%,transparent),transparent 64%),var(--color-section);padding:96px 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5vw,80px);align-items:center">
+    <div data-reveal="up" style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-300)">Right now</div>
+      <h2 style="margin:0;font-size:clamp(32px,4vw,52px);line-height:1.08">Building Roblox games at Nullxiety.</h2>
+      <p style="margin:0;font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 80%,transparent);max-width:46ch">Next to my studies I work at Nullxiety, designing and building Roblox experiences: gameplay systems, fast prototypes and the loops that keep players coming back.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span class="tag tag-outline">Roblox Studio</span>
+        <span class="tag tag-outline">Game systems</span>
+        <span class="tag tag-outline">Live iteration</span>
+      </div>
+    </div>
+    <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--color-section-ghost),0 24px 60px rgba(0,0,0,.45)">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(600px 300px at 70% 20%,color-mix(in srgb,var(--color-section-glow) 35%,transparent),transparent 70%),color-mix(in srgb,var(--color-bg) 55%,var(--color-section))"><i class="ph ph-cube" style="font-size:44px;color:var(--color-accent-300)"></i><span style="font-size:clamp(22px,2.6vw,32px);font-weight:500;letter-spacing:-.01em">Nullxiety</span><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Roblox experiences</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+<section id="about" data-screen-label="About" style="max-width:1200px;margin:0 auto;padding:112px clamp(20px,5vw,72px) 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,80px);align-items:start">
+  <figure data-reveal="clip" class="lighten" style="margin:0;aspect-ratio:1;border-radius:14px;overflow:hidden;max-width:440px">
+    <img src="https://static.wixstatic.com/media/0bf63b_0608fb56792e486fad9fb2a68d7927f8~mv2.png/v1/fill/w_850,h_850,al_c,q_90,enc_avif,quality_auto/0bf63b_0608fb56792e486fad9fb2a68d7927f8~mv2.png" alt="Kevin Duijm" style="width:100%;height:100%;object-fit:cover">
+  </figure>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div data-reveal="up" style="display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">About me</div>
+    <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12">Hi, I'm Kevin. A game design student from the Netherlands who loves a good mechanic.</h2>
+    <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:56ch">I'm studying Design &amp; Production at Breda University of Applied Sciences. In my spare time I dabble in all things games, like articles, industry news and dev vlogs on YouTube. Beyond tech design I enjoy marketing projects: running socials on Instagram and TikTok, cutting trailers and helping with merch.</p>
+    <div data-reveal="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:12px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h6 style="margin:0;color:var(--color-neutral-400)">Professional skills</h6>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <sc-for list="{{ skills }}" as="s" hint-placeholder-count="8"><span class="tag tag-neutral">{{ s }}</span></sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h6 style="margin:0;color:var(--color-neutral-400)">Software</h6>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <sc-for list="{{ software }}" as="s" hint-placeholder-count="8"><span class="tag tag-accent">{{ s }}</span></sc-for>
+        </div>
+      </div>
+    </div>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
- 
-<script>
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
+</section>
 
-// Change style of navbar on scroll
-window.onscroll = function() {myFunction()};
-function myFunction() {
-    var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-    } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-    }
-}
+<section id="contact" data-screen-label="Contact" style="max-width:1200px;margin:0 auto;padding:80px clamp(20px,5vw,72px) 48px;position:relative">
+  <div style="position:absolute;top:0;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px calc(100% - 48px),transparent)"></div>
+  <div data-reveal="up" style="display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent);margin-bottom:24px">Contact</div>
+  <p data-reveal="up" style="margin:0 0 12px;font-size:18px;color:var(--color-neutral-300)">Looking for a tech design intern for 2026/2027? Let's talk.</p>
+  <a data-reveal="up" href="mailto:kevin.duijm@gmail.com" style="display:inline-block;font-size:clamp(32px,6.4vw,84px);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--color-text);text-decoration:none;background:linear-gradient(var(--color-accent),var(--color-accent)) no-repeat left bottom / 0% 2px;transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s;word-break:break-word" style-hover="background-size:100% 2px;color:var(--color-accent-200)">kevin.duijm@gmail.com</a>
+  <div data-reveal="up" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:36px">
+    <a class="btn btn-secondary" href="https://buckothefur.itch.io/" target="_blank"><i class="ph ph-game-controller"></i> itch.io</a>
+    <a class="btn btn-secondary" href="https://www.linkedin.com/in/kevin-duijm-4b60b3211/" target="_blank"><i class="ph ph-linkedin-logo"></i> LinkedIn</a>
+    <a class="btn btn-primary" href="https://2007ffec-0f43-4b98-8ae7-ee4ad05d8711.filesusr.com/ugd/0bf63b_a306e20312dd456db6c5788342e7ade1.pdf" target="_blank"><i class="ph ph-file-text"></i> Resume (PDF)</a>
+  </div>
+  <footer style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:96px;font-size:13px;color:var(--color-neutral-500)">
+    <span>© 2026 Kevin Duijm · Allround Tech Designer</span>
+    <a href="#top" style="color:var(--color-neutral-400);text-decoration:none">Back to top ↑</a>
+  </footer>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Hyena&quot;,&quot;options&quot;:[&quot;Nocturne&quot;,&quot;Blu&quot;,&quot;Hyena&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colors&quot;},&quot;reelSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:10,&quot;min&quot;:4,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero reel&quot;},&quot;revealMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;rise&quot;,&quot;options&quot;:[&quot;rise&quot;,&quot;scale&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Scroll animation&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+const W = 'https://static.wixstatic.com/media/';
+const CLIPS = [
+  { src: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-trailer.mp4', title: 'Chasing Whiskers', role: 'UX/UI & Marketing · 2026' },
+  { src: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-trailer.mp4', title: 'Sunbeat City', role: 'Tech Designer · UE5' },
+  { src: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-trailer.mp4', title: 'Baelorn', role: 'Tech Designer · UX/UI' },
+  { src: W + '0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif', video: 'media/inspect-read.mp4', title: 'Inspect & Read System', role: 'Tech Designer · UE5' },
+  { src: W + '0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg/v1/fill/w_1148,h_648,al_c,q_80,enc_avif,quality_auto/0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg', video: 'media/smart-city.mp4', title: 'Shaping the Smart City', role: 'XR Developer · Unity' },
+  { src: W + '0bf63b_b49b79e2dbe3441288feb3c1a6c8b3b9~mv2.gif', title: 'A Burning Addiction', role: 'Game Developer · Unity' },
+  { src: W + '0bf63b_58abc09755c64b648bf2edfad195e7bd~mv2.gif', title: 'Rocky Rocket', role: 'Game Developer · Unity' },
+];
+const PROJECTS = [
+  { title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam', tags: ['UX/UI'],
+    blurb: 'A cozy adventure where you play as grandma, chasing her lost cat through a portal into Catworld. Run errands for Ponpon at the Cat Café, dive to catch cats and collect them until you find your way home.',
+    info: [['Type','Student'],['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive']],
+    points: ['Responsible for all UX/UI in the game', 'Made the TikTok and Instagram content for our marketing', 'Released free on Steam in June 2026, published by BUAS'],
+    link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam', poster: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-trailer.mp4' },
+  { title: 'Sunbeat City', year: 2025, role: 'Tech Designer', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
+    blurb: 'A first-person parkour game across the rooftops of a Solarpunk city. Collect lost instruments and become a soloist to the soundtrack of the city, where every move you make plays a note.',
+    info: [['Type','Student'],['Team','~21'],['Genre','FPS Platformer'],['Time','8 to 16 wks'],['Reception','750+ downloads']],
+    points: ['Designed, prototyped and iterated the Bouncing Parasol traversal ingredient', 'Built dynamic level ingredients and interactive world elements', 'Concepted and prototyped mission ideas (drone, newspaper bazooka, hackable billboards)'],
+    link: 'https://kevinduijm.wixsite.com/home/sunbeat-city', linkLabel: 'Read case study', media: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-trailer.mp4' },
+  { title: 'Inspect & Read System', year: 2025, role: 'Tech Designer', engine: 'Unreal Engine 5', tags: ['Unreal Engine', 'UX/UI'],
+    blurb: 'A Resident Evil Village-inspired item inspection and note reading tool for any UE5 project, backed by target game research, engine research and a How-To pipeline document.',
+    info: [['Type','Student'],['Team','Solo'],['Genre','Puzzle Horror'],['Time','~8 wks'],['Platform','PC']],
+    points: ['Rotate, move, zoom and further-inspect items built on parent/child Blueprint actors', 'Multi-page, customisable note reading system', 'Controller support with input-aware UI via Common UI'],
+    link: 'https://kevinduijm.wixsite.com/home/inspect-and-read-system', linkLabel: 'Read case study', media: W + '0bf63b_e14f16e87d0648779fbae1c4106f4a24~mv2.gif', video: 'media/inspect-read.mp4' },
+  { title: 'Baelorn', year: 2024, role: 'Tech Designer · UX/UI', engine: 'Unreal Engine 5', tags: ['Unreal Engine', 'UX/UI'],
+    blurb: 'A first-person horror take on Pac-Man. Collect runes, listen for the deer-like beasts hunting you through the maze, and turn night into day to fight back.',
+    info: [['Type','Student'],['Team','~14'],['Genre','Horror FPS'],['Time','~8 wks'],['Reception','1.1K+ downloads']],
+    points: ['Designed the animated HUD, lost-life and Game Over screens', 'Built the Day & Night switch for the power-up', 'Prototyped runes, streak multipliers and power-ups; ran marketing'],
+    award: 'Nominated for 2nd Best Art, BUAS 2024',
+    link: 'https://kevinduijm.wixsite.com/home/baelorn', linkLabel: 'Read case study', media: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-trailer.mp4' },
+  { title: 'Shaping the Smart City', year: 2023, role: 'Unity 3D Intern · XR Developer', engine: 'Unity · iOS', tags: ['Unity', 'XR'],
+    blurb: 'An XR experience at Move Amsterdam by Pon that invites children to build the cities of tomorrow, introducing urban design, sustainable transport and the future of mobility.',
+    info: [['Type','Internship'],['Team','3'],['Genre','XR Experience'],['Time','2 to 3 months'],['Platform','iOS']],
+    points: ['Developed interactive XR features in Unity for iOS', 'Designed hands-on interactions for a young audience', 'Shipped in a public experience center'],
+    link: 'https://capitola.nl/project/pon-move/', linkLabel: 'Project site', media: W + '0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg/v1/fill/w_1148,h_648,al_c,q_80,enc_avif,quality_auto/0bf63b_07e6b2fc6a6c4743938472f92482e14af001.jpg', video: 'media/smart-city.mp4' },
+  { title: 'A Burning Addiction', year: 2023, role: 'Game Developer', engine: 'Unity', tags: ['Unity'],
+    blurb: 'A two-week Vampire Survivors-inspired arcade game, made solo during my Game Development study in Ede.',
+    info: [['Type','Student'],['Team','Solo'],['Genre','Arcade'],['Time','2 to 3 wks'],['Platform','itch.io']],
+    points: ['XP system that scales infinitely with each level', 'Multiple upgradable weapons, each with a unique level-5 addition', 'Infinite wave spawning system'],
+    link: 'https://buckothefur.itch.io/', linkLabel: 'Play on itch.io', media: W + '0bf63b_b49b79e2dbe3441288feb3c1a6c8b3b9~mv2.gif' },
+  { title: 'Rocky Rocket', year: 2022, role: 'Game Developer', engine: 'Unity', tags: ['Unity'],
+    blurb: 'A one-button game: steer a rocket through levels without touching the walls. Later remade in Unreal Engine 5.',
+    info: [['Type','Student'],['Team','Solo'],['Genre','Arcade'],['Time','~2 wks'],['Platform','itch.io']],
+    points: ['A fun, unique one-button game built in two weeks', 'Minimal art using only simple shapes', 'Taught me to always keep project files on a server'],
+    link: 'https://www.youtube.com/watch?v=WRHJ4nRw74s', linkLabel: 'Watch UE5 remake', media: W + '0bf63b_58abc09755c64b648bf2edfad195e7bd~mv2.gif' },
+];
+const FILTERS = ['All', 'Unreal Engine', 'Unity', 'UX/UI', 'XR'];
 
-// Used to toggle the menu on small screens when clicking on the menu button
-function toggleFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
+function Dot() {
+  const [y, setY] = React.useState(0);
+  React.useEffect(() => { let t0 = performance.now(), id; const f = n => { setY(((n - t0) % 1600) / 1600); id = requestAnimationFrame(f); }; id = requestAnimationFrame(f); return () => cancelAnimationFrame(id); }, []);
+  return React.createElement('span', { style: { width: 4, height: 8, borderRadius: 2, background: 'var(--color-accent)', transform: 'translateY(' + (y * 12) + 'px)', opacity: 1 - y } });
+}
+const BLU = {
+  '--color-bg': '#0a1830', '--color-surface': '#10254a', '--color-text': '#eef7fc', '--color-divider': '#25497a',
+  '--color-accent': '#9b4dff', '--color-accent-200': '#ddc8ff', '--color-accent-300': '#c4a0ff', '--color-accent-400': '#b070f0',
+  '--color-accent-600': '#7e1ee6', '--color-accent-700': '#5a00b8', '--color-accent-800': '#3d1480', '--color-accent-900': '#26104f',
+  '--color-neutral-100': '#e6f3fb', '--color-neutral-200': '#c7e3f4', '--color-neutral-300': '#a9d8f0', '--color-neutral-400': '#7fb3d6',
+  '--color-neutral-500': '#5b8cb8', '--color-neutral-600': '#3b6796', '--color-neutral-700': '#25497a', '--color-neutral-800': '#183560', '--color-neutral-900': '#10264a',
+  '--color-section': '#1356a8', '--color-section-glow': '#8f10f0', '--color-section-ghost': '#3f97db',
+};
+const HYENA = {
+  '--color-bg': '#1b191d', '--color-surface': '#27242a', '--color-text': '#f5eff5', '--color-divider': '#3f3b44',
+  '--color-accent': '#e46be8', '--color-accent-200': '#f8d2f6', '--color-accent-300': '#f1a8ef', '--color-accent-400': '#ea88eb',
+  '--color-accent-600': '#c81fae', '--color-accent-700': '#9c168a', '--color-accent-800': '#5e1456', '--color-accent-900': '#3a0f36',
+  '--color-neutral-100': '#f1edf1', '--color-neutral-200': '#dad5db', '--color-neutral-300': '#bfb9c0', '--color-neutral-400': '#9d989f',
+  '--color-neutral-500': '#7e7a80', '--color-neutral-600': '#625e64', '--color-neutral-700': '#4a474d', '--color-neutral-800': '#353238', '--color-neutral-900': '#27242a',
+  '--color-section': '#4a1846', '--color-section-glow': '#19e39a', '--color-section-ghost': '#e46be8',
+};
+class Component extends DCLogic {
+  applyPalette() {
+    const st = document.documentElement.style, pal = { Blu: BLU, Hyena: HYENA }[this.props.palette ?? 'Hyena'];
+    Object.keys(BLU).forEach(k => pal ? st.setProperty(k, pal[k]) : st.removeProperty(k));
+  }
+  state = { idx: 0, t: 0, filter: 'All', wi: 0, tn: 0, del: false, hold: 8, caret: true };
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      const secs = this.props.reelSeconds ?? 10;
+      const clip = CLIPS[this.state.idx];
+      if (!this.preloaded) this.preloaded = this.preloadHero();
+      this.playHero();
+      if (clip.video) {
+        const v = this.heroVid(this.state.idx);
+        if (!v || v.readyState < 3 || v.paused) { this._wait = (this._wait || 0) + 1; if (this._wait < 40) return; }
+      }
+      this._wait = 0;
+      this.setState(s => {
+        const t = s.t + 0.1 / secs;
+        return t >= 1 ? { idx: (s.idx + 1) % CLIPS.length, t: 0 } : { t };
+      });
+    }, 100);
+    this.typeT = setInterval(() => this.typeStep(), 70);
+    this.caretT = setInterval(() => this.setState(s => ({ caret: !s.caret })), 500);
+    this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    addEventListener('resize', this.onScroll);
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    this.applyPalette();
+    this.introHero();
+    this.vio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { if (!v.getAttribute('src')) { v.src = v.dataset.src; } v.muted = true; const pr = v.play(); if (pr) pr.catch(() => {}); }
+      else if (v.getAttribute('src')) v.pause();
+    }), { rootMargin: '150px 0px' });
+    setTimeout(() => { this.scan(); this.tick(); this.scanVids(); this.preloadHero(); this.playHero(); }, 60);
+  }
+  preloadHero() {
+    const vids = [...document.querySelectorAll('[data-hero-frame] video[data-src]')];
+    if (!vids.length) return false;
+    vids.forEach(v => { if (!v.getAttribute('src')) { v.muted = true; v.preload = 'auto'; v.src = v.dataset.src; v.load(); } });
+    return true;
+  }
+  heroVid(i) { return document.querySelector('[data-hero-frame] video[data-clip="' + i + '"]'); }
+  playHero() {
+    document.querySelectorAll('[data-hero-frame] video[data-src]').forEach(v => {
+      const active = +v.dataset.clip === this.state.idx;
+      if (active) {
+        if (!v.getAttribute('src')) { v.muted = true; v.src = v.dataset.src; }
+        if (v.paused) { const pr = v.play(); if (pr) pr.catch(() => {}); }
+      } else if (!v.paused) v.pause();
+    });
+  }
+  scanVids() { if (this.vio) document.querySelectorAll('video[data-src]:not([data-vo])').forEach(v => { if (v.closest('[data-hero-frame]')) return; v.setAttribute('data-vo', ''); v.muted = true; this.vio.observe(v); }); }
+  componentDidUpdate() {
+    const s = this.state, pal = this.props.palette;
+    if (this._pal !== pal) { this._pal = pal; this.applyPalette(); }
+    if (this._idx !== s.idx) {
+      this._idx = s.idx;
+      const v = this.heroVid(s.idx);
+      if (v && v.readyState > 0) { try { v.currentTime = 0; } catch (e) {} }
     }
+    if (this._filter !== s.filter) { const first = this._filter === undefined; this._filter = s.filter; if (!first) setTimeout(() => { this.scan(); this.scanVids(); }, 30); }
+    this.playHero();
+  }
+  componentWillUnmount() { this.vio && this.vio.disconnect(); clearInterval(this.typeT); clearInterval(this.caretT); clearInterval(this.timer); removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); this.io && this.io.disconnect(); }
+
+  typeStep() {
+    const words = [['Tech', ' Designer'], ['Roblox', ' Developer'], ['UX/UI', ' Designer'], ['Rapid', ' Prototyper'], ['Allround', ' Tech Designer']];
+    this.setState(s => {
+      const w = words[s.wi % words.length].join(''), n = s.tn;
+      if (s.hold > 0) return { hold: s.hold - 1 };
+      if (!s.del) return n < w.length ? { tn: n + 1 } : { del: true, hold: 26 };
+      return n > 0 ? { tn: n - 1 } : { del: false, wi: s.wi + 1, hold: 4 };
+    });
+  }
+  introHero() {
+    if ((this.props.revealMotion ?? 'rise') === 'none') return;
+    document.querySelectorAll('[data-hl]').forEach((el, i) => {
+      el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.filter = 'blur(6px)';
+      el.style.transition = `opacity .9s ${0.1 + i * 0.09}s cubic-bezier(.2,.7,.2,1), transform .9s ${0.1 + i * 0.09}s cubic-bezier(.2,.7,.2,1), filter .9s ${0.1 + i * 0.09}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none'; }));
+    });
+  }
+  scan() {
+    const motion = this.props.revealMotion ?? 'rise';
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      if (motion === 'none') return;
+      const d = (+el.getAttribute('data-delay') || 0);
+      const ease = 'cubic-bezier(.2,.7,.2,1)';
+      el.style.transition = `opacity .9s ${d}s ${ease}, transform .9s ${d}s ${ease}, clip-path 1.2s ${d}s cubic-bezier(.7,0,.2,1)`;
+      if (el.getAttribute('data-reveal') === 'clip') { el.style.clipPath = 'inset(0 100% 0 0 round 14px)'; }
+      else { el.style.opacity = 0; el.style.transform = motion === 'scale' ? 'scale(.94)' : 'translateY(36px)'; }
+      this.io.observe(el);
+    });
+  }
+  show(el) {
+    el.style.opacity = ''; el.style.transform = ''; el.style.clipPath = 'inset(0 0 0 0 round 14px)';
+    el.querySelectorAll('[data-count]').forEach(n => this.countUp(n));
+    if (el.hasAttribute('data-count')) this.countUp(el);
+    setTimeout(() => { el.style.transition = ''; if (el.getAttribute('data-reveal') === 'clip') el.style.clipPath = ''; }, 1400);
+  }
+  countUp(n) {
+    const end = +n.getAttribute('data-count'), suf = n.getAttribute('data-suffix') || '', t0 = performance.now();
+    const fmt = v => end >= 1000 ? (v / 1000).toFixed(v >= end ? (end % 1000 ? 1 : 0) : 1) + 'K' : Math.round(v);
+    const step = now => { const p = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - p, 3); n.textContent = fmt(end * e) + suf; if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  tick() {
+    const doc = document.documentElement, H = innerHeight, Wd = innerWidth;
+    const bar = document.querySelector('[data-progress]');
+    if (bar) bar.style.width = (scrollY / Math.max(1, doc.scrollHeight - H) * 100) + '%';
+    const hero = document.querySelector('[data-hero]');
+    if (hero) {
+      const p = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / (hero.offsetHeight - H)));
+      const e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      const f = document.querySelector('[data-hero-frame]');
+      if (f) f.style.transform = `scale(${1.08 - 0.08 * e})`;
+      const sc = document.querySelector('[data-hero-scrim]');
+      if (sc) sc.style.opacity = Math.max(0, 1 - p * 2);
+      const tx = document.querySelector('[data-hero-text]');
+      if (tx) { tx.style.opacity = Math.max(0, 1 - p * 2.4); tx.style.transform = `translateY(${-p * 120}px)`; }
+      const hint = document.querySelector('[data-hero-hint]');
+      if (hint) hint.style.opacity = Math.max(0, 1 - p * 5);
+      const cap = document.querySelector('[data-hero-cap]');
+      if (cap) cap.style.opacity = Math.min(1, Math.max(0, (p - .25) * 3));
+    }
+    document.querySelectorAll('[data-px]').forEach(el => {
+      const r = el.getBoundingClientRect();
+      el.style.transform = `translateX(${(r.top - H / 2) * 0.5 - 80}px)`;
+    });
+  }
+
+  renderVals() {
+    const { idx, t, filter } = this.state;
+    const list = PROJECTS.filter(p => filter === 'All' || p.tags.includes(filter));
+    const cur = CLIPS[idx];
+    const words = [['Tech', ' Designer'], ['Roblox', ' Developer'], ['UX/UI', ' Designer'], ['Rapid', ' Prototyper'], ['Allround', ' Tech Designer']];
+    const [wa, wb] = words[this.state.wi % words.length];
+    const tn = this.state.tn;
+    return {
+      typedA: wa.slice(0, tn), typedB: wb.slice(0, Math.max(0, tn - wa.length)),
+      caretOpacity: this.state.caret ? 1 : 0,
+      mouseDot: React.createElement(Dot),
+      showStats: this.props.showStats ?? true,
+      clips: CLIPS.map((c, i) => ({ ...c, video: c.video || '', isImg: true, i, opacity: i === idx ? 1 : 0, fill: i < idx ? '100%' : i === idx ? (t * 100).toFixed(1) + '%' : '0%', go: () => this.setState({ idx: i, t: 0 }) })),
+      reelTitle: cur.title, reelRole: cur.role,
+      reelCounter: String(idx + 1).padStart(2, '0') + ' / ' + String(CLIPS.length).padStart(2, '0'),
+      stats: [
+        { num: 1100, suffix: '+', label0: '1.1K+', label: 'Baelorn downloads', delay: 0 },
+        { num: 750, suffix: '+', label0: '750+', label: 'Sunbeat City downloads', delay: 0.08 },
+        { num: 25000, suffix: '+', label0: '25K+', label: 'Views on TikTok', delay: 0.16 },
+        { num: 180, suffix: '+', label0: '180+', label: 'Wishlists on itch.io', delay: 0.24 },
+      ],
+      filters: FILTERS.map(f => ({ label: f, count: f === 'All' ? PROJECTS.length : PROJECTS.filter(p => p.tags.includes(f)).length, cls: 'btn ' + (f === filter ? 'btn-primary' : 'btn-ghost'), pick: () => this.setState({ filter: f }) })),
+      projects: list.map((p, i) => ({ ...p, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', info: p.info.map(([k, v]) => ({ k, v })) })),
+      skills: ['Technical Game Design', 'Visual Scripting (Unreal)', 'Unity C#', 'Prototyping', 'Playtesting & Iteration', 'VR Development', 'AR Development', 'UX/UI Design', 'Design Documentation', 'Game Research', 'Scrum'],
+      software: ['Unreal Engine', 'Unity', 'Roblox Studio', 'GitHub', 'Perforce', 'Blender', 'Figma', 'Miro', 'Teams', 'Kanbanflow'],
+    };
+  }
 }
 </script>
-
 </body>
 </html>
