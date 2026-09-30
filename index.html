@@ -76,6 +76,7 @@ a:hover{color:var(--color-accent-200)}
       <p data-hl="" style="margin:0;font-size:16px;line-height:1.6;max-width:48ch;color:var(--color-neutral-200)">Design &amp; Production student at BUAS · building Roblox games at Nullxiety.</p>
       <div data-hl="" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;pointer-events:auto;margin-top:6px">
         <a class="btn btn-primary" href="#work" style="white-space:nowrap;flex:none"><i class="ph ph-folder-open"></i> Portfolio</a>
+        <a class="btn btn-primary" href="gallery.html" style="white-space:nowrap;flex:none"><i class="ph ph-frame-corners"></i> Gallery View</a>
         <a class="btn btn-ghost" href="#contact" style="white-space:nowrap;flex:none">Get in touch</a>
       </div>
     </div>
@@ -134,7 +135,7 @@ a:hover{color:var(--color-accent-200)}
             <span style="font-size:14px;color:var(--color-accent);font-feature-settings:'tnum' 1">{{ p.num }}</span>
             <span style="font-size:13px;color:var(--color-neutral-400);font-feature-settings:'tnum' 1">{{ p.year }} · {{ p.role }}</span>
           </div>
-          <h3 style="margin:0;font-size:clamp(26px,2.6vw,34px)">{{ p.title }}</h3>
+          <h3 style="margin:0;font-size:clamp(26px,2.6vw,34px);display:flex;align-items:center;gap:12px;flex-wrap:wrap">{{ p.title }}<span style="display:inline-flex;gap:6px;align-items:center"><sc-for list="{{ p.awardList }}" as="w" hint-placeholder-count="0"><i class="ph-fill ph-trophy" title="{{ w.text }}" style="font-size:.85em;color:{{ w.color }};filter:drop-shadow(0 0 10px {{ w.bd }})"></i></sc-for></span></h3>
           <p style="margin:0;font-size:15.5px;line-height:1.7;color:var(--color-neutral-300);max-width:52ch">{{ p.blurb }}</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px 16px;padding:14px 0">
             <sc-for list="{{ p.info }}" as="i" hint-placeholder-count="4">
@@ -149,10 +150,14 @@ a:hover{color:var(--color-accent-200)}
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px">
             <sc-if value="{{ p.yt }}" hint-placeholder-val="{{ false }}"><button class="btn btn-primary" onClick="{{ p.openYt }}"><i class="ph ph-play"></i> Watch trailer</button></sc-if>
             <a class="btn btn-ghost" href="{{ p.link }}" target="{{ p.target }}">{{ p.linkLabel }} <i class="ph ph-arrow-up-right"></i></a>
-            <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}">
-              <span class="tag tag-accent" style="display:inline-flex;gap:6px;align-items:center"><i class="ph ph-trophy"></i>{{ p.award }}</span>
-            </sc-if>
           </div>
+          <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+              <sc-for list="{{ p.awardList }}" as="aw" hint-placeholder-count="0">
+                <span class="tag" style="display:inline-flex;gap:6px;align-items:center;color:{{ aw.color }};background:{{ aw.bg }};border:1px solid {{ aw.bd }}"><i class="ph-fill ph-trophy"></i>{{ aw.text }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
         </div>
       </article>
     </sc-for>
@@ -235,6 +240,7 @@ a:hover{color:var(--color-accent-200)}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Hyena&quot;,&quot;options&quot;:[&quot;Nocturne&quot;,&quot;Blu&quot;,&quot;Hyena&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colors&quot;},&quot;reelSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:10,&quot;min&quot;:4,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero reel&quot;},&quot;revealMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;rise&quot;,&quot;options&quot;:[&quot;rise&quot;,&quot;scale&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Scroll animation&quot;},&quot;projectMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Off&quot;,&quot;options&quot;:[&quot;Zoom + backdrop&quot;,&quot;Off&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Scroll animation&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
 const W = 'https://static.wixstatic.com/media/';
+const TIER = { gold: ['oklch(0.84 0.14 85)', 'oklch(0.84 0.14 85 / .12)', 'oklch(0.84 0.14 85 / .35)'], pink: ['var(--color-accent-300)', 'color-mix(in srgb,var(--color-accent) 14%,transparent)', 'color-mix(in srgb,var(--color-accent) 35%,transparent)'], silver: ['oklch(0.86 0.01 260)', 'oklch(0.86 0.01 260 / .1)', 'oklch(0.86 0.01 260 / .35)'], bronze: ['oklch(0.72 0.11 55)', 'oklch(0.72 0.11 55 / .12)', 'oklch(0.72 0.11 55 / .35)'] };
 const CLIPS = [
   { src: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4', title: 'Chasing Whiskers', role: 'UX/UI & Marketing · 2026' },
   { src: W + '0bf63b_965a01d83dc8422682b788d60431b3bd~mv2.gif', video: 'media/sunbeat-city-v2.mp4', title: 'Sunbeat City', role: 'Tech Designer · UE5' },
@@ -245,12 +251,12 @@ const CLIPS = [
   { src: W + '0bf63b_58abc09755c64b648bf2edfad195e7bd~mv2.gif', title: 'Rocky Rocket', role: 'Game Developer · Unity' },
 ];
 const PROJECTS = [
-  { title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam', tags: ['UX/UI'],
+  { title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam', tags: ['Unreal Engine', 'UX/UI'],
     blurb: 'A cozy adventure where you play as grandma, chasing her lost cat through a portal into Catworld. Run errands for Ponpon at the Cat Café, dive to catch cats and collect them until you find your way home.',
     info: [['Type','Student'],['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive']],
     points: ['Responsible for all UX/UI in the game', 'Made the TikTok and Instagram content for our marketing', 'Released free on Steam in June 2026, published by BUAS'],
-    award: 'Won Best Voted Industry Day Game 2026', link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam', poster: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4' },
-  { yt: 'bynZWyCKVYQ', ytStart: 11, title: 'Sunbeat City', year: 2025, role: 'Tech Designer', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
+    award: 'Won Best Voted Industry Day Game, BUAS 2026', award2: 'Won Year 3 Best Art, BUAS 2026', link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam', poster: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4' },
+  { yt: 'bynZWyCKVYQ', ytStart: 11, title: 'Sunbeat City', year: 2025, role: 'Tech Designer · Marketing', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
     blurb: 'A first-person parkour game across the rooftops of a Solarpunk city. Collect lost instruments and become a soloist to the soundtrack of the city, where every move you make plays a note.',
     info: [['Type','Student'],['Team','~21'],['Genre','FPS Platformer'],['Time','8 to 16 wks'],['Reception','750+ downloads']],
     points: ['Designed, prototyped and iterated the Bouncing Parasol traversal ingredient', 'Built dynamic level ingredients and interactive world elements', 'Concepted and prototyped mission ideas (drone, newspaper bazooka, hackable billboards)'],
@@ -264,7 +270,7 @@ const PROJECTS = [
     blurb: 'A first-person horror take on Pac-Man. Collect runes, listen for the deer-like beasts hunting you through the maze, and turn night into day to fight back.',
     info: [['Type','Student'],['Team','~14'],['Genre','Horror FPS'],['Time','~8 wks'],['Reception','1.1K+ downloads']],
     points: ['Designed the animated HUD, lost-life and Game Over screens', 'Built the Day & Night switch for the power-up', 'Prototyped runes, streak multipliers and power-ups; ran marketing'],
-    award: 'Nominated for 2nd Best Art, BUAS 2024',
+    award: 'Nominated for 2nd Best Art, BUAS 2024', award2: 'Nominated for 3rd Best Overall 1st Year Game, BUAS 2024', tiers: ['silver', 'bronze'],
     link: 'baelorn.html', linkLabel: 'Read case study', media: W + '0bf63b_f1f3222cf3c942bdae9a444e30a851f4~mv2.gif', video: 'media/baelorn-v2.mp4' },
   { yt: 'Zr9Xs1Rqrfg', title: 'Shaping the Smart City', year: 2023, role: 'Unity 3D Intern · XR Developer', engine: 'Unity · iOS', tags: ['Unity', 'XR'],
     blurb: 'An XR experience at Move Amsterdam by Pon that invites children to build the cities of tomorrow, introducing urban design, sustainable transport and the future of mobility.',
@@ -393,7 +399,7 @@ class Component extends DCLogic {
   }
   playCard(v) {
     v.muted = true; v.preload = 'auto';
-    if (!v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
+    if (v.getAttribute('src') !== v.dataset.src) { v.src = v.dataset.src; v.load(); }
     else if (v.readyState === 0 && v.networkState !== 2) v.load();
     if (!v._cp) { v._cp = true; v.addEventListener('canplay', () => { if (v._inView && v.paused) { const p = v.play(); if (p) p.catch(() => {}); } }); }
     const pr = v.play(); if (pr) pr.catch(() => {});
@@ -408,7 +414,14 @@ class Component extends DCLogic {
       const v = this.heroVid(s.idx);
       if (v && v.readyState > 0) { try { v.currentTime = +v.dataset.start || 0; } catch (e) {} }
     }
-    if (this._filter !== s.filter) { const first = this._filter === undefined; this._filter = s.filter; if (!first) setTimeout(() => { this.scan(); this.scanVids(); }, 30); }
+    if (this._filter !== s.filter) { const first = this._filter === undefined; this._filter = s.filter; if (!first) setTimeout(() => {
+        document.querySelectorAll('video[data-src]').forEach(v => {
+          if (v.closest('[data-hero-frame]')) return;
+          const cur = v.getAttribute('src');
+          if (cur && cur !== v.dataset.src) { v.pause(); v.removeAttribute('src'); v.load(); if (v._inView) this.playCard(v); }
+        });
+        this.scan(); this.scanVids();
+      }, 30); }
     this.playHero();
   }
   componentWillUnmount() { this.vio && this.vio.disconnect(); clearInterval(this.typeT); clearInterval(this.caretT); clearInterval(this.timer); removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); this.io && this.io.disconnect(); }
@@ -512,7 +525,7 @@ class Component extends DCLogic {
         { num: 180, suffix: '+', label0: '180+', label: 'Wishlists on itch.io', delay: 0.24 },
       ],
       filters: FILTERS.map(f => ({ label: f, count: f === 'All' ? PROJECTS.length : PROJECTS.filter(p => p.tags.includes(f)).length, cls: 'btn ' + (f === filter ? 'btn-primary' : 'btn-ghost'), pick: () => this.setState({ filter: f }) })),
-      projects: list.map((p, i) => ({ ...p, target: /^https?:/.test(p.link) ? '_blank' : '_self', bg: p.poster || p.media, yt: p.yt || '', openYt: () => { document.querySelectorAll('video').forEach(v => { if (!v.paused) { v.dataset.resume = '1'; v.pause(); } }); this.setState({ yt: { id: p.yt, start: p.ytStart || 0, title: p.title } }); }, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', info: p.info.map(([k, v]) => ({ k, v })) })),
+      projects: list.map((p, i) => ({ ...p, target: /^https?:/.test(p.link) ? '_blank' : '_self', bg: p.poster || p.media, yt: p.yt || '', openYt: () => { document.querySelectorAll('video').forEach(v => { if (!v.paused) { v.dataset.resume = '1'; v.pause(); } }); this.setState({ yt: { id: p.yt, start: p.ytStart || 0, title: p.title } }); }, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', won: !!p.award && !/nominat/i.test(p.award), wins: [p.award, p.award2].filter(t => t && !/nominat/i.test(t)).map(t => ({ t })), awardList: [p.award, p.award2].filter(Boolean).map((t, k) => { const c = TIER[(p.tiers || [])[k] || (/nominat/i.test(t) ? 'pink' : 'gold')]; return { text: t, color: c[0], bg: c[1], bd: c[2] }; }), nominated: /nominat/i.test(p.award || ''), info: p.info.map(([k, v]) => ({ k, v })) })),
       skills: ['Technical Game Design', 'Visual Scripting (Unreal)', 'Unity C#', 'Prototyping', 'Playtesting & Iteration', 'VR Development', 'AR Development', 'UX/UI Design', 'Design Documentation', 'Game Research', 'Scrum'],
       software: ['Unreal Engine', 'Unity', 'Roblox Studio', 'GitHub', 'Perforce', 'Blender', 'Figma', 'Miro', 'Teams', 'Kanbanflow'],
     };

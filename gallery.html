@@ -55,6 +55,15 @@ a:hover{color:var(--color-accent-200)}
           </sc-if>
           <span style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--color-neutral-100) 6%,transparent),transparent 40%)"></span>
         </span>
+        <sc-if value="{{ p.gold2 }}" hint-placeholder-val="{{ false }}">
+          <span title="Winner" style="position:absolute;right:52px;bottom:-40px;width:104px;height:132px;display:block;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))">
+            <span style="position:absolute;left:24px;top:50px;width:28px;height:78px;display:block;transform:rotate(18deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
+            <span style="position:absolute;left:52px;top:50px;width:28px;height:78px;display:block;transform:rotate(-18deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
+            <span style="position:absolute;left:4px;top:4px;width:96px;height:96px;display:block;border-radius:50%;background:repeating-conic-gradient(oklch(0.52 0.19 27) 0deg 9deg,oklch(0.4 0.15 25) 9deg 18deg);box-shadow:inset 0 0 0 2px oklch(0.34 0.12 25),inset 0 0 14px oklch(0.3 0.1 25 / .6)"></span>
+            <span style="position:absolute;left:18px;top:18px;width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,oklch(0.96 0.07 95),oklch(0.82 0.14 85) 45%,oklch(0.6 0.12 70));box-shadow:inset 0 0 0 3px oklch(0.7 0.13 80),inset 0 0 0 5px oklch(0.9 0.1 92),inset 0 -5px 9px oklch(0.48 0.1 65 / .6),0 2px 4px rgba(0,0,0,.4)">
+            </span>
+          </span>
+        </sc-if>
         <sc-if value="{{ p.gold }}" hint-placeholder-val="{{ false }}">
           <span title="Winner" style="position:absolute;right:-30px;bottom:-40px;width:104px;height:132px;display:block;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))">
             <span style="position:absolute;left:24px;top:50px;width:28px;height:78px;display:block;transform:rotate(18deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
@@ -64,11 +73,19 @@ a:hover{color:var(--color-accent-200)}
             </span>
           </span>
         </sc-if>
+        <sc-if value="{{ p.bronze2 }}" hint-placeholder-val="{{ false }}">
+          <span title="Nominated, 3rd" style="position:absolute;right:46px;bottom:-34px;width:88px;height:112px;display:block;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))">
+            <span style="position:absolute;left:20px;top:40px;width:24px;height:70px;display:block;transform:rotate(16deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
+            <span style="position:absolute;left:44px;top:40px;width:24px;height:70px;display:block;transform:rotate(-16deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
+            <span style="position:absolute;left:12px;top:10px;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,oklch(0.85 0.07 60),oklch(0.62 0.11 50) 45%,oklch(0.42 0.09 45));box-shadow:inset 0 0 0 3px oklch(0.52 0.1 48),inset 0 0 0 5px oklch(0.75 0.08 58),inset 0 -5px 9px oklch(0.3 0.07 40 / .6),0 2px 4px rgba(0,0,0,.4)">
+            </span>
+          </span>
+        </sc-if>
         <sc-if value="{{ p.bronze }}" hint-placeholder-val="{{ false }}">
           <span title="Nominated" style="position:absolute;right:-24px;bottom:-34px;width:88px;height:112px;display:block;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))">
-            <span style="position:absolute;left:20px;top:40px;width:24px;height:70px;display:block;transform:rotate(16deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,var(--color-accent-800),var(--color-accent-600) 50%,var(--color-accent-800))"></span>
-            <span style="position:absolute;left:44px;top:40px;width:24px;height:70px;display:block;transform:rotate(-16deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,var(--color-accent-800),var(--color-accent-600) 50%,var(--color-accent-800))"></span>
-            <span style="position:absolute;left:12px;top:10px;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,oklch(0.85 0.07 60),oklch(0.62 0.11 50) 45%,oklch(0.42 0.09 45));box-shadow:inset 0 0 0 3px oklch(0.52 0.1 48),inset 0 0 0 5px oklch(0.75 0.08 58),inset 0 -5px 9px oklch(0.3 0.07 40 / .6),0 2px 4px rgba(0,0,0,.4)">
+            <span style="position:absolute;left:20px;top:40px;width:24px;height:70px;display:block;transform:rotate(16deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
+            <span style="position:absolute;left:44px;top:40px;width:24px;height:70px;display:block;transform:rotate(-16deg);transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);background:linear-gradient(90deg,oklch(0.4 0.15 25),oklch(0.56 0.19 27) 50%,oklch(0.4 0.15 25))"></span>
+            <span style="position:absolute;left:12px;top:10px;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,oklch(0.97 0.005 260),oklch(0.8 0.01 260) 45%,oklch(0.55 0.012 260));box-shadow:inset 0 0 0 3px oklch(0.68 0.01 260),inset 0 0 0 5px oklch(0.92 0.006 260),inset 0 -5px 9px oklch(0.4 0.01 260 / .6),0 2px 4px rgba(0,0,0,.4)">
             </span>
           </span>
         </sc-if>
@@ -117,8 +134,12 @@ a:hover{color:var(--color-accent-200)}
       <dd style="margin:0;color:var(--color-text)">{{ row.v }}</dd>
     </sc-for>
   </dl>
-  <sc-if value="{{ cur.award }}" hint-placeholder-val="{{ false }}">
-    <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--color-accent-200)"><i class="ph ph-trophy" style="color:var(--color-accent)"></i>{{ cur.award }}</div>
+  <sc-if value="{{ cur.hasAwards }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+      <sc-for list="{{ cur.awardList }}" as="aw" hint-placeholder-count="0">
+        <span class="tag" style="display:inline-flex;gap:6px;align-items:center;color:{{ aw.color }};background:{{ aw.bg }};border:1px solid {{ aw.bd }}"><i class="ph-fill ph-trophy"></i>{{ aw.text }}</span>
+      </sc-for>
+    </div>
   </sc-if>
   <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:4px">
     <a href="{{ cur.link }}" target="{{ cur.target }}" class="btn btn-primary" style="display:flex;align-items:center;gap:8px;text-decoration:none">{{ cur.cta }} <i class="{{ cur.ctaIcon }}"></i></a>
@@ -134,7 +155,7 @@ const P = [
   { id: 'cw', x: 1220, y: 440, w: 760, h: 500, title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam',
     blurb: 'A cozy adventure where you play as grandma, chasing her lost cat through a portal into Catworld. Run errands for Ponpon at the Cat Café, dive to catch cats and collect them until you find your way home.',
     info: [['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive']],
-    award: 'Won Best Voted Industry Day Game 2026', medal: 'gold', link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam',
+    award: 'Won Best Voted Industry Day Game, BUAS 2026', award2: 'Won Year 3 Best Art, BUAS 2026', medal: 'gold', link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam',
     media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4' },
   { id: 'sc', x: 640, y: 400, w: 520, h: 300, title: 'Sunbeat City', year: 2025, role: 'Tech Designer · Marketing', engine: 'Unreal Engine 5',
     blurb: 'A first-person parkour game across the rooftops of a Solarpunk city. Collect lost instruments and become a soloist to the soundtrack of the city, where every move you make plays a note.',
@@ -147,7 +168,7 @@ const P = [
   { id: 'ba', x: 2020, y: 470, w: 440, h: 360, title: 'Baelorn', year: 2024, role: 'Tech Designer · UX/UI', engine: 'Unreal Engine 5',
     blurb: 'A first-person horror take on Pac-Man. Collect runes, listen for the deer-like beasts hunting you through the maze, and turn night into day to fight back.',
     info: [['Team','~14'],['Genre','Horror FPS'],['Time','~8 wks'],['Reception','1.1K+ downloads']],
-    award: 'Nominated for 2nd Best Art, BUAS 2024', medal: 'bronze', link: 'baelorn.html', caseStudy: true, media: 'media/still-baelorn.png', video: 'media/baelorn-v2.mp4' },
+    award: 'Nominated for 2nd Best Art, BUAS 2024', award2: 'Nominated for 3rd Best Overall 1st Year Game, BUAS 2024', medal: 'bronze', link: 'baelorn.html', caseStudy: true, media: 'media/still-baelorn.png', video: 'media/baelorn-v2.mp4' },
   { id: 'sm', x: 2540, y: 820, w: 460, h: 266, title: 'Shaping the Smart City', year: 2023, role: 'Unity 3D Intern · XR', engine: 'Unity · iOS',
     blurb: 'An XR experience at Move Amsterdam by Pon that invites children to build the cities of tomorrow, introducing urban design, sustainable transport and the future of mobility.',
     info: [['Type','Internship'],['Team','3'],['Genre','XR Experience'],['Platform','iOS']],
@@ -162,6 +183,15 @@ const P = [
     link: 'https://www.youtube.com/watch?v=WRHJ4nRw74s', linkLabel: 'Watch UE5 remake', media: 'media/still-rocky-rocket.png', anim: W + '0bf63b_58abc09755c64b648bf2edfad195e7bd~mv2.gif' },
 ];
 
+const HYENA = {
+  '--color-bg': '#1b191d', '--color-surface': '#27242a', '--color-text': '#f5eff5', '--color-divider': '#3f3b44',
+  '--color-accent': '#e46be8', '--color-accent-200': '#f8d2f6', '--color-accent-300': '#f1a8ef', '--color-accent-400': '#ea88eb',
+  '--color-accent-600': '#c81fae', '--color-accent-700': '#9c168a', '--color-accent-800': '#5e1456', '--color-accent-900': '#3a0f36',
+  '--color-neutral-100': '#f1edf1', '--color-neutral-200': '#dad5db', '--color-neutral-300': '#bfb9c0', '--color-neutral-400': '#9d989f',
+  '--color-neutral-500': '#7e7a80', '--color-neutral-600': '#625e64', '--color-neutral-700': '#4a474d', '--color-neutral-800': '#353238', '--color-neutral-900': '#27242a',
+  '--color-section': '#4a1846', '--color-section-glow': '#19e39a', '--color-section-ghost': '#e46be8',
+};
+if (typeof document !== 'undefined') Object.entries(HYENA).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
 class Component extends DCLogic {
   state = { active: null, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
   wallRef = React.createRef();
@@ -278,7 +308,7 @@ class Component extends DCLogic {
       spot: (this.props.lighting ?? 'Spotlit') === 'Spotlit',
       frames: P.map((p, i) => ({
         ...p, num: String(i + 1).padStart(2, '0'), hasVideo: !!p.video, hasAnim: !!p.anim,
-        isGif: /\.gif($|\?)/i.test(p.media), gold: p.medal === 'gold', bronze: p.medal === 'bronze',
+        isGif: /\.gif($|\?)/i.test(p.media), gold: p.medal === 'gold', gold2: p.medal === 'gold' && !!p.award2, bronze: p.medal === 'bronze', bronze2: p.medal === 'bronze' && !!p.award2,
         enter: () => { this.hovered = i; this.sync(); },
         leave: () => { if (this.hovered === i) this.hovered = null; this.sync(); },
         op: !on || a === i ? 1 : 0.05, labelOp: !on ? 1 : 0, poolOp: !on || a === i ? 1 : 0.2,
@@ -290,7 +320,7 @@ class Component extends DCLogic {
       total: String(P.length).padStart(2, '0'),
       cur: {
         ...c, num: String((on ? a : this.last) + 1).padStart(2, '0'),
-        info: c.info.map(([k, v]) => ({ k, v })), award: c.award || '',
+        info: c.info.map(([k, v]) => ({ k, v })), award: c.award || '', hasAwards: !!c.award, awardList: [c.award, c.award2].filter(Boolean).map(t => { const col = !/nominat/i.test(t) ? '0.84 0.14 85' : /3rd/.test(t) ? '0.72 0.11 55' : '0.86 0.01 260'; return { text: t, color: 'oklch(' + col + ')', bg: 'oklch(' + col + ' / .12)', bd: 'oklch(' + col + ' / .35)' }; }),
         target: ext ? '_blank' : '_self', cta: c.caseStudy ? 'Read case study' : c.linkLabel, ctaIcon: c.caseStudy ? 'ph ph-arrow-right' : 'ph ph-arrow-up-right',
       },
       prev: () => this.step(-1), next: () => this.step(1), close: this.close,
