@@ -165,13 +165,14 @@ a:hover{color:var(--color-accent-200)}
 </div>
 
 <aside style="position:fixed;z-index:30;left:{{ pLeft }};right:{{ pRight }};top:{{ pTop }};bottom:{{ pBottom }};width:{{ pWidth }};max-height:{{ pMaxH }};overflow:{{ pOv }};opacity:{{ panelOp }};transform:{{ pTf }};pointer-events:{{ panelPe }};transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;gap:14px;padding:{{ pPad }};box-sizing:border-box;border-radius:12px;background:{{ pBg }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
-  <div style="display:flex;align-items:center;gap:10px;flex:none">
+  <span style="display:{{ mobInline }};position:absolute;top:20px;right:18px;font-size:13px;letter-spacing:.08em;color:var(--color-accent-300);font-feature-settings:'tnum' 1">{{ cur.num }} / {{ total }}</span>
+  <div style="display:{{ deskFlex }};align-items:center;gap:10px;flex:none">
     <span style="font-size:13px;letter-spacing:.08em;color:var(--color-accent-300);font-feature-settings:'tnum' 1;margin-right:auto">{{ cur.num }} / {{ total }}</span>
     <button class="btn btn-ghost btn-icon" onClick="{{ prev }}" aria-label="Previous work"><i class="ph ph-arrow-left"></i></button>
     <button class="btn btn-ghost btn-icon" onClick="{{ next }}" aria-label="Next work"><i class="ph ph-arrow-right"></i></button>
     <button class="btn btn-ghost btn-icon" onClick="{{ close }}" aria-label="Back to wall" style="display:{{ deskFlex }}"><i class="ph ph-x"></i></button>
   </div>
-  <div style="display:flex;flex-direction:column;gap:8px;flex:none">
+  <div style="display:flex;flex-direction:column;gap:8px;flex:none;padding-right:{{ titlePadR }}">
     <h1 style="margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ cur.title }}</h1>
     <span style="font-size:14px;color:var(--color-neutral-400)">{{ cur.year }} · {{ cur.role }} · {{ cur.engine }}</span>
   </div>
@@ -208,8 +209,8 @@ a:hover{color:var(--color-accent-200)}
 </aside>
 
 <sc-if value="{{ viewerOn }}" hint-placeholder-val="{{ false }}">
-  <div onPointerDown="{{ vDown }}" onClick="{{ vClick }}" style="position:fixed;inset:0;z-index:40;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none">
-    <div ref="{{ bgRef }}" style="position:absolute;inset:0;opacity:0;background:color-mix(in srgb,var(--color-bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)"></div>
+  <div onPointerDown="{{ vDown }}" onClick="{{ vClick }}" style="position:fixed;inset:0;z-index:40;cursor:grab;touch-action:auto;user-select:none;-webkit-user-select:none">
+    <div ref="{{ bgRef }}" style="position:absolute;inset:0;touch-action:none;opacity:0;background:color-mix(in srgb,var(--color-bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)"></div>
     <div style="position:absolute;inset:0;perspective:1800px;pointer-events:none">
       <div ref="{{ cardRef }}" style="position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;opacity:0;will-change:transform">
         <sc-if value="{{ vIsCard }}" hint-placeholder-val="{{ false }}">
@@ -236,7 +237,7 @@ a:hover{color:var(--color-accent-200)}
       </div>
     </div>
     <div ref="{{ uiRef }}" style="position:absolute;inset:0;pointer-events:none;opacity:0">
-      <aside onPointerDown="{{ stop }}" onClick="{{ stop }}" style="position:absolute;left:{{ vpLeft }};right:{{ vpRight }};top:{{ vpTop }};bottom:{{ vpBottom }};width:{{ vpWidth }};max-height:{{ vpMaxH }};overflow:{{ vpOv }};pointer-events:auto;cursor:default;display:flex;flex-direction:column;gap:16px;padding:22px 24px;box-sizing:border-box;border-radius:{{ vpRadius }};background:{{ vpBg }};border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
+      <aside onPointerDown="{{ stop }}" onClick="{{ stop }}" style="position:absolute;left:{{ vpLeft }};right:{{ vpRight }};top:{{ vpTop }};bottom:{{ vpBottom }};width:{{ vpWidth }};max-height:{{ vpMaxH }};overflow:{{ vpOv }};touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;pointer-events:auto;cursor:default;display:flex;flex-direction:column;gap:16px;padding:22px 24px;box-sizing:border-box;border-radius:{{ vpRadius }};background:{{ vpBg }};border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
         <sc-if value="{{ vFull }}" hint-placeholder-val="{{ false }}">
           <button class="btn btn-ghost" onClick="{{ vDetailsBack }}" style="align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:8px;margin:-6px 0 0 -10px"><i class="ph ph-arrow-left"></i> Back to item</button>
         </sc-if>
@@ -648,7 +649,7 @@ class Component extends DCLogic {
       sideArrows: mob && on && !this.state.viewer,
       arrowTop: (() => { const vh = innerHeight; return this.state.mode === 'merch' ? Math.round(80 + (vh - 170) / 2) : Math.round(64 + (vh * 0.42 - 64) / 2); })(),
       showMore: !mob || !!this.state.more, showMoreBtn: mob && !this.state.more, viewMore: () => this.setState({ more: true }),
-      deskFlex: mob ? 'none' : 'flex', mobFlex: mob && !this.state.viewer ? 'flex' : 'none',
+      deskFlex: mob ? 'none' : 'flex', mobInline: mob ? 'inline' : 'none', titlePadR: mob ? '56px' : '0', mobFlex: mob && !this.state.viewer ? 'flex' : 'none',
       wallRef: this.wallRef, cardRef: this.cardRef, bgRef: this.bgRef, uiRef: this.uiRef,
       isGames: this.state.mode === 'games', isMerch: this.state.mode === 'merch',
       gamesCls: 'btn ' + (this.state.mode === 'games' ? 'btn-primary' : 'btn-ghost'), merchCls: 'btn ' + (this.state.mode === 'merch' ? 'btn-primary' : 'btn-ghost'),
