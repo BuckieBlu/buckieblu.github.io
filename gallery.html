@@ -111,7 +111,7 @@ a:hover{color:var(--color-accent-200)}
               <span style="display:flex;flex-direction:column;align-items:center;gap:7px">
                 <span style="font-family:'Gochi Hand',cursive;font-size:{{ p.note.font }}px;line-height:1.05;text-align:center;text-wrap:balance;color:oklch(0.33 0.01 260);opacity:.9">{{ p.title }}</span>
                 <sc-if value="{{ p.hasSocials }}" hint-placeholder-val="{{ false }}">
-                  <span style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;pointer-events:{{ noteSocPe }}">
+                  <span style="display:{{ deskFlex }};flex-wrap:wrap;justify-content:center;gap:4px;pointer-events:{{ noteSocPe }}">
                     <sc-for list="{{ p.socials }}" as="so" hint-placeholder-count="0">
                       <span role="link" tabindex="0" title="{{ so.label }}" aria-label="{{ so.label }}" onClick="{{ so.go }}" style="width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:{{ so.bg }};box-shadow:0 1px 2px rgba(0,0,0,.35);transition:transform .2s ease" style-hover="transform:scale(1.18)"><i class="{{ so.icon }}" style="font-size:11px;color:#fff;line-height:1"></i></span>
                     </sc-for>
