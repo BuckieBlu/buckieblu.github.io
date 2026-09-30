@@ -127,7 +127,14 @@ a:hover{color:var(--color-accent-200)}
     <h1 style="margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ cur.title }}</h1>
     <span style="font-size:14px;color:var(--color-neutral-400)">{{ cur.year }} · {{ cur.role }} · {{ cur.engine }}</span>
   </div>
-  <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-300)">{{ cur.blurb }}</p>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-300)">My responsibilities</span>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ cur.resp }}" as="r" hint-placeholder-count="3">
+        <li style="display:flex;gap:12px;font-size:15px;line-height:1.5;color:var(--color-neutral-200)"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:var(--color-accent);margin-top:9px"></span>{{ r.t }}</li>
+      </sc-for>
+    </ul>
+  </div>
   <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:14px">
     <sc-for list="{{ cur.info }}" as="row" hint-placeholder-count="4">
       <dt style="color:var(--color-neutral-500)">{{ row.k }}</dt>
@@ -150,6 +157,7 @@ a:hover{color:var(--color-accent-200)}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;lookStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Camera&quot;},&quot;lighting&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Spotlit&quot;,&quot;options&quot;:[&quot;Spotlit&quot;,&quot;Even&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Wall&quot;},&quot;playVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Wall&quot;}}">
 const W = 'https://static.wixstatic.com/media/';
+const RESP = {"cw":["Designed (almost) all UX/UI in the game","Created the TikTok and Instagram content for our marketing"],"sc":["Designed, prototyped and iterated the Bouncing Parasol traversal ingredient","Built dynamic level ingredients and interactive world elements","Concepted and prototyped mission ideas: drone, newspaper bazooka and hackable billboards"],"ir":["Built item inspection (rotate, move, zoom, further-inspect) on parent/child Blueprint actors","Built a multi-page, customisable note reading system","Added controller support with input-aware UI via Common UI","Wrote the target game research, engine research and How-To pipeline document"],"ba":["Designed the animated HUD, lost-life and Game Over screens","Built the Day & Night switch for the power-up","Prototyped runes, streak multipliers and power-ups","Ran the marketing"],"sm":["Developed interactive XR features in Unity for iOS","Designed hands-on interactions for a young audience"],"ab":["Built an XP system that scales infinitely with each level","Built multiple upgradable weapons, each with a unique level-5 addition","Built an infinite wave spawning system"],"rr":["Designed and built a one-button game in two weeks","Created minimal art using only simple shapes"]};
 const WALL = { w: 3200, h: 1500, cy: 760 };
 const P = [
   { id: 'cw', x: 1220, y: 440, w: 760, h: 500, title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam',
@@ -320,7 +328,7 @@ class Component extends DCLogic {
       total: String(P.length).padStart(2, '0'),
       cur: {
         ...c, num: String((on ? a : this.last) + 1).padStart(2, '0'),
-        info: c.info.map(([k, v]) => ({ k, v })), award: c.award || '', hasAwards: !!c.award, awardList: [c.award, c.award2].filter(Boolean).map(t => { const col = !/nominat/i.test(t) ? '0.84 0.14 85' : /3rd/.test(t) ? '0.72 0.11 55' : '0.86 0.01 260'; return { text: t, color: 'oklch(' + col + ')', bg: 'oklch(' + col + ' / .12)', bd: 'oklch(' + col + ' / .35)' }; }),
+        info: c.info.map(([k, v]) => ({ k, v })), award: c.award || '', resp: (RESP[c.id] || []).map(t => ({ t })), hasAwards: !!c.award, awardList: [c.award, c.award2].filter(Boolean).map(t => { const col = !/nominat/i.test(t) ? '0.84 0.14 85' : /3rd/.test(t) ? '0.72 0.11 55' : '0.86 0.01 260'; return { text: t, color: 'oklch(' + col + ')', bg: 'oklch(' + col + ' / .12)', bd: 'oklch(' + col + ' / .35)' }; }),
         target: ext ? '_blank' : '_self', cta: c.caseStudy ? 'Read case study' : c.linkLabel, ctaIcon: c.caseStudy ? 'ph ph-arrow-right' : 'ph ph-arrow-up-right',
       },
       prev: () => this.step(-1), next: () => this.step(1), close: this.close,
