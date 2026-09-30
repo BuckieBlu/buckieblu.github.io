@@ -164,18 +164,18 @@ a:hover{color:var(--color-accent-200)}
   <sc-if value="{{ isMerch }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--color-neutral-400)">Move to look around. Click a piece of merch to pick it up.</span></sc-if>
 </div>
 
-<aside style="position:fixed;z-index:30;left:{{ pLeft }};right:{{ pRight }};top:{{ pTop }};bottom:{{ pBottom }};width:{{ pWidth }};max-height:{{ pMaxH }};overflow:auto;opacity:{{ panelOp }};transform:{{ pTf }};pointer-events:{{ panelPe }};transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;gap:14px;padding:{{ pPad }};box-sizing:border-box;border-radius:12px;background:{{ pBg }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
-  <div style="display:flex;align-items:center;gap:10px">
+<aside style="position:fixed;z-index:30;left:{{ pLeft }};right:{{ pRight }};top:{{ pTop }};bottom:{{ pBottom }};width:{{ pWidth }};max-height:{{ pMaxH }};overflow:{{ pOv }};opacity:{{ panelOp }};transform:{{ pTf }};pointer-events:{{ panelPe }};transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;gap:14px;padding:{{ pPad }};box-sizing:border-box;border-radius:12px;background:{{ pBg }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
+  <div style="display:flex;align-items:center;gap:10px;flex:none">
     <span style="font-size:13px;letter-spacing:.08em;color:var(--color-accent-300);font-feature-settings:'tnum' 1;margin-right:auto">{{ cur.num }} / {{ total }}</span>
     <button class="btn btn-ghost btn-icon" onClick="{{ prev }}" aria-label="Previous work"><i class="ph ph-arrow-left"></i></button>
     <button class="btn btn-ghost btn-icon" onClick="{{ next }}" aria-label="Next work"><i class="ph ph-arrow-right"></i></button>
     <button class="btn btn-ghost btn-icon" onClick="{{ close }}" aria-label="Back to wall" style="display:{{ deskFlex }}"><i class="ph ph-x"></i></button>
   </div>
-  <div style="display:flex;flex-direction:column;gap:8px">
+  <div style="display:flex;flex-direction:column;gap:8px;flex:none">
     <h1 style="margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ cur.title }}</h1>
     <span style="font-size:14px;color:var(--color-neutral-400)">{{ cur.year }} · {{ cur.role }} · {{ cur.engine }}</span>
   </div>
-  <div style="display:flex;flex-direction:column;gap:10px">
+  <div style="display:flex;flex-direction:column;gap:10px;flex:{{ respFlex }};min-height:0;overflow:hidden;-webkit-mask-image:{{ respMask }};mask-image:{{ respMask }}">
     <span style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-300)">My responsibilities</span>
     <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
       <sc-for list="{{ cur.resp }}" as="r" hint-placeholder-count="3">
@@ -203,7 +203,7 @@ a:hover{color:var(--color-accent-200)}
   </div>
   </sc-if>
   <sc-if value="{{ showMoreBtn }}" hint-placeholder-val="{{ false }}">
-    <button class="btn btn-secondary" onClick="{{ viewMore }}" style="align-self:stretch;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px">View more… <i class="ph ph-caret-down"></i></button>
+    <button class="btn btn-secondary" onClick="{{ viewMore }}" style="align-self:stretch;width:100%;min-height:48px;flex:none;display:flex;align-items:center;justify-content:center;gap:8px">View more… <i class="ph ph-caret-down"></i></button>
   </sc-if>
 </aside>
 
@@ -236,17 +236,24 @@ a:hover{color:var(--color-accent-200)}
       </div>
     </div>
     <div ref="{{ uiRef }}" style="position:absolute;inset:0;pointer-events:none;opacity:0">
-      <aside onPointerDown="{{ stop }}" onClick="{{ stop }}" style="position:absolute;left:{{ vpLeft }};right:{{ vpRight }};top:{{ vpTop }};bottom:{{ vpBottom }};width:{{ vpWidth }};max-height:{{ vpMaxH }};overflow:auto;pointer-events:auto;cursor:default;display:flex;flex-direction:column;gap:16px;padding:22px 24px;box-sizing:border-box;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 90%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
-        <div style="display:flex;flex-direction:column;gap:6px">
+      <aside onPointerDown="{{ stop }}" onClick="{{ stop }}" style="position:absolute;left:{{ vpLeft }};right:{{ vpRight }};top:{{ vpTop }};bottom:{{ vpBottom }};width:{{ vpWidth }};max-height:{{ vpMaxH }};overflow:{{ vpOv }};pointer-events:auto;cursor:default;display:flex;flex-direction:column;gap:16px;padding:22px 24px;box-sizing:border-box;border-radius:{{ vpRadius }};background:{{ vpBg }};border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
+        <sc-if value="{{ vFull }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-ghost" onClick="{{ vDetailsBack }}" style="align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:8px;margin:-6px 0 0 -10px"><i class="ph ph-arrow-left"></i> Back to item</button>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:6px;flex:none">
           <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-300)">{{ vGame }} · Merch · {{ vCount }}</span>
           <h2 style="margin:0;font-size:clamp(26px,2.6vw,34px);line-height:1.1;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ vName }}</h2>
         </div>
-        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14px;line-height:1.5">
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;align-content:start;gap:10px 20px;font-size:14px;line-height:1.5;flex:{{ vdlFlex }};min-height:0;overflow:hidden;-webkit-mask-image:{{ vdlMask }};mask-image:{{ vdlMask }}">
           <sc-for list="{{ vInfo }}" as="row" hint-placeholder-count="3">
             <dt style="color:var(--color-neutral-500)">{{ row.k }}</dt>
             <dd style="margin:0;color:{{ row.color }}">{{ row.v }}</dd>
           </sc-for>
         </dl>
+        <sc-if value="{{ vShowBtn }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-secondary" onClick="{{ vMoreOpen }}" style="align-self:stretch;width:100%;min-height:48px;flex:none;display:flex;align-items:center;justify-content:center;gap:8px">View details… <i class="ph ph-caret-down"></i></button>
+        </sc-if>
+        <sc-if value="{{ vShowAll }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5">
           <span style="color:var(--color-neutral-500)">My involvement</span>
           <sc-if value="{{ vNoInvolve }}" hint-placeholder-val="{{ false }}"><span style="color:var(--color-neutral-500)">To be added</span></sc-if>
@@ -276,12 +283,13 @@ a:hover{color:var(--color-accent-200)}
           </div>
         </div>
         </sc-if>
+        </sc-if>
       </aside>
       <sc-if value="{{ vArrows }}" hint-placeholder-val="{{ false }}">
         <button class="btn btn-secondary btn-icon" onPointerDown="{{ stop }}" onClick="{{ vPrev }}" aria-label="Previous item" style="position:absolute;left:8px;top:{{ vArrowTop }}px;transform:translateY(-50%);pointer-events:auto;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-left" style="font-size:22px"></i></button>
         <button class="btn btn-secondary btn-icon" onPointerDown="{{ stop }}" onClick="{{ vNext }}" aria-label="Next item" style="position:absolute;right:8px;top:{{ vArrowTop }}px;transform:translateY(-50%);pointer-events:auto;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-right" style="font-size:22px"></i></button>
       </sc-if>
-      <button class="btn btn-ghost btn-icon" onPointerDown="{{ stop }}" onClick="{{ vClose }}" aria-label="Put it back" style="position:absolute;right:clamp(20px,4vw,56px);top:20px;pointer-events:auto;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
+      <button class="btn btn-ghost btn-icon" onPointerDown="{{ stop }}" onClick="{{ vClose }}" aria-label="Put it back" style="display:{{ vXDisp }};position:absolute;right:clamp(20px,4vw,56px);top:20px;pointer-events:auto;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
       <span style="position:absolute;left:clamp(20px,4vw,56px);bottom:28px;display:{{ deskFlex }};align-items:center;gap:10px;font-size:14px;color:var(--color-neutral-400);white-space:nowrap"><i class="ph ph-hand-grabbing" style="font-size:18px;color:var(--color-accent-300)"></i>Hold and drag to spin · Esc to put it back</span>
     </div>
   </div>
@@ -396,7 +404,7 @@ class Component extends DCLogic {
     this.onLeave = () => { this.mx = 0; this.my = 0; };
     this.onKey = e => {
       if (this.state.lightbox) { if (e.key === 'Escape') this.setState({ lightbox: null }); return; }
-      if (this.v) { if (e.key === 'Escape') this.closeViewer(); return; }
+      if (this.v) { if (e.key === 'Escape') { if (this.state.vMore && innerWidth < 820) this.setState({ vMore: false }); else this.closeViewer(); } return; }
       if (this.state.active == null) return;
       if (e.key === 'Escape') this.close();
       else if (e.key === 'ArrowRight') this.step(1);
@@ -541,13 +549,17 @@ class Component extends DCLogic {
     const cx = mob ? 0 : mg + areaW / 2 - vw / 2, cy = mob ? -vh * 0.22 : 20;
     this.v = { id, W, H, cx, cy, aspect: m.aspect, rot: m.rot, phase: 'in', x: 0, y: 0, s: 0.2, rz: m.rot, rx: 0, ry: 0, fade: 0, drag: false, release: -1e9, needReset: false, moved: 0, t: performance.now(), started: false };
     if (instant) Object.assign(this.v, { started: true, x: cx, y: cy, s: 0.7, rz: 0, fade: 1 });
-    this.setState({ viewer: { id, W, H } });
+    this.setState({ viewer: { id, W, H }, vMore: false });
   };
   swipeItem = d => {
     const a = this.state.active; if (a == null || !this.v) return;
-    const list = MERCH[P[a].id] || []; if (list.length < 2) return;
-    const k = list.findIndex(m => m.id === this.v.id);
-    this.openViewer(list[(k + d + list.length) % list.length].id, true);
+    const bid = P[a].id, list = MERCH[bid] || [], k = list.findIndex(m => m.id === this.v.id);
+    if (k + d >= 0 && k + d < list.length) { this.openViewer(list[k + d].id, true); return; }
+    const bi = MERCH_ORDER.indexOf(bid), nb = MERCH_ORDER[((bi < 0 ? 0 : bi) + d + MERCH_ORDER.length) % MERCH_ORDER.length];
+    const nl = MERCH[nb] || []; if (!nl.length) return;
+    const ni = P.findIndex(p => p.id === nb);
+    this.last = ni; this.setState({ active: ni });
+    this.openViewer(nl[d > 0 ? 0 : nl.length - 1].id, true);
   };
   closeViewer = () => { if (this.v) { this.v.phase = 'out'; this.v.drag = false; } };
   setMode = mode => { if (this.v) return; this.hovered = null; const cur = this.state.active ?? this.last, i = innerWidth < 820 ? (mode === 'games' || (MERCH[P[cur].id] || []).length ? cur : firstIdx(mode)) : null; if (i != null) this.last = i; this.setState({ mode, active: i }); };
@@ -596,7 +608,8 @@ class Component extends DCLogic {
     }) : [];
     return {
       viewerOn: true, vIsCard: !layered && !parts, vIsShirt: layered, vIsParts: parts, ...(parts ? this.bannerParts(m, W, H) : { vSheet: {}, vParts: [] }), vSlices, vFaceS: layered ? 1 - LY.fb : 1, vBackS: layered ? 1 - LY.bb : 1, vW: W, vH: H, vT: T, vHW: -W / 2, vHH: -H / 2, vHT: -T / 2, vZ: T / 2, vZW: W / 2, vZH: H / 2,
-      vCount: (() => { const l = Object.values(MERCH).find(x => x.some(y => y.id === m.id)) || []; return (l.findIndex(y => y.id === m.id) + 1) + ' / ' + l.length; })(), vArrows: this.state.vw < 820 && (Object.values(MERCH).find(x => x.some(y => y.id === m.id)) || []).length > 1, vArrowTop: Math.round(innerHeight * 0.28), vPrev: e => { e.stopPropagation(); this.swipeItem(-1); }, vNext: e => { e.stopPropagation(); this.swipeItem(1); }, vHasOutcome: !!m.outcome, vOutcome: m.outcome || '', vInvolve: (Array.isArray(m.myRole) ? m.myRole : m.myRole ? [m.myRole] : []).map(t => ({ t })), vNoInvolve: !m.myRole || !m.myRole.length,
+      vCount: (() => { const l = Object.values(MERCH).find(x => x.some(y => y.id === m.id)) || []; return (l.findIndex(y => y.id === m.id) + 1) + ' / ' + l.length; })(), vArrows: this.state.vw < 820 && !this.state.vMore, vArrowTop: Math.round(innerHeight * 0.28), vPrev: e => { e.stopPropagation(); this.swipeItem(-1); }, vNext: e => { e.stopPropagation(); this.swipeItem(1); }, vHasOutcome: !!m.outcome, vOutcome: m.outcome || '', vInvolve: (Array.isArray(m.myRole) ? m.myRole : m.myRole ? [m.myRole] : []).map(t => ({ t })), vNoInvolve: !m.myRole || !m.myRole.length,
+      vShowAll: this.state.vw >= 820 || !!this.state.vMore, vShowBtn: this.state.vw < 820 && !this.state.vMore, vMoreOpen: e => { e.stopPropagation(); this.setState({ vMore: true }); },
       vInfo: [['Purpose', m.purpose], ['Design by', m.artist]].map(([k, v]) => ({ k, v: v || 'To be added', color: v ? 'var(--color-text)' : 'var(--color-neutral-500)' })),
       vHasPhotos: (m.photos ?? 1) > 0, vPhotos: Array.from({ length: m.photos ?? 1 }, (_, i) => ({ id: 'merch-photo-' + m.id + '-' + (i + 1), rot: [-2, 1.5, -1, 2.5][i % 4],
         open: e => {
@@ -609,8 +622,8 @@ class Component extends DCLogic {
         dbl: () => clearTimeout(this._lbT) })),
       lbFit: e => { const im = e.currentTarget, s = Math.min(innerWidth * 0.5 / im.naturalWidth, innerHeight * 0.7 / im.naturalHeight); im.style.width = Math.round(im.naturalWidth * s) + 'px'; im.style.height = Math.round(im.naturalHeight * s) + 'px'; },
       lbOn: !!this.state.lightbox, lbSrc: this.state.lightbox || '', lbClose: e => { e.stopPropagation(); this.setState({ lightbox: null }); },
-      vpLeft: this.state.vw < 820 ? '12px' : 'auto', vpRight: this.state.vw < 820 ? '12px' : 'clamp(20px,4vw,56px)', vpTop: this.state.vw < 820 ? 'auto' : '84px', vpBottom: this.state.vw < 820 ? '12px' : 'auto',
-      vpWidth: this.state.vw < 820 ? 'auto' : 'min(420px,34vw)', vpMaxH: this.state.vw < 820 ? '50vh' : 'calc(100vh - 150px)',
+      vpLeft: (this.state.vw < 820 && this.state.vMore) ? '12px' : this.state.vw < 820 ? '12px' : 'auto', vpRight: (this.state.vw < 820 && this.state.vMore) ? '12px' : this.state.vw < 820 ? '12px' : 'clamp(20px,4vw,56px)', vpTop: (this.state.vw < 820 && this.state.vMore) ? '12px' : this.state.vw < 820 ? Math.round(innerHeight * 0.28 + H / 2 + 12) + 'px' : '84px', vpBottom: (this.state.vw < 820 && this.state.vMore) ? '12px' : this.state.vw < 820 ? '12px' : 'auto', vpRadius: '12px', vpOv: this.state.vw < 820 && !this.state.vMore ? 'hidden' : 'auto', vdlFlex: this.state.vw < 820 && !this.state.vMore ? '1 1 auto' : 'none', vdlMask: this.state.vw < 820 && !this.state.vMore ? 'linear-gradient(to bottom,#000 calc(100% - 24px),transparent)' : 'none', vpBg: (this.state.vw < 820 && this.state.vMore) ? 'color-mix(in srgb,var(--color-bg) 95%,transparent)' : 'color-mix(in srgb,var(--color-bg) 90%,transparent)', vFull: (this.state.vw < 820 && this.state.vMore), vXDisp: (this.state.vw < 820 && this.state.vMore) ? 'none' : 'inline-flex', vNotFull: !(this.state.vw < 820 && this.state.vMore), vDetailsBack: e => { e.stopPropagation(); this.setState({ vMore: false }); },
+      vpWidth: this.state.vw < 820 ? 'auto' : 'min(420px,34vw)', vpMaxH: (this.state.vw < 820 && this.state.vMore) ? 'calc(100vh - 24px)' : this.state.vw < 820 ? 'none' : 'calc(100vh - 150px)',
       vFront: m.front, vBack: m.back, vLabel: m.game + ' ' + m.name.toLowerCase(), vGame: m.game, vName: m.name,
       vDown: e => { const v = this.v; if (!v || v.phase === 'out') return; v.drag = true; v.lx = e.clientX; v.ly = e.clientY; v.moved = 0; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {} },
       vClick: e => {
@@ -625,7 +638,8 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const mobSide = (() => { const vw = innerWidth, vh = innerHeight; if (vw >= 820) return 0; const f = P[this.state.active ?? this.last]; const top = 64, bottom = vh * 0.58; const s = Math.min(vw * 0.9 / f.w, (vh - top - bottom) * 0.92 / f.h); return Math.max(8, Math.round((vw - f.w * s) / 2)); })();
+    const mobGeo = (() => { const vw = innerWidth, vh = innerHeight; if (vw >= 820) return { side: 0, top: 0, maxH: 0 }; const f = P[this.state.active ?? this.last]; const top = 64, bottom = vh * 0.58; const s = Math.min(vw * 0.9 / f.w, (vh - top - bottom) * 0.92 / f.h); const sy = top + (vh - top - bottom) / 2, pt = Math.round(sy + f.h * s / 2 + 5); return { side: 12, top: pt, maxH: Math.max(120, vh - pt - 86) }; })();
+    const mobSide = mobGeo.side;
     const a = this.state.active, on = a != null;
     const mob = this.state.vw < 820;
     const c = P[on ? a : this.last];
@@ -663,9 +677,9 @@ class Component extends DCLogic {
       prev: () => this.step(-1), next: () => this.step(1), close: this.close,
       panelOp: on && this.state.mode === 'games' ? 1 : 0, panelPe: on && this.state.mode === 'games' ? 'auto' : 'none',
       mbOp: on && this.state.mode === 'merch' && !this.state.viewer ? 1 : 0, mbPe: on && this.state.mode === 'merch' && !this.state.viewer ? 'auto' : 'none', mbTr: on && this.state.mode === 'merch' && !this.state.viewer ? 'opacity .4s ease .25s' : 'opacity .12s ease', mbBottom: (() => { const vw = innerWidth, vh = innerHeight, s = boardScale(c, vw, vh); return Math.round(80 + (vh - 120) / 2 + c.h * s / 2 + 22); })(), mbTitle: c.title, mbTop: (() => { const vw = innerWidth, vh = innerHeight, s = boardScale(c, vw, vh); return Math.max(64, Math.round(80 + (vh - 120) / 2 - c.h * s / 2 - 18)); })(),
-      linkOp: on ? 0 : 1, linkPe: on ? 'none' : 'auto',
-      pLeft: mob ? mobSide + 'px' : 'auto', pRight: mob ? mobSide + 'px' : '4vw', pTop: mob ? '42vh' : 'calc(50% + 24px)', pBottom: mob ? 'auto' : 'auto',
-      pWidth: mob ? 'auto' : 'min(440px,36vw)', pMaxH: mob ? 'calc(58vh - 84px)' : 'calc(100vh - 144px)',
+      linkOp: on && !mob ? 0 : 1, linkPe: on && !mob ? 'none' : 'auto',
+      pLeft: mob ? mobSide + 'px' : 'auto', pRight: mob ? mobSide + 'px' : '4vw', pTop: mob ? mobGeo.top + 'px' : 'calc(50% + 24px)', pBottom: mob ? 'auto' : 'auto',
+      pWidth: mob ? 'auto' : 'min(440px,36vw)', pMaxH: mob ? mobGeo.maxH + 'px' : 'calc(100vh - 144px)', pOv: mob && !this.state.more ? 'hidden' : 'auto', respFlex: mob && !this.state.more ? '1 1 auto' : 'none', respMask: mob && !this.state.more ? 'linear-gradient(to bottom,#000 calc(100% - 28px),transparent)' : 'none',
       pPad: mob ? '18px 18px 20px' : '22px 24px',
       pBg: 'color-mix(in srgb,var(--color-bg) 90%,transparent)',
       pTf: mob ? (on ? 'translateY(0)' : 'translateY(24px)') : (on ? 'translateY(-50%)' : 'translate(32px,-50%)'),
