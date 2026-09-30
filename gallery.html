@@ -108,7 +108,16 @@ a:hover{color:var(--color-accent-200)}
           </sc-for>
           <sc-if value="{{ p.hasNote }}" hint-placeholder-val="{{ false }}">
             <span style="position:absolute;display:flex;align-items:center;justify-content:center;left:{{ p.note.left }}%;top:{{ p.note.top }}%;width:{{ p.note.size }}px;height:{{ p.note.size }}px;padding:10px;box-sizing:border-box;transform:translate(-50%,-50%) rotate({{ p.note.rot }}deg);pointer-events:none;background:linear-gradient(170deg,oklch(0.93 0.13 100),oklch(0.88 0.14 96) 70%,oklch(0.84 0.13 92));box-shadow:0 8px 10px -4px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.3),inset 0 -6px 10px -8px rgba(0,0,0,.35);clip-path:polygon(0 0,100% 0,100% 88%,90% 100%,0 100%)">
-              <span style="font-family:'Gochi Hand',cursive;font-size:{{ p.note.font }}px;line-height:1.05;text-align:center;text-wrap:balance;color:oklch(0.33 0.01 260);opacity:.9">{{ p.title }}</span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:7px">
+                <span style="font-family:'Gochi Hand',cursive;font-size:{{ p.note.font }}px;line-height:1.05;text-align:center;text-wrap:balance;color:oklch(0.33 0.01 260);opacity:.9">{{ p.title }}</span>
+                <sc-if value="{{ p.hasSocials }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;pointer-events:{{ noteSocPe }}">
+                    <sc-for list="{{ p.socials }}" as="so" hint-placeholder-count="0">
+                      <span role="link" tabindex="0" title="{{ so.label }}" aria-label="{{ so.label }}" onClick="{{ so.go }}" style="width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:{{ so.bg }};box-shadow:0 1px 2px rgba(0,0,0,.35);transition:transform .2s ease" style-hover="transform:scale(1.18)"><i class="{{ so.icon }}" style="font-size:11px;color:#fff;line-height:1"></i></span>
+                    </sc-for>
+                  </span>
+                </sc-if>
+              </span>
             </span>
           </sc-if>
           <sc-if value="{{ p.boarded }}" hint-placeholder-val="{{ false }}">
@@ -140,6 +149,13 @@ a:hover{color:var(--color-accent-200)}
   <button class="{{ merchCls }}" onClick="{{ toMerch }}" aria-pressed="{{ isMerch }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;min-width:120px;font-size:16px"><i class="ph ph-push-pin" style="font-size:20px"></i> Merch</button>
 </div>
 
+<sc-if value="{{ mobSocialsOn }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:34;display:flex;gap:10px;padding:6px;border-radius:999px;background:color-mix(in srgb,var(--color-bg) 80%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+    <sc-for list="{{ mobSocials }}" as="so" hint-placeholder-count="0">
+      <a href="{{ so.url }}" target="_blank" rel="noopener" aria-label="{{ so.label }}" style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{ so.bg }};text-decoration:none"><i class="{{ so.icon }}" style="font-size:22px;color:#fff"></i></a>
+    </sc-for>
+  </div>
+</sc-if>
 <sc-if value="{{ sideArrows }}" hint-placeholder-val="{{ false }}">
   <button class="btn btn-secondary btn-icon" onClick="{{ prev }}" aria-label="Previous" style="position:fixed;left:8px;top:{{ arrowTop }}px;transform:translateY(-50%);z-index:28;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-left" style="font-size:22px"></i></button>
   <button class="btn btn-secondary btn-icon" onClick="{{ next }}" aria-label="Next" style="position:fixed;right:8px;top:{{ arrowTop }}px;transform:translateY(-50%);z-index:28;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-right" style="font-size:22px"></i></button>
@@ -314,10 +330,24 @@ const LAYERS = {
   sticker: { depth: 0.012, min: 4, n: 4, fb: 0, bb: 0, L: [0.84, 0.9], C: 0.006, h: 90 },
   cap: { depth: 0, min: 1, n: 0, fb: 0, bb: 0, backMask: true, L: [0.5, 0.7], C: 0.02, h: 75 },
 };
+const SOCIAL_STYLE = {
+  steam: { label: 'Steam', icon: 'ph-fill ph-steam-logo', bg: '#1b2838' },
+  youtube: { label: 'YouTube', icon: 'ph-fill ph-youtube-logo', bg: '#ff0000' },
+  tiktok: { label: 'TikTok', icon: 'ph-fill ph-tiktok-logo', bg: '#111111' },
+  instagram: { label: 'Instagram', icon: 'ph ph-instagram-logo', bg: 'radial-gradient(circle at 30% 110%,#feda75 0%,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5 100%)' },
+  discord: { label: 'Discord', icon: 'ph-fill ph-discord-logo', bg: '#5865f2' },
+  bluesky: { label: 'Bluesky', icon: 'ph-fill ph-butterfly', bg: '#1185fe' },
+  itch: { label: 'itch.io', icon: 'ph-fill ph-game-controller', bg: '#fa5c5c' },
+};
+const SOCIALS = {
+  sc: [['instagram', 'https://www.instagram.com/sunbeatcity/'], ['tiktok', 'https://www.tiktok.com/@sunbeatcity'], ['bluesky', 'https://bsky.app/profile/sunbeatcity.bsky.social'], ['discord', 'https://discord.gg/uRAUAuSSrX'], ['itch', 'https://buas.itch.io/sunbeat-city']],
+  ba: [['itch', 'https://buas.itch.io/team-basil'], ['youtube', 'https://www.youtube.com/watch?v=GfG2-8Y_BAo']],
+  cw: [['steam', 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/'], ['youtube', 'https://www.youtube.com/@ChasingWhiskersOfficial'], ['tiktok', 'https://www.tiktok.com/@chasingwhiskersofficial'], ['instagram', 'https://www.instagram.com/chasingwhiskerss/'], ['discord', 'https://discord.gg/2TTDegDWFQ']],
+};
 const NOTES = {
-  sc: { left: 20, top: 82, rot: -5, size: 84, font: 22 },
-  ba: { left: 81, top: 17, rot: 4, size: 88, font: 24 },
-  cw: { left: 22, top: 30, rot: -3, size: 104, font: 26 },
+  sc: { left: 20, top: 80, rot: -5, size: 96, font: 21 },
+  ba: { left: 80, top: 18, rot: 4, size: 96, font: 23 },
+  cw: { left: 22, top: 30, rot: -3, size: 124, font: 25 },
 };
 const PIN_HUES = [27];
 const PIN_IX = {};
@@ -326,10 +356,11 @@ const boardScale = (f, vw, vh) => vw < 820 ? Math.min(vw * 0.92 / f.w, vh * 0.46
 const MERCH_ORDER = ['sc', 'cw', 'ba'];
 const firstIdx = mode => mode === 'merch' ? Math.max(0, P.findIndex(p => p.id === MERCH_ORDER[0])) : 0;
 const MERCH = {
-  cw: [{ id: 'cw-banner', photos: 0, purpose: 'Event banner promoting the Steam release, with a QR code to the store page.', artist: 'Lisa van der Gevel Wenteler and Kevin Duijm', myRole: ['Involved in the design process', 'Handled the ordering process'], outcome: 'We eventually cancelled the order and went with a cheaper alternative: printing the design on A1 paper.', type: 'banner', game: 'Chasing Whiskers', name: 'Roll-up banner', front: 'media/merch-cw-banner-board.png', art: 'media/merch-cw-banner-art.jpg', back: '', aspect: 400 / 983, left: 50, top: 50, w: 20, rot: 1.5, radius: 0, vh: 0.8, pins: [{ x: 50, y: 1 }] }],
-  sc: [{ id: 'sc-postcard', purpose: 'Thank-you card for players, with a QR code to the game.', artist: 'Alistair Schiffelers', myRole: ['Oversaw the design process', 'Gave feedback across design iterations', 'Managed the print order', 'Handed the cards out to visitors at Industry Day 2025'], photos: 2, type: 'card', game: 'Sunbeat City', name: 'Postcard', front: 'media/merch-sunbeat-postcard-front.jpg', back: 'media/merch-sunbeat-postcard-back.jpg', aspect: 1669 / 1194, left: 27, top: 33, w: 44, rot: -4, radius: 2, pins: [{ x: 50, y: 1 }] },
-    { id: 'sc-cap-khaki', purpose: 'Team cap with the Sunbeat City logo on the front and Team Exploding Horse on the back.', artist: 'Jennifer Kamara (logo) and Kevin Duijm', myRole: ['Led the design of the caps', 'Presented design iterations and colour variations to the team', 'Gathered team feedback on preferred colours and designs', 'Managed the ordering process and negotiations with the manufacturer'], photos: 2, type: 'cap', game: 'Sunbeat City', name: 'Cap, khaki', front: 'media/merch-sunbeat-cap-khaki-front.png', back: 'media/merch-sunbeat-cap-khaki-back.png', aspect: 680 / 627, left: 64, top: 30, w: 20, rot: -3, radius: 0, vh: 0.62, pins: [{ x: 50, y: 4 }], tone: { L: [0.5, 0.7], C: 0.02, h: 75 } },
-    { id: 'sc-cap-black', purpose: 'Team cap with the Sunbeat City logo on the front and Team Exploding Horse on the back.', artist: 'Jennifer Kamara (logo) and Kevin Duijm', myRole: ['Led the design of the caps', 'Presented design iterations and colour variations to the team', 'Gathered team feedback on preferred colours and designs', 'Managed the ordering process and negotiations with the manufacturer'], photos: 2, type: 'cap', game: 'Sunbeat City', name: 'Cap, black', front: 'media/merch-sunbeat-cap-black-front.png', back: 'media/merch-sunbeat-cap-black-back.png', aspect: 680 / 627, left: 86, top: 30, w: 20, rot: 4, radius: 0, vh: 0.62, pins: [{ x: 50, y: 4 }], tone: { L: [0.13, 0.24], C: 0, h: 0 } },
+  cw: [{ id: 'cw-banner', photos: 0, purpose: 'Event banner promoting the Steam release, with a QR code to the store page.', artist: 'Lisa van der Gevel Wenteler and Kevin Duijm', myRole: ['Involved in the design process', 'Handled the ordering process'], outcome: 'We eventually cancelled the order and went with a cheaper alternative: printing the design on A1 paper.', type: 'banner', game: 'Chasing Whiskers', name: 'Roll-up banner', front: 'media/merch-cw-banner-board.png', art: 'media/merch-cw-banner-art.jpg', back: '', aspect: 400 / 983, left: 50, top: 50, w: 20, rot: 1.5, radius: 0, vh: 0.8, pins: [{ x: 50, y: 1 }] },
+    { id: 'cw-sticker', photos: 0, purpose: 'Promotional sticker of the work-in-progress logo.', artist: 'Filou van Ruyven', myRole: ['Reviewed the design process of the sticker', 'Gave feedback across design iterations'], outcome: 'We ended up not spending money on a printing manufacturer and eventually had different stickers all together.', type: 'sticker', game: 'Chasing Whiskers', name: 'Logo sticker', front: 'media/merch-cw-sticker-front.png', back: 'media/merch-cw-sticker-back.png', aspect: 1048 / 669, left: 79, top: 70, w: 30, rot: -5, radius: 0, vh: 0.5, pins: [] }],
+  sc: [{ id: 'sc-postcard', purpose: 'Thank-you card for players, with a QR code to the game.', artist: 'Alistair Schiffelers', myRole: ['Oversaw the design process', 'Gave feedback across design iterations', 'Managed the print order', 'Handed the cards out to visitors at Industry Day 2025'], photos: 2, type: 'card', game: 'Sunbeat City', name: 'Postcard', front: 'media/merch-sunbeat-postcard-front.jpg', back: 'media/merch-sunbeat-postcard-back.jpg', aspect: 1669 / 1194, left: 25, top: 31, w: 38, rot: -4, radius: 2, pins: [{ x: 50, y: 1 }] },
+    { id: 'sc-cap-khaki', purpose: 'Team cap with the Sunbeat City logo on the front and Team Exploding Horse on the back.', artist: 'Jennifer Kamara (logo) and Kevin Duijm', myRole: ['Led the design of the caps', 'Presented design iterations and colour variations to the team', 'Gathered team feedback on preferred colours and designs', 'Managed the ordering process and negotiations with the manufacturer'], photos: 2, type: 'cap', game: 'Sunbeat City', name: 'Cap, khaki', front: 'media/merch-sunbeat-cap-khaki-front.png', back: 'media/merch-sunbeat-cap-khaki-back.png', aspect: 680 / 627, left: 63, top: 30, w: 22, rot: -3, radius: 0, vh: 0.62, pins: [{ x: 50, y: 4 }], tone: { L: [0.5, 0.7], C: 0.02, h: 75 } },
+    { id: 'sc-cap-black', purpose: 'Team cap with the Sunbeat City logo on the front and Team Exploding Horse on the back.', artist: 'Jennifer Kamara (logo) and Kevin Duijm', myRole: ['Led the design of the caps', 'Presented design iterations and colour variations to the team', 'Gathered team feedback on preferred colours and designs', 'Managed the ordering process and negotiations with the manufacturer'], photos: 2, type: 'cap', game: 'Sunbeat City', name: 'Cap, black', front: 'media/merch-sunbeat-cap-black-front.png', back: 'media/merch-sunbeat-cap-black-back.png', aspect: 680 / 627, left: 87, top: 30, w: 22, rot: 4, radius: 0, vh: 0.62, pins: [{ x: 50, y: 4 }], tone: { L: [0.13, 0.24], C: 0, h: 0 } },
     { id: 'sc-sticker-1', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: 'Leia Dekker', myRole: ['Reviewed the design process of the sticker', 'Handled the order through my manufacturer'], photos: 1, type: 'sticker', game: 'Sunbeat City', name: 'Sticker', front: 'media/merch-sunbeat-sticker-1-front.png', back: 'media/merch-sunbeat-sticker-1-back.png', aspect: 634 / 679, left: 64, top: 74, w: 14, rot: 6, radius: 0, vh: 0.66, pins: [] },
     { id: 'sc-sticker-2', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: 'Leia Dekker', myRole: ['Reviewed the design process of the sticker', 'Handled the order through my manufacturer'], photos: 1, type: 'sticker', game: 'Sunbeat City', name: 'Sticker', front: 'media/merch-sunbeat-sticker-2-front.png', back: 'media/merch-sunbeat-sticker-2-back.png', aspect: 519 / 718, left: 84, top: 74, w: 11.5, rot: -5, radius: 0, vh: 0.66, pins: [] },
     { id: 'sc-sticker-logo', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: 'Jennifer Kamara', myRole: ['Reviewed the design process of the logo', 'Handled the order through my manufacturer'], photos: 1, type: 'sticker', game: 'Sunbeat City', name: 'Logo sticker', front: 'media/merch-sunbeat-sticker-logo-front.png', back: 'media/merch-sunbeat-sticker-logo-back.png', aspect: 1100 / 965, left: 47, top: 82, w: 16, rot: -8, radius: 0, vh: 0.66, pins: [] }],
@@ -646,7 +677,10 @@ class Component extends DCLogic {
     const c = P[on ? a : this.last];
     const ext = /^https?:/.test(c.link);
     return {
+      noteSocPe: mob || this.state.mode !== 'merch' ? 'none' : 'auto',
       sideArrows: mob && on && !this.state.viewer,
+      mobSocialsOn: mob && on && !this.state.viewer && this.state.mode === 'merch' && !!(SOCIALS[P[a].id] || []).length,
+      mobSocials: on ? (SOCIALS[P[a].id] || []).map(([k, url]) => ({ ...SOCIAL_STYLE[k], url, label: P[a].title + ' on ' + SOCIAL_STYLE[k].label })) : [],
       arrowTop: (() => { const vh = innerHeight; return this.state.mode === 'merch' ? Math.round(80 + (vh - 170) / 2) : Math.round(64 + (vh * 0.42 - 64) / 2); })(),
       showMore: !mob || !!this.state.more, showMoreBtn: mob && !this.state.more, viewMore: () => this.setState({ more: true }),
       deskFlex: mob ? 'none' : 'flex', mobInline: mob ? 'inline' : 'none', titlePadR: mob ? '56px' : '0', mobFlex: mob && !this.state.viewer ? 'flex' : 'none',
@@ -665,7 +699,7 @@ class Component extends DCLogic {
         labelTop: p.y + p.h + 22, poolLeft: p.x - p.w * 0.5, poolTop: p.y - 240, poolW: p.w * 2, poolH: p.h + 480,
         open: e => { e.stopPropagation(); if (this.state.mode === 'games' || (MERCH[p.id] || []).length) this.open(i); },
         flip: this.state.mode === 'merch' ? 180 : 0, flipDelay: (i * 0.07).toFixed(2), cursor: this.state.mode === 'merch' ? 'default' : 'pointer',
-        boarded: !(MERCH[p.id] || []).length, hasNote: !!NOTES[p.id], note: NOTES[p.id] || {}, corkHoverPe: a === i ? 'none' : 'auto', merch: (MERCH[p.id] || []).map(m => ({ ...m, pins: (m.pins || []).map(pn => ({ ...pn, bg: pinBg(PIN_HUES[(PIN_IX[m.id + pn.x] ??= Object.keys(PIN_IX).length) % PIN_HUES.length]) })), ar: m.aspect.toFixed(4), label: m.game + ' ' + m.name.toLowerCase() + ', click to pick up', op: this.state.viewer && this.state.viewer.id === m.id ? 0 : 1, open: e => { e.stopPropagation(); if (this.state.mode !== 'merch') return; if (this.state.active !== i) this.open(i); this.openViewer(m.id); } })),
+        boarded: !(MERCH[p.id] || []).length, hasNote: !!NOTES[p.id], note: NOTES[p.id] || {}, hasSocials: !!(SOCIALS[p.id] || []).length, socials: (SOCIALS[p.id] || []).map(([k, url]) => ({ ...SOCIAL_STYLE[k], label: p.title + ' on ' + SOCIAL_STYLE[k].label, go: e => { if (this.state.active !== i) return; e.stopPropagation(); window.open(url, '_blank', 'noopener'); } })), corkHoverPe: a === i ? 'none' : 'auto', merch: (MERCH[p.id] || []).map(m => ({ ...m, pins: (m.pins || []).map(pn => ({ ...pn, bg: pinBg(PIN_HUES[(PIN_IX[m.id + pn.x] ??= Object.keys(PIN_IX).length) % PIN_HUES.length]) })), ar: m.aspect.toFixed(4), label: m.game + ' ' + m.name.toLowerCase() + ', click to pick up', op: this.state.viewer && this.state.viewer.id === m.id ? 0 : 1, open: e => { e.stopPropagation(); if (this.state.mode !== 'merch') return; if (this.state.active !== i) this.open(i); this.openViewer(m.id); } })),
       })),
       onWallClick: e => { if (on && e.target === e.currentTarget) this.close(); },
       hintOp: on ? 0 : 1,
