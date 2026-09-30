@@ -31,7 +31,7 @@ a:hover{color:var(--color-accent-200)}
     <div style="position:absolute;left:0;right:0;top:100px;display:flex;flex-direction:column;align-items:center;gap:26px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .6s ease">
       <span style="font-size:40px;line-height:1;font-weight:500;letter-spacing:.01em;color:var(--color-accent-300)">Kevin Duijm's Game Gallery</span>
       <span style="font-size:112px;line-height:1;font-weight:500;letter-spacing:-.03em;color:var(--color-neutral-200);text-shadow:0 2px 0 color-mix(in srgb,var(--color-bg) 70%,transparent)">Move and click around</span>
-      <div style="display:flex;transform:scale(1.8);transform-origin:50% 0;margin-bottom:40px;gap:4px;padding:4px;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 70%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:{{ linkPe }}">
+      <div style="display:{{ deskFlex }};transform:scale(1.8);transform-origin:50% 0;margin-bottom:40px;gap:4px;padding:4px;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 70%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:{{ linkPe }}">
         <button class="{{ gamesCls }}" onClick="{{ toGames }}" aria-pressed="{{ isGames }}" style="display:flex;align-items:center;gap:8px"><i class="ph ph-game-controller"></i> Games</button>
         <button class="{{ merchCls }}" onClick="{{ toMerch }}" aria-pressed="{{ isMerch }}" style="display:flex;align-items:center;gap:8px"><i class="ph ph-push-pin"></i> Merch</button>
       </div>
@@ -135,6 +135,16 @@ a:hover{color:var(--color-accent-200)}
   <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 70% at 50% 50%,transparent 55%,color-mix(in srgb,var(--color-bg) 85%,transparent) 100%)"></div>
 </div>
 
+<div style="position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:35;display:{{ mobFlex }};gap:4px;padding:5px;border-radius:14px;background:color-mix(in srgb,var(--color-bg) 82%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--shadow-lg)">
+  <button class="{{ gamesCls }}" onClick="{{ toGames }}" aria-pressed="{{ isGames }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;min-width:120px;font-size:16px"><i class="ph ph-game-controller" style="font-size:20px"></i> Games</button>
+  <button class="{{ merchCls }}" onClick="{{ toMerch }}" aria-pressed="{{ isMerch }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;min-width:120px;font-size:16px"><i class="ph ph-push-pin" style="font-size:20px"></i> Merch</button>
+</div>
+
+<sc-if value="{{ sideArrows }}" hint-placeholder-val="{{ false }}">
+  <button class="btn btn-secondary btn-icon" onClick="{{ prev }}" aria-label="Previous" style="position:fixed;left:8px;top:{{ arrowTop }}px;transform:translateY(-50%);z-index:28;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-left" style="font-size:22px"></i></button>
+  <button class="btn btn-secondary btn-icon" onClick="{{ next }}" aria-label="Next" style="position:fixed;right:8px;top:{{ arrowTop }}px;transform:translateY(-50%);z-index:28;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-right" style="font-size:22px"></i></button>
+</sc-if>
+
 <header style="position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:20px;padding:22px clamp(20px,4vw,56px);pointer-events:none">
   <div style="display:flex;flex-direction:column;gap:2px;margin-right:auto;pointer-events:auto">
     <span style="font-size:16px;font-weight:500;color:var(--color-text);letter-spacing:-.005em">Kevin Duijm</span>
@@ -145,10 +155,10 @@ a:hover{color:var(--color-accent-200)}
 
 <div style="position:fixed;top:{{ mbTop }}px;left:50%;transform:translate(-50%,-100%);z-index:25;display:flex;align-items:center;gap:14px;padding:6px 6px 6px 16px;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 80%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap;opacity:{{ mbOp }};pointer-events:{{ mbPe }};transition:{{ mbTr }}">
   <span style="font-size:14px;color:var(--color-neutral-300)"><span style="color:var(--color-text);font-weight:500">{{ mbTitle }}</span> · click an item to pick it up</span>
-  <button class="btn btn-ghost" onClick="{{ close }}" style="display:flex;align-items:center;gap:8px"><i class="ph ph-arrow-left"></i> Back to wall</button>
+  <button class="btn btn-ghost" onClick="{{ close }}" style="display:{{ deskFlex }};align-items:center;gap:8px"><i class="ph ph-arrow-left"></i> Back to wall</button>
 </div>
 
-<div style="position:fixed;left:clamp(20px,4vw,56px);bottom:26px;z-index:20;display:flex;flex-direction:column;gap:6px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .5s ease">
+<div style="position:fixed;left:clamp(20px,4vw,56px);bottom:26px;z-index:20;display:{{ deskFlex }};flex-direction:column;gap:6px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .5s ease">
   <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-300)">Selected works, 2022 to 2026</span>
   <sc-if value="{{ isGames }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;color:var(--color-neutral-400)">Move to look around. Click a work to step closer.</span></sc-if>
   <sc-if value="{{ isMerch }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--color-neutral-400)">Move to look around. Click a piece of merch to pick it up.</span></sc-if>
@@ -159,7 +169,7 @@ a:hover{color:var(--color-accent-200)}
     <span style="font-size:13px;letter-spacing:.08em;color:var(--color-accent-300);font-feature-settings:'tnum' 1;margin-right:auto">{{ cur.num }} / {{ total }}</span>
     <button class="btn btn-ghost btn-icon" onClick="{{ prev }}" aria-label="Previous work"><i class="ph ph-arrow-left"></i></button>
     <button class="btn btn-ghost btn-icon" onClick="{{ next }}" aria-label="Next work"><i class="ph ph-arrow-right"></i></button>
-    <button class="btn btn-ghost btn-icon" onClick="{{ close }}" aria-label="Back to wall"><i class="ph ph-x"></i></button>
+    <button class="btn btn-ghost btn-icon" onClick="{{ close }}" aria-label="Back to wall" style="display:{{ deskFlex }}"><i class="ph ph-x"></i></button>
   </div>
   <div style="display:flex;flex-direction:column;gap:8px">
     <h1 style="margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ cur.title }}</h1>
@@ -173,6 +183,7 @@ a:hover{color:var(--color-accent-200)}
       </sc-for>
     </ul>
   </div>
+  <sc-if value="{{ showMore }}" hint-placeholder-val="{{ true }}">
   <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:14px">
     <sc-for list="{{ cur.info }}" as="row" hint-placeholder-count="4">
       <dt style="color:var(--color-neutral-500)">{{ row.k }}</dt>
@@ -188,8 +199,12 @@ a:hover{color:var(--color-accent-200)}
   </sc-if>
   <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:4px">
     <a href="{{ cur.link }}" target="{{ cur.target }}" class="btn btn-primary" style="display:flex;align-items:center;gap:8px;text-decoration:none">{{ cur.cta }} <i class="{{ cur.ctaIcon }}"></i></a>
-    <button class="btn btn-ghost" onClick="{{ close }}">Back to wall</button>
+    <button class="btn btn-ghost" onClick="{{ close }}" style="display:{{ deskFlex }}">Back to wall</button>
   </div>
+  </sc-if>
+  <sc-if value="{{ showMoreBtn }}" hint-placeholder-val="{{ false }}">
+    <button class="btn btn-secondary" onClick="{{ viewMore }}" style="align-self:stretch;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px">View more… <i class="ph ph-caret-down"></i></button>
+  </sc-if>
 </aside>
 
 <sc-if value="{{ viewerOn }}" hint-placeholder-val="{{ false }}">
@@ -223,7 +238,7 @@ a:hover{color:var(--color-accent-200)}
     <div ref="{{ uiRef }}" style="position:absolute;inset:0;pointer-events:none;opacity:0">
       <aside onPointerDown="{{ stop }}" onClick="{{ stop }}" style="position:absolute;left:{{ vpLeft }};right:{{ vpRight }};top:{{ vpTop }};bottom:{{ vpBottom }};width:{{ vpWidth }};max-height:{{ vpMaxH }};overflow:auto;pointer-events:auto;cursor:default;display:flex;flex-direction:column;gap:16px;padding:22px 24px;box-sizing:border-box;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 90%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
         <div style="display:flex;flex-direction:column;gap:6px">
-          <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-300)">{{ vGame }} · Merch</span>
+          <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-300)">{{ vGame }} · Merch · {{ vCount }}</span>
           <h2 style="margin:0;font-size:clamp(26px,2.6vw,34px);line-height:1.1;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ vName }}</h2>
         </div>
         <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14px;line-height:1.5">
@@ -262,8 +277,12 @@ a:hover{color:var(--color-accent-200)}
         </div>
         </sc-if>
       </aside>
+      <sc-if value="{{ vArrows }}" hint-placeholder-val="{{ false }}">
+        <button class="btn btn-secondary btn-icon" onPointerDown="{{ stop }}" onClick="{{ vPrev }}" aria-label="Previous item" style="position:absolute;left:8px;top:{{ vArrowTop }}px;transform:translateY(-50%);pointer-events:auto;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-left" style="font-size:22px"></i></button>
+        <button class="btn btn-secondary btn-icon" onPointerDown="{{ stop }}" onClick="{{ vNext }}" aria-label="Next item" style="position:absolute;right:8px;top:{{ vArrowTop }}px;transform:translateY(-50%);pointer-events:auto;width:48px;height:48px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><i class="ph ph-caret-right" style="font-size:22px"></i></button>
+      </sc-if>
       <button class="btn btn-ghost btn-icon" onPointerDown="{{ stop }}" onClick="{{ vClose }}" aria-label="Put it back" style="position:absolute;right:clamp(20px,4vw,56px);top:20px;pointer-events:auto;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
-      <span style="position:absolute;left:clamp(20px,4vw,56px);bottom:28px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--color-neutral-400);white-space:nowrap"><i class="ph ph-hand-grabbing" style="font-size:18px;color:var(--color-accent-300)"></i>Hold and drag to spin · Esc to put it back</span>
+      <span style="position:absolute;left:clamp(20px,4vw,56px);bottom:28px;display:{{ deskFlex }};align-items:center;gap:10px;font-size:14px;color:var(--color-neutral-400);white-space:nowrap"><i class="ph ph-hand-grabbing" style="font-size:18px;color:var(--color-accent-300)"></i>Hold and drag to spin · Esc to put it back</span>
     </div>
   </div>
 </sc-if>
@@ -294,6 +313,9 @@ const NOTES = {
 const PIN_HUES = [27];
 const PIN_IX = {};
 const pinBg = hh => 'radial-gradient(circle at 35% 30%,oklch(0.86 0.12 ' + hh + '),oklch(0.62 0.17 ' + hh + ') 55%,oklch(0.38 0.12 ' + hh + '))';
+const boardScale = (f, vw, vh) => vw < 820 ? Math.min(vw * 0.92 / f.w, vh * 0.46 / f.h) : Math.min(vw * 0.46 / f.w, (vh - 120) * 0.62 / f.h);
+const MERCH_ORDER = ['sc', 'cw', 'ba'];
+const firstIdx = mode => mode === 'merch' ? Math.max(0, P.findIndex(p => p.id === MERCH_ORDER[0])) : 0;
 const MERCH = {
   cw: [{ id: 'cw-banner', photos: 0, purpose: 'Event banner promoting the Steam release, with a QR code to the store page.', artist: 'Lisa van der Gevel Wenteler and Kevin Duijm', myRole: ['Involved in the design process', 'Handled the ordering process'], outcome: 'We eventually cancelled the order and went with a cheaper alternative: printing the design on A1 paper.', type: 'banner', game: 'Chasing Whiskers', name: 'Roll-up banner', front: 'media/merch-cw-banner-board.png', art: 'media/merch-cw-banner-art.jpg', back: '', aspect: 400 / 983, left: 50, top: 50, w: 20, rot: 1.5, radius: 0, vh: 0.8, pins: [{ x: 50, y: 1 }] }],
   sc: [{ id: 'sc-postcard', purpose: 'Thank-you card for players, with a QR code to the game.', artist: 'Alistair Schiffelers', myRole: ['Oversaw the design process', 'Gave feedback across design iterations', 'Managed the print order', 'Handed the cards out to visitors at Industry Day 2025'], photos: 2, type: 'card', game: 'Sunbeat City', name: 'Postcard', front: 'media/merch-sunbeat-postcard-front.jpg', back: 'media/merch-sunbeat-postcard-back.jpg', aspect: 1669 / 1194, left: 27, top: 33, w: 44, rot: -4, radius: 2, pins: [{ x: 50, y: 1 }] },
@@ -388,6 +410,18 @@ class Component extends DCLogic {
     const loop = () => { this.tick(); this.raf = requestAnimationFrame(loop); };
     this.raf = requestAnimationFrame(loop);
     this.freezeGifs();
+    if (innerWidth < 820) { this.last = 0; this.setState({ active: 0 }); }
+    this.onTS = e => { const t = e.touches[0]; this._ts = { x: t.clientX, y: t.clientY, t: performance.now() }; };
+    this.onTE = e => {
+      const s = this._ts; this._ts = null; if (!s || innerWidth >= 820 || this.state.lightbox) return;
+      const t = e.changedTouches[0], dx = t.clientX - s.x, dy = t.clientY - s.y, dt = performance.now() - s.t;
+      if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.4 || dt > 600) return;
+      const d = dx < 0 ? 1 : -1;
+      if (this.v) return;
+      if (this.state.active != null) this.step(d);
+    };
+    addEventListener('touchstart', this.onTS, { passive: true });
+    addEventListener('touchend', this.onTE, { passive: true });
   }
   componentWillUnmount() {
     cancelAnimationFrame(this.raf);
@@ -395,6 +429,7 @@ class Component extends DCLogic {
     document.removeEventListener('pointerleave', this.onLeave);
     removeEventListener('keydown', this.onKey);
     removeEventListener('resize', this.onResize);
+    removeEventListener('touchstart', this.onTS); removeEventListener('touchend', this.onTE);
     removeEventListener('pointerup', this.onUp); removeEventListener('pointercancel', this.onUp);
   }
   componentDidUpdate() { this.sync(); }
@@ -446,9 +481,9 @@ class Component extends DCLogic {
     const f = P[a], mob = vw < 820, merch = this.state.mode === 'merch';
     const panelW = mob || merch ? 0 : Math.min(440, vw * 0.36);
     const areaW = mob ? vw * 0.9 : merch ? vw * 0.88 : vw * 0.84 - panelW;
-    const top = merch ? 80 : 96, bottom = merch ? 40 : mob ? vh * 0.5 + 12 : 48;
+    const top = merch ? 80 : mob ? 64 : 96, bottom = merch ? (mob ? 90 : 40) : mob ? vh * 0.58 : 48;
     const areaH = (vh - top - bottom) * 0.92;
-    const s = merch ? Math.min(vw * 0.46 / f.w, (vh - 120) * 0.62 / f.h) : Math.min(areaW / f.w, areaH / f.h);
+    const s = merch ? boardScale(f, vw, vh) : Math.min(areaW / f.w, areaH / f.h);
     const sx = mob || merch ? vw / 2 : vw * 0.06 + areaW / 2;
     const sy = top + (vh - top - bottom) / 2;
     return { cx: f.x + f.w / 2 + (vw / 2 - sx) / s, cy: f.y + f.h / 2 + (vh / 2 - sy) / s, s, ry: merch ? 0 : -this.mx * 1.4 * k, rx: merch ? 0 : this.my * 1 * k };
@@ -487,7 +522,7 @@ class Component extends DCLogic {
     v.fade += ((out ? 0 : 1) - v.fade) * (out ? 0.16 : 0.1);
     const front = Math.round(v.ry / 360) * 360;
     if (out) { v.ry += (front - v.ry) * 0.16; v.rx += -v.rx * 0.16; }
-    else if (!v.drag && now - v.release > 3000) {
+    else if (!v.drag && now - v.release > 1500) {
       if (v.needReset) { v.ry += (front - v.ry) * 0.08; v.rx += (-8 - v.rx) * 0.08; if (Math.abs(front - v.ry) < 0.6 && Math.abs(-8 - v.rx) < 0.6) v.needReset = false; }
       else { v.ry += 22 * dt; v.rx += (-8 - v.rx) * 0.05; }
     }
@@ -498,21 +533,33 @@ class Component extends DCLogic {
     const done = out && (home ? Math.abs(v.x - home.x) < 1.5 && Math.abs(v.y - home.y) < 1.5 && Math.abs(v.s - home.s) < 0.01 : v.fade < 0.02);
     if (done) { this.v = null; this.setState({ viewer: null }); }
   }
-  openViewer = id => {
-    const m = MERCH_BY_ID[id]; if (!m || this.v) return;
+  openViewer = (id, instant) => {
+    const m = MERCH_BY_ID[id]; if (!m || (this.v && !instant)) return;
     const vw = innerWidth, vh = innerHeight, mob = vw < 820, pw = Math.min(420, vw * 0.34), mg = vw * 0.04;
     const areaW = mob ? vw * 0.86 : vw - pw - mg * 2 - 32, areaH = mob ? vh * 0.42 : vh - 150;
     const W = Math.round(Math.min(areaW * 0.86, areaH * ((m.vh || 0.6) / 0.72) * m.aspect, 1000)), H = Math.round(W / m.aspect);
     const cx = mob ? 0 : mg + areaW / 2 - vw / 2, cy = mob ? -vh * 0.22 : 20;
     this.v = { id, W, H, cx, cy, aspect: m.aspect, rot: m.rot, phase: 'in', x: 0, y: 0, s: 0.2, rz: m.rot, rx: 0, ry: 0, fade: 0, drag: false, release: -1e9, needReset: false, moved: 0, t: performance.now(), started: false };
+    if (instant) Object.assign(this.v, { started: true, x: cx, y: cy, s: 0.7, rz: 0, fade: 1 });
     this.setState({ viewer: { id, W, H } });
   };
+  swipeItem = d => {
+    const a = this.state.active; if (a == null || !this.v) return;
+    const list = MERCH[P[a].id] || []; if (list.length < 2) return;
+    const k = list.findIndex(m => m.id === this.v.id);
+    this.openViewer(list[(k + d + list.length) % list.length].id, true);
+  };
   closeViewer = () => { if (this.v) { this.v.phase = 'out'; this.v.drag = false; } };
-  setMode = mode => { if (this.v) return; this.hovered = null; this.setState({ mode, active: null }); };
+  setMode = mode => { if (this.v) return; this.hovered = null; const cur = this.state.active ?? this.last, i = innerWidth < 820 ? (mode === 'games' || (MERCH[P[cur].id] || []).length ? cur : firstIdx(mode)) : null; if (i != null) this.last = i; this.setState({ mode, active: i }); };
 
-  open = i => { this.last = i; this.setState({ active: i }); };
-  close = () => this.setState({ active: null });
+  open = i => { this.last = i; this.setState({ active: i, more: false }); };
+  close = () => { if (innerWidth < 820) return; this.setState({ active: null }); };
   step = d => {
+    if (this.state.mode === 'merch') {
+      const cur = P[this.state.active ?? this.last].id, k0 = MERCH_ORDER.indexOf(cur);
+      const nid = MERCH_ORDER[((k0 < 0 ? 0 : k0) + d + MERCH_ORDER.length) % MERCH_ORDER.length];
+      this.open(P.findIndex(p => p.id === nid)); return;
+    }
     let n = this.state.active ?? this.last;
     for (let k = 0; k < P.length; k++) { n = (n + d + P.length) % P.length; if (this.state.mode === 'games' || (MERCH[P[n].id] || []).length) break; }
     this.open(n);
@@ -549,7 +596,7 @@ class Component extends DCLogic {
     }) : [];
     return {
       viewerOn: true, vIsCard: !layered && !parts, vIsShirt: layered, vIsParts: parts, ...(parts ? this.bannerParts(m, W, H) : { vSheet: {}, vParts: [] }), vSlices, vFaceS: layered ? 1 - LY.fb : 1, vBackS: layered ? 1 - LY.bb : 1, vW: W, vH: H, vT: T, vHW: -W / 2, vHH: -H / 2, vHT: -T / 2, vZ: T / 2, vZW: W / 2, vZH: H / 2,
-      vHasOutcome: !!m.outcome, vOutcome: m.outcome || '', vInvolve: (Array.isArray(m.myRole) ? m.myRole : m.myRole ? [m.myRole] : []).map(t => ({ t })), vNoInvolve: !m.myRole || !m.myRole.length,
+      vCount: (() => { const l = Object.values(MERCH).find(x => x.some(y => y.id === m.id)) || []; return (l.findIndex(y => y.id === m.id) + 1) + ' / ' + l.length; })(), vArrows: this.state.vw < 820 && (Object.values(MERCH).find(x => x.some(y => y.id === m.id)) || []).length > 1, vArrowTop: Math.round(innerHeight * 0.28), vPrev: e => { e.stopPropagation(); this.swipeItem(-1); }, vNext: e => { e.stopPropagation(); this.swipeItem(1); }, vHasOutcome: !!m.outcome, vOutcome: m.outcome || '', vInvolve: (Array.isArray(m.myRole) ? m.myRole : m.myRole ? [m.myRole] : []).map(t => ({ t })), vNoInvolve: !m.myRole || !m.myRole.length,
       vInfo: [['Purpose', m.purpose], ['Design by', m.artist]].map(([k, v]) => ({ k, v: v || 'To be added', color: v ? 'var(--color-text)' : 'var(--color-neutral-500)' })),
       vHasPhotos: (m.photos ?? 1) > 0, vPhotos: Array.from({ length: m.photos ?? 1 }, (_, i) => ({ id: 'merch-photo-' + m.id + '-' + (i + 1), rot: [-2, 1.5, -1, 2.5][i % 4],
         open: e => {
@@ -563,7 +610,7 @@ class Component extends DCLogic {
       lbFit: e => { const im = e.currentTarget, s = Math.min(innerWidth * 0.5 / im.naturalWidth, innerHeight * 0.7 / im.naturalHeight); im.style.width = Math.round(im.naturalWidth * s) + 'px'; im.style.height = Math.round(im.naturalHeight * s) + 'px'; },
       lbOn: !!this.state.lightbox, lbSrc: this.state.lightbox || '', lbClose: e => { e.stopPropagation(); this.setState({ lightbox: null }); },
       vpLeft: this.state.vw < 820 ? '12px' : 'auto', vpRight: this.state.vw < 820 ? '12px' : 'clamp(20px,4vw,56px)', vpTop: this.state.vw < 820 ? 'auto' : '84px', vpBottom: this.state.vw < 820 ? '12px' : 'auto',
-      vpWidth: this.state.vw < 820 ? 'auto' : 'min(420px,34vw)', vpMaxH: this.state.vw < 820 ? '44vh' : 'calc(100vh - 150px)',
+      vpWidth: this.state.vw < 820 ? 'auto' : 'min(420px,34vw)', vpMaxH: this.state.vw < 820 ? '50vh' : 'calc(100vh - 150px)',
       vFront: m.front, vBack: m.back, vLabel: m.game + ' ' + m.name.toLowerCase(), vGame: m.game, vName: m.name,
       vDown: e => { const v = this.v; if (!v || v.phase === 'out') return; v.drag = true; v.lx = e.clientX; v.ly = e.clientY; v.moved = 0; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {} },
       vClick: e => {
@@ -578,11 +625,16 @@ class Component extends DCLogic {
   }
 
   renderVals() {
+    const mobSide = (() => { const vw = innerWidth, vh = innerHeight; if (vw >= 820) return 0; const f = P[this.state.active ?? this.last]; const top = 64, bottom = vh * 0.58; const s = Math.min(vw * 0.9 / f.w, (vh - top - bottom) * 0.92 / f.h); return Math.max(8, Math.round((vw - f.w * s) / 2)); })();
     const a = this.state.active, on = a != null;
     const mob = this.state.vw < 820;
     const c = P[on ? a : this.last];
     const ext = /^https?:/.test(c.link);
     return {
+      sideArrows: mob && on && !this.state.viewer,
+      arrowTop: (() => { const vh = innerHeight; return this.state.mode === 'merch' ? Math.round(80 + (vh - 170) / 2) : Math.round(64 + (vh * 0.42 - 64) / 2); })(),
+      showMore: !mob || !!this.state.more, showMoreBtn: mob && !this.state.more, viewMore: () => this.setState({ more: true }),
+      deskFlex: mob ? 'none' : 'flex', mobFlex: mob && !this.state.viewer ? 'flex' : 'none',
       wallRef: this.wallRef, cardRef: this.cardRef, bgRef: this.bgRef, uiRef: this.uiRef,
       isGames: this.state.mode === 'games', isMerch: this.state.mode === 'merch',
       gamesCls: 'btn ' + (this.state.mode === 'games' ? 'btn-primary' : 'btn-ghost'), merchCls: 'btn ' + (this.state.mode === 'merch' ? 'btn-primary' : 'btn-ghost'),
@@ -610,11 +662,11 @@ class Component extends DCLogic {
       },
       prev: () => this.step(-1), next: () => this.step(1), close: this.close,
       panelOp: on && this.state.mode === 'games' ? 1 : 0, panelPe: on && this.state.mode === 'games' ? 'auto' : 'none',
-      mbOp: on && this.state.mode === 'merch' && !this.state.viewer ? 1 : 0, mbPe: on && this.state.mode === 'merch' && !this.state.viewer ? 'auto' : 'none', mbTr: on && this.state.mode === 'merch' && !this.state.viewer ? 'opacity .4s ease .25s' : 'opacity .12s ease', mbBottom: (() => { const vw = innerWidth, vh = innerHeight, s = Math.min(vw * 0.46 / c.w, (vh - 120) * 0.62 / c.h); return Math.round(80 + (vh - 120) / 2 + c.h * s / 2 + 22); })(), mbTitle: c.title, mbTop: (() => { const vw = innerWidth, vh = innerHeight, s = Math.min(vw * 0.46 / c.w, (vh - 120) * 0.62 / c.h); return Math.max(64, Math.round(80 + (vh - 120) / 2 - c.h * s / 2 - 18)); })(),
+      mbOp: on && this.state.mode === 'merch' && !this.state.viewer ? 1 : 0, mbPe: on && this.state.mode === 'merch' && !this.state.viewer ? 'auto' : 'none', mbTr: on && this.state.mode === 'merch' && !this.state.viewer ? 'opacity .4s ease .25s' : 'opacity .12s ease', mbBottom: (() => { const vw = innerWidth, vh = innerHeight, s = boardScale(c, vw, vh); return Math.round(80 + (vh - 120) / 2 + c.h * s / 2 + 22); })(), mbTitle: c.title, mbTop: (() => { const vw = innerWidth, vh = innerHeight, s = boardScale(c, vw, vh); return Math.max(64, Math.round(80 + (vh - 120) / 2 - c.h * s / 2 - 18)); })(),
       linkOp: on ? 0 : 1, linkPe: on ? 'none' : 'auto',
-      pLeft: mob ? '12px' : 'auto', pRight: mob ? '12px' : '4vw', pTop: mob ? 'auto' : 'calc(50% + 24px)', pBottom: mob ? '12px' : 'auto',
-      pWidth: mob ? 'auto' : 'min(440px,36vw)', pMaxH: mob ? '50vh' : 'calc(100vh - 144px)',
-      pPad: mob ? '18px' : '22px 24px',
+      pLeft: mob ? mobSide + 'px' : 'auto', pRight: mob ? mobSide + 'px' : '4vw', pTop: mob ? '42vh' : 'calc(50% + 24px)', pBottom: mob ? 'auto' : 'auto',
+      pWidth: mob ? 'auto' : 'min(440px,36vw)', pMaxH: mob ? 'calc(58vh - 84px)' : 'calc(100vh - 144px)',
+      pPad: mob ? '18px 18px 20px' : '22px 24px',
       pBg: 'color-mix(in srgb,var(--color-bg) 90%,transparent)',
       pTf: mob ? (on ? 'translateY(0)' : 'translateY(24px)') : (on ? 'translateY(-50%)' : 'translate(32px,-50%)'),
     };
