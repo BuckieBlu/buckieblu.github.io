@@ -12,7 +12,10 @@
 <helmet>
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script src="./image-slot.js"></script>
 <style>
 html,body{margin:0;height:100%;overflow:hidden;background:var(--color-bg);text-wrap:pretty}
 a{color:var(--color-accent-300)}
@@ -22,12 +25,16 @@ a:hover{color:var(--color-accent-200)}
 
 <div style="position:fixed;inset:0;overflow:hidden;perspective:1400px;perspective-origin:50% 50%;background:radial-gradient(1400px 700px at 50% 20%,color-mix(in srgb,var(--color-neutral-800) 40%,var(--color-bg)),var(--color-bg) 70%);cursor:default">
 
-  <div ref="{{ wallRef }}" onClick="{{ onWallClick }}" data-wall="" style="position:absolute;left:0;top:0;width:3200px;height:1500px;transform-origin:0 0;will-change:transform;background:linear-gradient(180deg,color-mix(in srgb,var(--color-neutral-800) 30%,var(--color-bg)) 0%,color-mix(in srgb,var(--color-neutral-800) 55%,var(--color-bg)) 45%,color-mix(in srgb,var(--color-neutral-800) 35%,var(--color-bg)) 86%);box-shadow:0 0 0 1px color-mix(in srgb,var(--color-neutral-700) 40%,transparent)">
+  <div ref="{{ wallRef }}" onClick="{{ onWallClick }}" data-wall="" style="position:absolute;left:0;top:0;width:3200px;height:1500px;transform-origin:0 0;background:linear-gradient(180deg,color-mix(in srgb,var(--color-neutral-800) 30%,var(--color-bg)) 0%,color-mix(in srgb,var(--color-neutral-800) 55%,var(--color-bg)) 45%,color-mix(in srgb,var(--color-neutral-800) 35%,var(--color-bg)) 86%);box-shadow:0 0 0 1px color-mix(in srgb,var(--color-neutral-700) 40%,transparent)">
 
     <div style="position:absolute;left:0;right:0;top:0;height:140px;pointer-events:none;background:linear-gradient(180deg,var(--color-bg),transparent)"></div>
-    <div style="position:absolute;left:0;right:0;top:120px;display:flex;flex-direction:column;align-items:center;gap:26px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .6s ease">
+    <div style="position:absolute;left:0;right:0;top:100px;display:flex;flex-direction:column;align-items:center;gap:26px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .6s ease">
       <span style="font-size:40px;line-height:1;font-weight:500;letter-spacing:.01em;color:var(--color-accent-300)">Kevin Duijm's Game Gallery</span>
       <span style="font-size:112px;line-height:1;font-weight:500;letter-spacing:-.03em;color:var(--color-neutral-200);text-shadow:0 2px 0 color-mix(in srgb,var(--color-bg) 70%,transparent)">Move and click around</span>
+      <div style="display:flex;transform:scale(1.8);transform-origin:50% 0;margin-bottom:40px;gap:4px;padding:4px;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 70%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:{{ linkPe }}">
+        <button class="{{ gamesCls }}" onClick="{{ toGames }}" aria-pressed="{{ isGames }}" style="display:flex;align-items:center;gap:8px"><i class="ph ph-game-controller"></i> Games</button>
+        <button class="{{ merchCls }}" onClick="{{ toMerch }}" aria-pressed="{{ isMerch }}" style="display:flex;align-items:center;gap:8px"><i class="ph ph-push-pin"></i> Merch</button>
+      </div>
     </div>
     <div style="position:absolute;left:0;right:0;top:1320px;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,var(--color-neutral-600) 8%,var(--color-neutral-600) 92%,transparent)"></div>
     <div style="position:absolute;left:0;right:0;top:1321px;bottom:0;pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--color-neutral-900) 60%,var(--color-bg)),var(--color-bg))"></div>
@@ -39,7 +46,8 @@ a:hover{color:var(--color-accent-200)}
     </sc-for>
 
     <sc-for list="{{ frames }}" as="p" hint-placeholder-count="0">
-      <button data-frame="{{ p.id }}" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" aria-label="{{ p.title }}" style="position:absolute;left:{{ p.x }}px;top:{{ p.y }}px;width:{{ p.w }}px;height:{{ p.h }}px;padding:14px;margin:0;border:1px solid var(--color-neutral-600);border-radius:4px;cursor:pointer;opacity:{{ p.op }};transition:opacity .7s ease,box-shadow .35s ease,border-color .35s ease,transform .35s ease;background:linear-gradient(160deg,var(--color-neutral-700),var(--color-neutral-800) 60%,var(--color-neutral-900));box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 8px 18px -6px rgba(0,0,0,.5),inset 0 1px 0 color-mix(in srgb,var(--color-neutral-400) 30%,transparent)" style-hover="border-color:var(--color-accent);transform:scale(1.012);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 38px -6px color-mix(in srgb,var(--color-accent) 45%,transparent),inset 0 1px 0 color-mix(in srgb,var(--color-neutral-400) 30%,transparent)">
+      <button data-frame="{{ p.id }}" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" aria-label="{{ p.title }}" style="position:absolute;left:{{ p.x }}px;top:{{ p.y }}px;width:{{ p.w }}px;height:{{ p.h }}px;padding:0;margin:0;border:0;background:none;cursor:{{ p.cursor }};transform-style:preserve-3d;transform:perspective(1800px) rotateY({{ p.flip }}deg);transition:opacity .7s ease,transform 1.1s cubic-bezier(.65,0,.25,1) {{ p.flipDelay }}s">
+        <span style="position:absolute;inset:0;display:block;padding:14px;box-sizing:border-box;border:1px solid var(--color-neutral-600);border-radius:4px;transform:translateZ(0.5px);backface-visibility:hidden;-webkit-backface-visibility:hidden;opacity:{{ p.op }};transition:opacity .7s ease,box-shadow .35s ease,border-color .35s ease;background:linear-gradient(160deg,var(--color-neutral-700),var(--color-neutral-800) 60%,var(--color-neutral-900));box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 8px 18px -6px rgba(0,0,0,.5),inset 0 1px 0 color-mix(in srgb,var(--color-neutral-400) 30%,transparent)" style-hover="border-color:var(--color-accent);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 38px -6px color-mix(in srgb,var(--color-accent) 45%,transparent),inset 0 1px 0 color-mix(in srgb,var(--color-neutral-400) 30%,transparent)">
         <span style="position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:2px;background:var(--color-neutral-900);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--color-neutral-900) 80%,transparent)">
           <span class="lighten" style="position:absolute;inset:0;display:block">
             <img src="{{ p.media }}" alt="{{ p.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -89,6 +97,30 @@ a:hover{color:var(--color-accent-200)}
             </span>
           </span>
         </sc-if>
+        </span>
+        <span style="position:absolute;inset:0;display:block;transform:rotateY(180deg) translateZ(0.5px);backface-visibility:hidden;-webkit-backface-visibility:hidden;opacity:{{ p.op }};transition:opacity .7s ease,box-shadow .35s ease,border-color .35s ease;border-radius:6px;box-sizing:border-box;border:14px solid oklch(0.4 0.05 55);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 8px 18px -6px rgba(0,0,0,.5),inset 0 0 0 1px oklch(0.3 0.04 50),inset 0 6px 18px rgba(0,0,0,.4);background-color:oklch(0.62 0.08 62);background-image:radial-gradient(oklch(0.46 0.07 52) 0.9px,transparent 1.5px),radial-gradient(oklch(0.76 0.07 72) 0.8px,transparent 1.4px),radial-gradient(oklch(0.53 0.08 56) 1.3px,transparent 2.1px);background-size:7px 7px,11px 11px,17px 17px;background-position:0 0,3px 5px,8px 2px">
+          <span style="position:absolute;inset:-14px;display:block;border-radius:6px;pointer-events:{{ p.corkHoverPe }};transition:box-shadow .35s ease" style-hover="box-shadow:0 0 44px -4px color-mix(in srgb,var(--color-accent) 55%,transparent),inset 0 0 0 14px oklch(0.55 0.07 60 / .35)"></span>
+          <sc-for list="{{ p.merch }}" as="m" hint-placeholder-count="0">
+            <span data-merch="{{ m.id }}" role="button" tabindex="0" aria-label="{{ m.label }}" onClick="{{ m.open }}" style="position:absolute;display:block;left:{{ m.left }}%;top:{{ m.top }}%;width:{{ m.w }}%;aspect-ratio:{{ m.ar }};transform:translate(-50%,-50%) rotate({{ m.rot }}deg);cursor:zoom-in;opacity:{{ m.op }};transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))" style-hover="transform:translate(-50%,-52%) rotate(-1deg) scale(1.05);filter:drop-shadow(0 16px 18px rgba(0,0,0,.5))">
+              <img src="{{ m.front }}" alt="" style="width:100%;height:100%;display:block;object-fit:fill;border-radius:{{ m.radius }}px">
+              <sc-for list="{{ m.pins }}" as="pin" hint-placeholder-count="0"><span style="position:absolute;left:{{ pin.x }}%;top:{{ pin.y }}%;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:{{ pin.bg }};box-shadow:2px 5px 5px rgba(0,0,0,.45),inset 0 -2px 3px rgba(0,0,0,.25)"></span></sc-for>
+            </span>
+          </sc-for>
+          <sc-if value="{{ p.hasNote }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;display:flex;align-items:center;justify-content:center;left:{{ p.note.left }}%;top:{{ p.note.top }}%;width:{{ p.note.size }}px;height:{{ p.note.size }}px;padding:10px;box-sizing:border-box;transform:translate(-50%,-50%) rotate({{ p.note.rot }}deg);pointer-events:none;background:linear-gradient(170deg,oklch(0.93 0.13 100),oklch(0.88 0.14 96) 70%,oklch(0.84 0.13 92));box-shadow:0 8px 10px -4px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.3),inset 0 -6px 10px -8px rgba(0,0,0,.35);clip-path:polygon(0 0,100% 0,100% 88%,90% 100%,0 100%)">
+              <span style="font-family:'Gochi Hand',cursive;font-size:{{ p.note.font }}px;line-height:1.05;text-align:center;text-wrap:balance;color:oklch(0.33 0.01 260);opacity:.9">{{ p.title }}</span>
+            </span>
+          </sc-if>
+          <sc-if value="{{ p.boarded }}" hint-placeholder-val="{{ false }}">
+            <span aria-label="Nothing here yet" style="position:absolute;inset:-14px;display:block;cursor:not-allowed">
+            <span style="position:absolute;display:block;left:-5%;width:110%;top:4%;height:17%;transform:rotate(-1.2deg);background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 5px,rgba(255,255,255,.05) 5px 6px,transparent 6px 11px),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 3px,transparent 3px 61px),linear-gradient(180deg,oklch(0.44 0.03 62),oklch(0.35 0.03 56) 55%,oklch(0.29 0.025 50));box-shadow:0 8px 12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -3px 0 rgba(0,0,0,.3);border-radius:2px"><span style="position:absolute;left:4%;top:32%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;left:4%;top:68%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:32%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:68%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span></span>
+            <span style="position:absolute;display:block;left:-5%;width:110%;top:28%;height:17%;transform:rotate(0.8deg);background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 5px,rgba(255,255,255,.05) 5px 6px,transparent 6px 11px),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 3px,transparent 3px 61px),linear-gradient(180deg,oklch(0.44 0.03 62),oklch(0.35 0.03 56) 55%,oklch(0.29 0.025 50));box-shadow:0 8px 12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -3px 0 rgba(0,0,0,.3);border-radius:2px"><span style="position:absolute;left:4%;top:32%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;left:4%;top:68%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:32%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:68%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span></span>
+            <span style="position:absolute;display:block;left:-5%;width:110%;top:53%;height:17%;transform:rotate(-0.6deg);background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 5px,rgba(255,255,255,.05) 5px 6px,transparent 6px 11px),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 3px,transparent 3px 61px),linear-gradient(180deg,oklch(0.44 0.03 62),oklch(0.35 0.03 56) 55%,oklch(0.29 0.025 50));box-shadow:0 8px 12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -3px 0 rgba(0,0,0,.3);border-radius:2px"><span style="position:absolute;left:4%;top:32%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;left:4%;top:68%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:32%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:68%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span></span>
+            <span style="position:absolute;display:block;left:-5%;width:110%;top:77%;height:17%;transform:rotate(1.1deg);background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 5px,rgba(255,255,255,.05) 5px 6px,transparent 6px 11px),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 3px,transparent 3px 61px),linear-gradient(180deg,oklch(0.44 0.03 62),oklch(0.35 0.03 56) 55%,oklch(0.29 0.025 50));box-shadow:0 8px 12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -3px 0 rgba(0,0,0,.3);border-radius:2px"><span style="position:absolute;left:4%;top:32%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;left:4%;top:68%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:32%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:68%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span></span>
+            <span style="position:absolute;display:block;left:-14%;width:128%;top:41.5%;height:17%;transform:rotate(-31deg);background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 5px,rgba(255,255,255,.05) 5px 6px,transparent 6px 11px),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 3px,transparent 3px 61px),linear-gradient(180deg,oklch(0.44 0.03 62),oklch(0.35 0.03 56) 55%,oklch(0.29 0.025 50));box-shadow:0 8px 12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -3px 0 rgba(0,0,0,.3);border-radius:2px;filter:brightness(1.08)"><span style="position:absolute;left:4%;top:32%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;left:4%;top:68%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:32%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span><span style="position:absolute;right:4%;top:68%;margin:-4.5px -4.5px -4.5px 0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.01 250),oklch(0.45 0.01 250) 60%,oklch(0.25 0.01 250));box-shadow:1px 2px 2px rgba(0,0,0,.6)"></span></span>
+            </span>
+          </sc-if>
+        </span>
       </button>
       <div style="position:absolute;left:{{ p.x }}px;top:{{ p.labelTop }}px;display:flex;flex-direction:column;gap:4px;pointer-events:none;opacity:{{ p.labelOp }};transition:opacity .6s ease">
         <div style="display:flex;gap:12px;align-items:baseline">
@@ -111,9 +143,15 @@ a:hover{color:var(--color-accent-200)}
   <a href="index.html" class="btn btn-ghost" style="pointer-events:{{ linkPe }};opacity:{{ linkOp }};transition:opacity .4s ease;display:flex;align-items:center;gap:8px;text-decoration:none"><i class="ph ph-arrow-left"></i> Back to portfolio</a>
 </header>
 
+<div style="position:fixed;top:{{ mbTop }}px;left:50%;transform:translate(-50%,-100%);z-index:25;display:flex;align-items:center;gap:14px;padding:6px 6px 6px 16px;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 80%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap;opacity:{{ mbOp }};pointer-events:{{ mbPe }};transition:{{ mbTr }}">
+  <span style="font-size:14px;color:var(--color-neutral-300)"><span style="color:var(--color-text);font-weight:500">{{ mbTitle }}</span> · click an item to pick it up</span>
+  <button class="btn btn-ghost" onClick="{{ close }}" style="display:flex;align-items:center;gap:8px"><i class="ph ph-arrow-left"></i> Back to wall</button>
+</div>
+
 <div style="position:fixed;left:clamp(20px,4vw,56px);bottom:26px;z-index:20;display:flex;flex-direction:column;gap:6px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .5s ease">
   <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-300)">Selected works, 2022 to 2026</span>
-  <span style="font-size:14px;color:var(--color-neutral-400)">Move to look around. Click a work to step closer.</span>
+  <sc-if value="{{ isGames }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;color:var(--color-neutral-400)">Move to look around. Click a work to step closer.</span></sc-if>
+  <sc-if value="{{ isMerch }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--color-neutral-400)">Move to look around. Click a piece of merch to pick it up.</span></sc-if>
 </div>
 
 <aside style="position:fixed;z-index:30;left:{{ pLeft }};right:{{ pRight }};top:{{ pTop }};bottom:{{ pBottom }};width:{{ pWidth }};max-height:{{ pMaxH }};overflow:auto;opacity:{{ panelOp }};transform:{{ pTf }};pointer-events:{{ panelPe }};transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;gap:14px;padding:{{ pPad }};box-sizing:border-box;border-radius:12px;background:{{ pBg }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
@@ -154,15 +192,124 @@ a:hover{color:var(--color-accent-200)}
   </div>
 </aside>
 
+<sc-if value="{{ viewerOn }}" hint-placeholder-val="{{ false }}">
+  <div onPointerDown="{{ vDown }}" onClick="{{ vClick }}" style="position:fixed;inset:0;z-index:40;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none">
+    <div ref="{{ bgRef }}" style="position:absolute;inset:0;opacity:0;background:color-mix(in srgb,var(--color-bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)"></div>
+    <div style="position:absolute;inset:0;perspective:1800px;pointer-events:none">
+      <div ref="{{ cardRef }}" style="position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;opacity:0;will-change:transform">
+        <sc-if value="{{ vIsCard }}" hint-placeholder-val="{{ false }}">
+        <div data-vface="" style="position:absolute;left:{{ vHW }}px;top:{{ vHH }}px;width:{{ vW }}px;height:{{ vH }}px;transform:translateZ({{ vZ }}px);backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:3px;overflow:hidden;background:oklch(0.93 0.03 85)"><img src="{{ vFront }}" alt="{{ vLabel }}, front" draggable="false" style="width:100%;height:100%;display:block;object-fit:cover"></div>
+        <div style="position:absolute;left:{{ vHW }}px;top:{{ vHH }}px;width:{{ vW }}px;height:{{ vH }}px;transform:rotateY(180deg) translateZ({{ vZ }}px);backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:3px;overflow:hidden;background:oklch(0.93 0.03 85)"><img src="{{ vBack }}" alt="{{ vLabel }}, back" draggable="false" style="width:100%;height:100%;display:block;object-fit:cover"></div>
+        <div style="position:absolute;left:{{ vHT }}px;top:{{ vHH }}px;width:{{ vT }}px;height:{{ vH }}px;transform:rotateY(90deg) translateZ({{ vZW }}px);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,oklch(0.86 0.03 85),oklch(0.93 0.025 88),oklch(0.84 0.03 82))"></div>
+        <div style="position:absolute;left:{{ vHT }}px;top:{{ vHH }}px;width:{{ vT }}px;height:{{ vH }}px;transform:rotateY(-90deg) translateZ({{ vZW }}px);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,oklch(0.86 0.03 85),oklch(0.93 0.025 88),oklch(0.84 0.03 82))"></div>
+        <div style="position:absolute;left:{{ vHW }}px;top:{{ vHT }}px;width:{{ vW }}px;height:{{ vT }}px;transform:rotateX(90deg) translateZ({{ vZH }}px);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,oklch(0.86 0.03 85),oklch(0.93 0.025 88),oklch(0.84 0.03 82))"></div>
+        <div style="position:absolute;left:{{ vHW }}px;top:{{ vHT }}px;width:{{ vW }}px;height:{{ vT }}px;transform:rotateX(-90deg) translateZ({{ vZH }}px);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,oklch(0.86 0.03 85),oklch(0.93 0.025 88),oklch(0.84 0.03 82))"></div>
+        </sc-if>
+        <sc-if value="{{ vIsParts }}" hint-placeholder-val="{{ false }}">
+          <div data-vface="" style="position:absolute;left:{{ vSheet.l }}px;top:{{ vSheet.t }}px;width:{{ vSheet.w }}px;height:{{ vSheet.h }}px;transform:{{ vSheet.tf }};backface-visibility:hidden;-webkit-backface-visibility:hidden;background:{{ vSheet.bg }}"></div>
+          <sc-for list="{{ vParts }}" as="pt" hint-placeholder-count="0">
+            <div style="position:absolute;left:{{ pt.l }}px;top:{{ pt.t }}px;width:{{ pt.w }}px;height:{{ pt.h }}px;transform:{{ pt.tf }};backface-visibility:hidden;-webkit-backface-visibility:hidden;background:{{ pt.bg }}"></div>
+          </sc-for>
+        </sc-if>
+        <sc-if value="{{ vIsShirt }}" hint-placeholder-val="{{ false }}">
+          <sc-for list="{{ vSlices }}" as="sl" hint-placeholder-count="0">
+            <div style="position:absolute;left:{{ vHW }}px;top:{{ vHH }}px;width:{{ vW }}px;height:{{ vH }}px;transform:{{ sl.tf }};background:{{ sl.bg }};-webkit-mask-image:url({{ sl.mask }});mask-image:url({{ sl.mask }});-webkit-mask-size:100% 100%;mask-size:100% 100%"></div>
+          </sc-for>
+          <div data-vface="" style="position:absolute;left:{{ vHW }}px;top:{{ vHH }}px;width:{{ vW }}px;height:{{ vH }}px;transform:translateZ({{ vZ }}px) scale({{ vFaceS }});backface-visibility:hidden;-webkit-backface-visibility:hidden"><img src="{{ vFront }}" alt="{{ vLabel }}, front" draggable="false" style="width:100%;height:100%;display:block;object-fit:fill"></div>
+          <div style="position:absolute;left:{{ vHW }}px;top:{{ vHH }}px;width:{{ vW }}px;height:{{ vH }}px;transform:rotateY(180deg) translateZ({{ vZ }}px) scale({{ vBackS }});backface-visibility:hidden;-webkit-backface-visibility:hidden"><img src="{{ vBack }}" alt="{{ vLabel }}, back" draggable="false" style="width:100%;height:100%;display:block;object-fit:fill"></div>
+        </sc-if>
+      </div>
+    </div>
+    <div ref="{{ uiRef }}" style="position:absolute;inset:0;pointer-events:none;opacity:0">
+      <aside onPointerDown="{{ stop }}" onClick="{{ stop }}" style="position:absolute;left:{{ vpLeft }};right:{{ vpRight }};top:{{ vpTop }};bottom:{{ vpBottom }};width:{{ vpWidth }};max-height:{{ vpMaxH }};overflow:auto;pointer-events:auto;cursor:default;display:flex;flex-direction:column;gap:16px;padding:22px 24px;box-sizing:border-box;border-radius:12px;background:color-mix(in srgb,var(--color-bg) 90%,transparent);border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:var(--color-neutral-700) transparent">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-300)">{{ vGame }} · Merch</span>
+          <h2 style="margin:0;font-size:clamp(26px,2.6vw,34px);line-height:1.1;font-weight:500;letter-spacing:-.015em;color:var(--color-text)">{{ vName }}</h2>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14px;line-height:1.5">
+          <sc-for list="{{ vInfo }}" as="row" hint-placeholder-count="3">
+            <dt style="color:var(--color-neutral-500)">{{ row.k }}</dt>
+            <dd style="margin:0;color:{{ row.color }}">{{ row.v }}</dd>
+          </sc-for>
+        </dl>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5">
+          <span style="color:var(--color-neutral-500)">My involvement</span>
+          <sc-if value="{{ vNoInvolve }}" hint-placeholder-val="{{ false }}"><span style="color:var(--color-neutral-500)">To be added</span></sc-if>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px">
+            <sc-for list="{{ vInvolve }}" as="r" hint-placeholder-count="0">
+              <li style="display:flex;gap:12px;color:var(--color-text)"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:var(--color-accent);margin-top:8px"></span>{{ r.t }}</li>
+            </sc-for>
+          </ul>
+        </div>
+        <sc-if value="{{ vHasOutcome }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5">
+            <span style="color:var(--color-neutral-500)">Outcome</span>
+            <p style="margin:0;color:var(--color-text)">{{ vOutcome }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ vHasPhotos }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent-300)">In real life</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:18px 16px;padding:4px 6px 10px">
+            <sc-for list="{{ vPhotos }}" as="ph" hint-placeholder-count="1">
+              <div style="padding:8px 8px 26px;background:oklch(0.95 0.012 85);border-radius:2px;box-shadow:0 10px 18px -6px rgba(0,0,0,.6),0 2px 4px rgba(0,0,0,.35);transform:rotate({{ ph.rot }}deg)">
+                <div onClick="{{ ph.open }}" onDblClick="{{ ph.dbl }}" style="position:relative;width:100%;aspect-ratio:4/3;background:oklch(0.86 0.01 85);cursor:zoom-in">
+                  <image-slot id="{{ ph.id }}" shape="rect" placeholder="Drop a photo"></image-slot>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+      </aside>
+      <button class="btn btn-ghost btn-icon" onPointerDown="{{ stop }}" onClick="{{ vClose }}" aria-label="Put it back" style="position:absolute;right:clamp(20px,4vw,56px);top:20px;pointer-events:auto;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
+      <span style="position:absolute;left:clamp(20px,4vw,56px);bottom:28px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--color-neutral-400);white-space:nowrap"><i class="ph ph-hand-grabbing" style="font-size:18px;color:var(--color-accent-300)"></i>Hold and drag to spin · Esc to put it back</span>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{ lbOn }}" hint-placeholder-val="{{ false }}">
+  <div onPointerDown="{{ stop }}" onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,56px);box-sizing:border-box;cursor:zoom-out;background:color-mix(in srgb,var(--color-bg) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+    <img src="{{ lbSrc }}" alt="Photo, enlarged" onLoad="{{ lbFit }}" style="width:50vw;height:auto;max-width:100%;max-height:100%;display:block;border-radius:4px;box-shadow:var(--shadow-lg)">
+    <button class="btn btn-ghost btn-icon" onClick="{{ lbClose }}" aria-label="Close photo" style="position:absolute;right:clamp(20px,4vw,56px);top:20px;width:44px;height:44px"><i class="ph ph-x" style="font-size:20px"></i></button>
+  </div>
+</sc-if>
+
+
+
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;lookStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Camera&quot;},&quot;lighting&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Spotlit&quot;,&quot;options&quot;:[&quot;Spotlit&quot;,&quot;Even&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Wall&quot;},&quot;playVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Wall&quot;}}">
 const W = 'https://static.wixstatic.com/media/';
 const RESP = {"cw":["Designed (almost) all UX/UI in the game","Created the TikTok and Instagram content for our marketing"],"sc":["Designed, prototyped and iterated the Bouncing Parasol traversal ingredient","Built dynamic level ingredients and interactive world elements","Concepted and prototyped mission ideas: drone, newspaper bazooka and hackable billboards"],"ir":["Built item inspection (rotate, move, zoom, further-inspect) on parent/child Blueprint actors","Built a multi-page, customisable note reading system","Added controller support with input-aware UI via Common UI","Wrote the target game research, engine research and How-To pipeline document"],"ba":["Designed the animated HUD, lost-life and Game Over screens","Built the Day & Night switch for the power-up","Prototyped runes, streak multipliers and power-ups","Ran the marketing"],"sm":["Developed interactive XR features in Unity for iOS","Designed hands-on interactions for a young audience"],"ab":["Built an XP system that scales infinitely with each level","Built multiple upgradable weapons, each with a unique level-5 addition","Built an infinite wave spawning system"],"rr":["Designed and built a one-button game in two weeks","Created minimal art using only simple shapes"]};
 const WALL = { w: 3200, h: 1500, cy: 760 };
+const LAYERS = {
+  shirt: { depth: 0, min: 1, n: 0, fb: 0, bb: 0, L: [0.13, 0.18], C: 0, h: 0 },
+  sticker: { depth: 0.012, min: 4, n: 4, fb: 0, bb: 0, L: [0.84, 0.9], C: 0.006, h: 90 },
+  cap: { depth: 0, min: 1, n: 0, fb: 0, bb: 0, backMask: true, L: [0.5, 0.7], C: 0.02, h: 75 },
+};
+const NOTES = {
+  sc: { left: 20, top: 82, rot: -5, size: 84, font: 22 },
+  ba: { left: 81, top: 17, rot: 4, size: 88, font: 24 },
+  cw: { left: 22, top: 30, rot: -3, size: 104, font: 26 },
+};
+const PIN_HUES = [27];
+const PIN_IX = {};
+const pinBg = hh => 'radial-gradient(circle at 35% 30%,oklch(0.86 0.12 ' + hh + '),oklch(0.62 0.17 ' + hh + ') 55%,oklch(0.38 0.12 ' + hh + '))';
+const MERCH = {
+  cw: [{ id: 'cw-banner', photos: 0, purpose: 'Event banner promoting the Steam release, with a QR code to the store page.', artist: 'Lisa van der Gevel Wenteler and Kevin Duijm', myRole: ['Involved in the design process', 'Handled the ordering process'], outcome: 'We eventually cancelled the order and went with a cheaper alternative: printing the design on A1 paper.', type: 'banner', game: 'Chasing Whiskers', name: 'Roll-up banner', front: 'media/merch-cw-banner-board.png', art: 'media/merch-cw-banner-art.jpg', back: '', aspect: 400 / 983, left: 50, top: 50, w: 20, rot: 1.5, radius: 0, vh: 0.8, pins: [{ x: 50, y: 1 }] }],
+  sc: [{ id: 'sc-postcard', purpose: 'Thank-you card for players, with a QR code to the game.', artist: 'Alistair Schiffelers', myRole: ['Oversaw the design process', 'Gave feedback across design iterations', 'Managed the print order', 'Handed the cards out to visitors at Industry Day 2025'], photos: 2, type: 'card', game: 'Sunbeat City', name: 'Postcard', front: 'media/merch-sunbeat-postcard-front.png', back: 'media/merch-sunbeat-postcard-back.jpg', aspect: 1669 / 1194, left: 27, top: 33, w: 44, rot: -4, radius: 2, pins: [{ x: 50, y: 1 }] },
+    { id: 'sc-cap-khaki', purpose: 'Team cap with the Sunbeat City logo on the front and Team Exploding Horse on the back.', artist: 'Jennifer Kamara (logo) and Kevin Duijm', myRole: ['Led the design of the caps', 'Presented design iterations and colour variations to the team', 'Gathered team feedback on preferred colours and designs', 'Managed the ordering process and negotiations with the manufacturer'], photos: 2, type: 'cap', game: 'Sunbeat City', name: 'Cap, khaki', front: 'media/merch-sunbeat-cap-khaki-front.png', back: 'media/merch-sunbeat-cap-khaki-back.png', aspect: 680 / 627, left: 64, top: 30, w: 20, rot: -3, radius: 0, vh: 0.62, pins: [{ x: 50, y: 4 }], tone: { L: [0.5, 0.7], C: 0.02, h: 75 } },
+    { id: 'sc-cap-black', purpose: 'Team cap with the Sunbeat City logo on the front and Team Exploding Horse on the back.', artist: 'Jennifer Kamara (logo) and Kevin Duijm', myRole: ['Led the design of the caps', 'Presented design iterations and colour variations to the team', 'Gathered team feedback on preferred colours and designs', 'Managed the ordering process and negotiations with the manufacturer'], photos: 2, type: 'cap', game: 'Sunbeat City', name: 'Cap, black', front: 'media/merch-sunbeat-cap-black-front.png', back: 'media/merch-sunbeat-cap-black-back.png', aspect: 680 / 627, left: 86, top: 30, w: 20, rot: 4, radius: 0, vh: 0.62, pins: [{ x: 50, y: 4 }], tone: { L: [0.13, 0.24], C: 0, h: 0 } },
+    { id: 'sc-sticker-1', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: 'Leia Dekker', myRole: ['Reviewed the design process of the sticker', 'Handled the order through my manufacturer'], photos: 1, type: 'sticker', game: 'Sunbeat City', name: 'Sticker', front: 'media/merch-sunbeat-sticker-1-front.png', back: 'media/merch-sunbeat-sticker-1-back.png', aspect: 634 / 679, left: 64, top: 74, w: 14, rot: 6, radius: 0, vh: 0.66, pins: [] },
+    { id: 'sc-sticker-2', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: 'Leia Dekker', myRole: ['Reviewed the design process of the sticker', 'Handled the order through my manufacturer'], photos: 1, type: 'sticker', game: 'Sunbeat City', name: 'Sticker', front: 'media/merch-sunbeat-sticker-2-front.png', back: 'media/merch-sunbeat-sticker-2-back.png', aspect: 519 / 718, left: 84, top: 74, w: 11.5, rot: -5, radius: 0, vh: 0.66, pins: [] },
+    { id: 'sc-sticker-logo', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: 'Jennifer Kamara', myRole: ['Reviewed the design process of the logo', 'Handled the order through my manufacturer'], photos: 1, type: 'sticker', game: 'Sunbeat City', name: 'Logo sticker', front: 'media/merch-sunbeat-sticker-logo-front.png', back: 'media/merch-sunbeat-sticker-logo-back.png', aspect: 1100 / 965, left: 47, top: 82, w: 16, rot: -8, radius: 0, vh: 0.66, pins: [] }],
+  ba: [{ id: 'ba-shirt', purpose: 'Team shirt with the Baelorn logo on the front and the Team Basil artwork on the back.', artist: 'Filou van Ruyven (logo), @HermipArt on Telegram (character) and Kevin Duijm (overall placement)', myRole: ['Involved in the design process', 'Handled the overall placement of the logos and text'], photos: 3, type: 'shirt', game: 'Baelorn', name: 'T-shirt', front: 'media/merch-baelorn-shirt-front.png', back: 'media/merch-baelorn-shirt-back.png', aspect: 1000 / 982, left: 36, top: 52, w: 50, rot: 2, radius: 0, vh: 0.72, pins: [{ x: 27, y: 6 }, { x: 73, y: 6 }] },
+    { id: 'ba-sticker', purpose: 'Handed out to visitors and industry professionals at Industry Day to promote the game.', artist: '@HermipArt on Telegram', myRole: ['Found and commissioned an artist who fit our style', 'Negotiated the commission with the artist', 'Handled the order through my manufacturer', 'Handed the stickers out to visitors at Industry Day'], photos: 1, type: 'sticker', game: 'Baelorn', name: 'Sticker', front: 'media/merch-baelorn-sticker-front.png', back: 'media/merch-baelorn-sticker-back.png', aspect: 483 / 482, left: 79, top: 55, w: 32, rot: 5, radius: 0, vh: 0.66, pins: [] }],
+};
+const MERCH_BY_ID = {}; Object.values(MERCH).forEach(l => l.forEach(m => { MERCH_BY_ID[m.id] = m; }));
 const P = [
   { id: 'cw', x: 1220, y: 440, w: 760, h: 500, title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam',
     blurb: 'A cozy adventure where you play as grandma, chasing her lost cat through a portal into Catworld. Run errands for Ponpon at the Cat Café, dive to catch cats and collect them until you find your way home.',
-    info: [['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive']],
+    info: [['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive'],['Downloads','1.5K+ on Steam']],
     award: 'Won Best Voted Industry Day Game, BUAS 2026', award2: 'Won Year 3 Best Art, BUAS 2026', medal: 'gold', link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam',
     media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4' },
   { id: 'sc', x: 640, y: 400, w: 520, h: 300, title: 'Sunbeat City', year: 2025, role: 'Tech Designer · Marketing', engine: 'Unreal Engine 5',
@@ -201,8 +348,9 @@ const HYENA = {
 };
 if (typeof document !== 'undefined') Object.entries(HYENA).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
 class Component extends DCLogic {
-  state = { active: null, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
-  wallRef = React.createRef();
+  state = { active: null, mode: 'games', viewer: null, lightbox: null, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  wallRef = React.createRef(); cardRef = React.createRef(); bgRef = React.createRef(); uiRef = React.createRef();
+  v = null;
   mx = 0; my = 0; last = 0;
   cam = null;
 
@@ -211,9 +359,22 @@ class Component extends DCLogic {
     document.querySelectorAll('video').forEach(hush);
     document.addEventListener('play', e => { if (e.target.tagName === 'VIDEO') hush(e.target); }, true);
     document.addEventListener('volumechange', e => { if (e.target.tagName === 'VIDEO' && !e.target.muted) hush(e.target); }, true);
-    this.onMove = e => { this.mx = Math.max(-1, Math.min(1, e.clientX / innerWidth * 2 - 1)); this.my = Math.max(-1, Math.min(1, e.clientY / innerHeight * 2 - 1)); };
+    this.onMove = e => {
+      const v = this.v;
+      if (v && v.drag) {
+        const dx = e.clientX - v.lx, dy = e.clientY - v.ly; v.lx = e.clientX; v.ly = e.clientY;
+        v.ry += dx * 0.45; v.rx = Math.max(-75, Math.min(75, v.rx - dy * 0.35)); v.moved += Math.abs(dx) + Math.abs(dy);
+        return;
+      }
+      if (v) return;
+      this.mx = Math.max(-1, Math.min(1, e.clientX / innerWidth * 2 - 1)); this.my = Math.max(-1, Math.min(1, e.clientY / innerHeight * 2 - 1));
+    };
+    this.onUp = () => { const v = this.v; if (v && v.drag) { v.drag = false; v.release = performance.now(); v.needReset = true; } };
+    addEventListener('pointerup', this.onUp); addEventListener('pointercancel', this.onUp);
     this.onLeave = () => { this.mx = 0; this.my = 0; };
     this.onKey = e => {
+      if (this.state.lightbox) { if (e.key === 'Escape') this.setState({ lightbox: null }); return; }
+      if (this.v) { if (e.key === 'Escape') this.closeViewer(); return; }
       if (this.state.active == null) return;
       if (e.key === 'Escape') this.close();
       else if (e.key === 'ArrowRight') this.step(1);
@@ -234,6 +395,7 @@ class Component extends DCLogic {
     document.removeEventListener('pointerleave', this.onLeave);
     removeEventListener('keydown', this.onKey);
     removeEventListener('resize', this.onResize);
+    removeEventListener('pointerup', this.onUp); removeEventListener('pointercancel', this.onUp);
   }
   componentDidUpdate() { this.sync(); }
   freezeGifs(tries = 0) {
@@ -248,7 +410,7 @@ class Component extends DCLogic {
     });
   }
   sync() {
-    const allow = this.props.playVideo ?? true;
+    const allow = (this.props.playVideo ?? true) && this.state.mode === 'games';
     P.forEach((p, i) => {
       const el = document.querySelector('[data-frame="' + p.id + '"]');
       if (!el) return;
@@ -274,22 +436,22 @@ class Component extends DCLogic {
   target() {
     const vw = innerWidth, vh = innerHeight, a = this.state.active;
     const k = this.props.lookStrength ?? 1;
-    const s0 = Math.min(vh * 1.1 / WALL.h, Math.max(vw / 2200, 0.32));
+    const s0 = Math.min(0.9 * Math.min(vh * 1.1 / WALL.h, Math.max(vw / 2200, 0.32)), (vh - 110) / 1120);
     if (a == null) {
       const ox = Math.max((WALL.w * s0 - vw) / 2 / s0, 0) + 60;
       const oy = Math.max((WALL.h * s0 - vh) / 2 / s0, 0) + 70;
       const kk = Math.min(k, 1);
-      return { cx: WALL.w / 2 + this.mx * ox * kk, cy: WALL.cy + this.my * oy * kk, s: s0, ry: -this.mx * 7 * k, rx: this.my * 5 * k };
+      return { cx: WALL.w / 2 + this.mx * ox * kk, cy: 640 + this.my * oy * kk, s: s0, ry: -this.mx * 7 * k, rx: this.my * 5 * k };
     }
-    const f = P[a], mob = vw < 820;
-    const panelW = mob ? 0 : Math.min(440, vw * 0.36);
-    const areaW = mob ? vw * 0.9 : vw * 0.84 - panelW;
-    const top = 96, bottom = mob ? vh * 0.5 + 12 : 48;
+    const f = P[a], mob = vw < 820, merch = this.state.mode === 'merch';
+    const panelW = mob || merch ? 0 : Math.min(440, vw * 0.36);
+    const areaW = mob ? vw * 0.9 : merch ? vw * 0.88 : vw * 0.84 - panelW;
+    const top = merch ? 80 : 96, bottom = merch ? 40 : mob ? vh * 0.5 + 12 : 48;
     const areaH = (vh - top - bottom) * 0.92;
-    const s = Math.min(areaW / f.w, areaH / f.h);
-    const sx = mob ? vw / 2 : vw * 0.06 + areaW / 2;
+    const s = merch ? Math.min(vw * 0.46 / f.w, (vh - 120) * 0.62 / f.h) : Math.min(areaW / f.w, areaH / f.h);
+    const sx = mob || merch ? vw / 2 : vw * 0.06 + areaW / 2;
     const sy = top + (vh - top - bottom) / 2;
-    return { cx: f.x + f.w / 2 + (vw / 2 - sx) / s, cy: f.y + f.h / 2 + (vh / 2 - sy) / s, s, ry: -this.mx * 1.4 * k, rx: this.my * 1 * k };
+    return { cx: f.x + f.w / 2 + (vw / 2 - sx) / s, cy: f.y + f.h / 2 + (vh / 2 - sy) / s, s, ry: merch ? 0 : -this.mx * 1.4 * k, rx: merch ? 0 : this.my * 1 * k };
   }
 
   tick() {
@@ -298,13 +460,122 @@ class Component extends DCLogic {
     const t = this.target();
     if (!this.cam) this.cam = { ...t, s: t.s * 0.82, rx: t.rx + 6 };
     const c = this.cam, r = this.state.active == null ? 0.06 : 0.075;
-    for (const key in t) c[key] += (t[key] - c[key]) * r;
+    let moving = false;
+    for (const key in t) { const dd = t[key] - c[key]; if (Math.abs(dd) > (key === 's' ? 0.00005 : 0.01)) { moving = true; c[key] += dd * r; } else c[key] = t[key]; }
+    if (!moving && this._settled) { this.tickViewer(); return; }
+    this._settled = !moving;
+    el.style.willChange = moving ? 'transform' : 'auto';
     el.style.transform = `translate3d(${innerWidth / 2}px,${innerHeight / 2}px,0) scale(${c.s}) rotateX(${c.rx}deg) rotateY(${c.ry}deg) translate3d(${-c.cx}px,${-c.cy}px,0)`;
+    this.tickViewer();
   }
+
+  home(v) {
+    const src = document.querySelector('[data-merch="' + v.id + '"]');
+    if (!src) return null;
+    const r = src.getBoundingClientRect(), th = Math.abs(v.rot) * Math.PI / 180;
+    const w = r.width / (Math.cos(th) + Math.sin(th) / v.aspect);
+    return { x: r.left + r.width / 2 - innerWidth / 2, y: r.top + r.height / 2 - innerHeight / 2, s: w / v.W, rz: v.rot };
+  }
+  tickViewer() {
+    const v = this.v, card = this.cardRef.current;
+    if (!v || !card) return;
+    const now = performance.now(), dt = Math.min(0.064, (now - v.t) / 1000); v.t = now;
+    if (!v.started) { const h0 = this.home(v); if (h0) Object.assign(v, { x: h0.x, y: h0.y, s: h0.s, rz: h0.rz }); v.started = true; }
+    const out = v.phase === 'out', home = out ? this.home(v) : null;
+    const T = home || { x: v.cx || 0, y: v.cy || 0, s: 1, rz: 0 }, k = out ? 0.13 : 0.085;
+    v.x += (T.x - v.x) * k; v.y += (T.y - v.y) * k; v.s += (T.s - v.s) * k; v.rz += (T.rz - v.rz) * k;
+    v.fade += ((out ? 0 : 1) - v.fade) * (out ? 0.16 : 0.1);
+    const front = Math.round(v.ry / 360) * 360;
+    if (out) { v.ry += (front - v.ry) * 0.16; v.rx += -v.rx * 0.16; }
+    else if (!v.drag && now - v.release > 3000) {
+      if (v.needReset) { v.ry += (front - v.ry) * 0.08; v.rx += (-8 - v.rx) * 0.08; if (Math.abs(front - v.ry) < 0.6 && Math.abs(-8 - v.rx) < 0.6) v.needReset = false; }
+      else { v.ry += 22 * dt; v.rx += (-8 - v.rx) * 0.05; }
+    }
+    card.style.transform = `translate3d(${v.x}px,${v.y}px,0) scale(${v.s}) rotateZ(${v.rz}deg) rotateX(${v.rx}deg) rotateY(${v.ry}deg)`;
+    card.style.opacity = 1;
+    if (this.bgRef.current) this.bgRef.current.style.opacity = v.fade;
+    if (this.uiRef.current) this.uiRef.current.style.opacity = Math.max(0, v.fade * 1.4 - 0.4);
+    const done = out && (home ? Math.abs(v.x - home.x) < 1.5 && Math.abs(v.y - home.y) < 1.5 && Math.abs(v.s - home.s) < 0.01 : v.fade < 0.02);
+    if (done) { this.v = null; this.setState({ viewer: null }); }
+  }
+  openViewer = id => {
+    const m = MERCH_BY_ID[id]; if (!m || this.v) return;
+    const vw = innerWidth, vh = innerHeight, mob = vw < 820, pw = Math.min(420, vw * 0.34), mg = vw * 0.04;
+    const areaW = mob ? vw * 0.86 : vw - pw - mg * 2 - 32, areaH = mob ? vh * 0.42 : vh - 150;
+    const W = Math.round(Math.min(areaW * 0.86, areaH * ((m.vh || 0.6) / 0.72) * m.aspect, 1000)), H = Math.round(W / m.aspect);
+    const cx = mob ? 0 : mg + areaW / 2 - vw / 2, cy = mob ? -vh * 0.22 : 20;
+    this.v = { id, W, H, cx, cy, aspect: m.aspect, rot: m.rot, phase: 'in', x: 0, y: 0, s: 0.2, rz: m.rot, rx: 0, ry: 0, fade: 0, drag: false, release: -1e9, needReset: false, moved: 0, t: performance.now(), started: false };
+    this.setState({ viewer: { id, W, H } });
+  };
+  closeViewer = () => { if (this.v) { this.v.phase = 'out'; this.v.drag = false; } };
+  setMode = mode => { if (this.v) return; this.hovered = null; this.setState({ mode, active: null }); };
 
   open = i => { this.last = i; this.setState({ active: i }); };
   close = () => this.setState({ active: null });
-  step = d => { const n = ((this.state.active ?? this.last) + d + P.length) % P.length; this.open(n); };
+  step = d => {
+    let n = this.state.active ?? this.last;
+    for (let k = 0; k < P.length; k++) { n = (n + d + P.length) % P.length; if (this.state.mode === 'games' || (MERCH[P[n].id] || []).length) break; }
+    this.open(n);
+  };
+
+  bannerParts(m, W, H) {
+    const P2 = [], f = n => +n.toFixed(1);
+    const face = (w, h, tf, bg) => P2.push({ l: f(-w / 2), t: f(-h / 2), w: f(w), h: f(h), tf, bg });
+    const box = (cx, cy, cz, w, hh, d, c) => {
+      const t = (x, y, z, r) => 'translate3d(' + f(x) + 'px,' + f(y) + 'px,' + f(z) + 'px)' + (r || '');
+      face(w, hh, t(cx, cy, cz + d / 2), c.front); face(w, hh, t(cx, cy, cz - d / 2, ' rotateY(180deg)'), c.back || c.front);
+      face(d, hh, t(cx + w / 2, cy, cz, ' rotateY(90deg)'), c.side); face(d, hh, t(cx - w / 2, cy, cz, ' rotateY(-90deg)'), c.side);
+      face(w, d, t(cx, cy - hh / 2, cz, ' rotateX(90deg)'), c.top); face(w, d, t(cx, cy + hh / 2, cz, ' rotateX(-90deg)'), c.bottom || c.side);
+    };
+    const alu = { front: 'linear-gradient(180deg,oklch(0.96 0.004 250),oklch(0.78 0.01 250))', side: 'oklch(0.72 0.01 250)', top: 'oklch(0.93 0.005 250)', bottom: 'oklch(0.6 0.01 250)' };
+    const baseC = { front: 'linear-gradient(180deg,oklch(0.95 0.004 250),oklch(0.76 0.01 250) 70%,oklch(0.64 0.01 250))', back: 'linear-gradient(180deg,oklch(0.9 0.005 250),oklch(0.68 0.01 250))', side: 'linear-gradient(180deg,oklch(0.86 0.006 250),oklch(0.62 0.01 250))', top: 'oklch(0.9 0.005 250)', bottom: 'oklch(0.5 0.01 250)' };
+    const sw = W * 0.94, sh = H * 0.9, sy = -H / 2 + H * 0.02 + sh / 2;
+    face(sw, sh, 'translate3d(0,' + f(sy) + 'px,-0.5px) rotateY(180deg)', 'oklch(0.9 0.01 85)');
+    box(0, -H / 2 + H * 0.011, 0, W * 0.97, H * 0.022, W * 0.035, alu);
+    box(0, -H / 2 + H * 0.02 + sh / 2 + H * 0.01, -W * 0.06, W * 0.022, sh, W * 0.022, alu);
+    box(0, H / 2 - H * 0.012 - H * 0.035, -W * 0.03, W, H * 0.07, W * 0.2, baseC);
+    [-0.28, 0.28].forEach(k => box(W * k, H / 2 - H * 0.006, -W * 0.03, W * 0.06, H * 0.012, W * 0.55, alu));
+    return { vSheet: { l: f(-sw / 2), t: f(-sh / 2), w: f(sw), h: f(sh), tf: 'translate3d(0,' + f(sy) + 'px,0.5px)', bg: 'url(' + m.art + ') center / 100% 100% no-repeat' }, vParts: P2 };
+  }
+  viewerVals() {
+    const vs = this.state.viewer, m = vs && MERCH_BY_ID[vs.id];
+    if (!m) return { viewerOn: false };
+    const W = vs.W, H = vs.H, LY = LAYERS[m.type], layered = !!LY, parts = m.type === 'banner';
+    const T = layered ? Math.max(LY.min || 0, Math.round(W * LY.depth)) : Math.max(3, Math.round(W * 0.005));
+    const vSlices = layered ? Array.from({ length: LY.n }, (_, i) => {
+      const u = (i + 0.5) / LY.n * 2 - 1, z = u * T / 2, s = 1 - (u > 0 ? LY.fb : LY.bb) * u * u;
+      const c = m.tone || LY, L = c.L[0] + (c.L[1] - c.L[0]) * (1 - Math.abs(u));
+      return { tf: 'translateZ(' + z.toFixed(1) + 'px) scale(' + s.toFixed(3) + ')', bg: 'oklch(' + L.toFixed(3) + ' ' + c.C + ' ' + c.h + ')', mask: u < 0 && LY.backMask ? m.back : m.front };
+    }) : [];
+    return {
+      viewerOn: true, vIsCard: !layered && !parts, vIsShirt: layered, vIsParts: parts, ...(parts ? this.bannerParts(m, W, H) : { vSheet: {}, vParts: [] }), vSlices, vFaceS: layered ? 1 - LY.fb : 1, vBackS: layered ? 1 - LY.bb : 1, vW: W, vH: H, vT: T, vHW: -W / 2, vHH: -H / 2, vHT: -T / 2, vZ: T / 2, vZW: W / 2, vZH: H / 2,
+      vHasOutcome: !!m.outcome, vOutcome: m.outcome || '', vInvolve: (Array.isArray(m.myRole) ? m.myRole : m.myRole ? [m.myRole] : []).map(t => ({ t })), vNoInvolve: !m.myRole || !m.myRole.length,
+      vInfo: [['Purpose', m.purpose], ['Design by', m.artist]].map(([k, v]) => ({ k, v: v || 'To be added', color: v ? 'var(--color-text)' : 'var(--color-neutral-500)' })),
+      vHasPhotos: (m.photos ?? 1) > 0, vPhotos: Array.from({ length: m.photos ?? 1 }, (_, i) => ({ id: 'merch-photo-' + m.id + '-' + (i + 1), rot: [-2, 1.5, -1, 2.5][i % 4],
+        open: e => {
+          const slot = e.currentTarget.querySelector('image-slot');
+          if (!slot || !slot.hasAttribute('data-filled') || slot.hasAttribute('data-reframe')) return;
+          if (e.nativeEvent.composedPath().some(n => n.getAttribute && n.getAttribute('data-act'))) return;
+          const src = slot._img && (slot._img.currentSrc || slot._img.src); if (!src) return;
+          clearTimeout(this._lbT); this._lbT = setTimeout(() => this.setState({ lightbox: src }), 260);
+        },
+        dbl: () => clearTimeout(this._lbT) })),
+      lbFit: e => { const im = e.currentTarget, s = Math.min(innerWidth * 0.5 / im.naturalWidth, innerHeight * 0.7 / im.naturalHeight); im.style.width = Math.round(im.naturalWidth * s) + 'px'; im.style.height = Math.round(im.naturalHeight * s) + 'px'; },
+      lbOn: !!this.state.lightbox, lbSrc: this.state.lightbox || '', lbClose: e => { e.stopPropagation(); this.setState({ lightbox: null }); },
+      vpLeft: this.state.vw < 820 ? '12px' : 'auto', vpRight: this.state.vw < 820 ? '12px' : 'clamp(20px,4vw,56px)', vpTop: this.state.vw < 820 ? 'auto' : '84px', vpBottom: this.state.vw < 820 ? '12px' : 'auto',
+      vpWidth: this.state.vw < 820 ? 'auto' : 'min(420px,34vw)', vpMaxH: this.state.vw < 820 ? '44vh' : 'calc(100vh - 150px)',
+      vFront: m.front, vBack: m.back, vLabel: m.game + ' ' + m.name.toLowerCase(), vGame: m.game, vName: m.name,
+      vDown: e => { const v = this.v; if (!v || v.phase === 'out') return; v.drag = true; v.lx = e.clientX; v.ly = e.clientY; v.moved = 0; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {} },
+      vClick: e => {
+        const v = this.v; if (!v || v.moved > 5) return;
+        const f = e.currentTarget.querySelector('[data-vface]'), r = f && f.getBoundingClientRect();
+        if (r && e.clientX > r.left && e.clientX < r.right && e.clientY > r.top && e.clientY < r.bottom) return;
+        this.closeViewer();
+      },
+      vClose: e => { e.stopPropagation(); this.closeViewer(); },
+      stop: e => e.stopPropagation(),
+    };
+  }
 
   renderVals() {
     const a = this.state.active, on = a != null;
@@ -312,16 +583,22 @@ class Component extends DCLogic {
     const c = P[on ? a : this.last];
     const ext = /^https?:/.test(c.link);
     return {
-      wallRef: this.wallRef,
+      wallRef: this.wallRef, cardRef: this.cardRef, bgRef: this.bgRef, uiRef: this.uiRef,
+      isGames: this.state.mode === 'games', isMerch: this.state.mode === 'merch',
+      gamesCls: 'btn ' + (this.state.mode === 'games' ? 'btn-primary' : 'btn-ghost'), merchCls: 'btn ' + (this.state.mode === 'merch' ? 'btn-primary' : 'btn-ghost'),
+      toGames: () => this.setMode('games'), toMerch: () => this.setMode('merch'),
+      ...this.viewerVals(),
       spot: (this.props.lighting ?? 'Spotlit') === 'Spotlit',
       frames: P.map((p, i) => ({
         ...p, num: String(i + 1).padStart(2, '0'), hasVideo: !!p.video, hasAnim: !!p.anim,
         isGif: /\.gif($|\?)/i.test(p.media), gold: p.medal === 'gold', gold2: p.medal === 'gold' && !!p.award2, bronze: p.medal === 'bronze', bronze2: p.medal === 'bronze' && !!p.award2,
         enter: () => { this.hovered = i; this.sync(); },
         leave: () => { if (this.hovered === i) this.hovered = null; this.sync(); },
-        op: !on || a === i ? 1 : 0.05, labelOp: !on ? 1 : 0, poolOp: !on || a === i ? 1 : 0.2,
+        op: !on || a === i ? 1 : this.state.mode === 'merch' ? 0.55 : 0.05, labelOp: !on ? 1 : 0, poolOp: !on || a === i ? 1 : 0.2,
         labelTop: p.y + p.h + 22, poolLeft: p.x - p.w * 0.5, poolTop: p.y - 240, poolW: p.w * 2, poolH: p.h + 480,
-        open: e => { e.stopPropagation(); this.open(i); },
+        open: e => { e.stopPropagation(); if (this.state.mode === 'games' || (MERCH[p.id] || []).length) this.open(i); },
+        flip: this.state.mode === 'merch' ? 180 : 0, flipDelay: (i * 0.07).toFixed(2), cursor: this.state.mode === 'merch' ? 'default' : 'pointer',
+        boarded: !(MERCH[p.id] || []).length, hasNote: !!NOTES[p.id], note: NOTES[p.id] || {}, corkHoverPe: a === i ? 'none' : 'auto', merch: (MERCH[p.id] || []).map(m => ({ ...m, pins: (m.pins || []).map(pn => ({ ...pn, bg: pinBg(PIN_HUES[(PIN_IX[m.id + pn.x] ??= Object.keys(PIN_IX).length) % PIN_HUES.length]) })), ar: m.aspect.toFixed(4), label: m.game + ' ' + m.name.toLowerCase() + ', click to pick up', op: this.state.viewer && this.state.viewer.id === m.id ? 0 : 1, open: e => { e.stopPropagation(); if (this.state.mode !== 'merch') return; if (this.state.active !== i) this.open(i); this.openViewer(m.id); } })),
       })),
       onWallClick: e => { if (on && e.target === e.currentTarget) this.close(); },
       hintOp: on ? 0 : 1,
@@ -332,7 +609,8 @@ class Component extends DCLogic {
         target: ext ? '_blank' : '_self', cta: c.caseStudy ? 'Read case study' : c.linkLabel, ctaIcon: c.caseStudy ? 'ph ph-arrow-right' : 'ph ph-arrow-up-right',
       },
       prev: () => this.step(-1), next: () => this.step(1), close: this.close,
-      panelOp: on ? 1 : 0, panelPe: on ? 'auto' : 'none',
+      panelOp: on && this.state.mode === 'games' ? 1 : 0, panelPe: on && this.state.mode === 'games' ? 'auto' : 'none',
+      mbOp: on && this.state.mode === 'merch' && !this.state.viewer ? 1 : 0, mbPe: on && this.state.mode === 'merch' && !this.state.viewer ? 'auto' : 'none', mbTr: on && this.state.mode === 'merch' && !this.state.viewer ? 'opacity .4s ease .25s' : 'opacity .12s ease', mbBottom: (() => { const vw = innerWidth, vh = innerHeight, s = Math.min(vw * 0.46 / c.w, (vh - 120) * 0.62 / c.h); return Math.round(80 + (vh - 120) / 2 + c.h * s / 2 + 22); })(), mbTitle: c.title, mbTop: (() => { const vw = innerWidth, vh = innerHeight, s = Math.min(vw * 0.46 / c.w, (vh - 120) * 0.62 / c.h); return Math.max(64, Math.round(80 + (vh - 120) / 2 - c.h * s / 2 - 18)); })(),
       linkOp: on ? 0 : 1, linkPe: on ? 'none' : 'auto',
       pLeft: mob ? '12px' : 'auto', pRight: mob ? '12px' : '4vw', pTop: mob ? 'auto' : 'calc(50% + 24px)', pBottom: mob ? '12px' : 'auto',
       pWidth: mob ? 'auto' : 'min(440px,36vw)', pMaxH: mob ? '50vh' : 'calc(100vh - 144px)',

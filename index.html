@@ -148,7 +148,8 @@ a:hover{color:var(--color-accent-200)}
             </sc-for>
           </ul>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px">
-            <sc-if value="{{ p.yt }}" hint-placeholder-val="{{ false }}"><button class="btn btn-primary" onClick="{{ p.openYt }}"><i class="ph ph-play"></i> Watch trailer</button></sc-if>
+            <sc-if value="{{ p.ytUrl }}" hint-placeholder-val="{{ false }}"><a class="btn btn-primary" href="{{ p.ytUrl }}" target="_blank" rel="noopener"><i class="ph ph-play"></i> Watch trailer</a></sc-if>
+            <sc-if value="{{ p.ytPopup }}" hint-placeholder-val="{{ false }}"><button class="btn btn-primary" onClick="{{ p.openYt }}"><i class="ph ph-play"></i> Watch trailer</button></sc-if>
             <a class="btn btn-ghost" href="{{ p.link }}" target="{{ p.target }}">{{ p.linkLabel }} <i class="ph ph-arrow-up-right"></i></a>
           </div>
           <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}">
@@ -253,10 +254,10 @@ const CLIPS = [
 const PROJECTS = [
   { title: 'Chasing Whiskers', year: 2026, role: 'UX/UI Designer · Marketing', engine: 'Steam', tags: ['Unreal Engine', 'UX/UI'],
     blurb: 'A cozy adventure where you play as grandma, chasing her lost cat through a portal into Catworld. Run errands for Ponpon at the Cat Café, dive to catch cats and collect them until you find your way home.',
-    info: [['Type','Student'],['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive']],
+    info: [['Type','Student'],['Studio','Five High Cats'],['Genre','Cozy Adventure'],['Time','24 wks'],['Reception','93% positive'],['Downloads','1.5K+ on Steam']],
     points: ['Responsible for all UX/UI in the game', 'Made the TikTok and Instagram content for our marketing', 'Released free on Steam in June 2026, published by BUAS'],
     award: 'Won Best Voted Industry Day Game, BUAS 2026', award2: 'Won Year 3 Best Art, BUAS 2026', link: 'https://store.steampowered.com/app/4515430/Chasing_Whiskers/', linkLabel: 'View on Steam', poster: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4515430/63f5dcdd8528cc32ac3728e6d1ad19adf3cb6f1b/header.jpg?t=1784810394', video: 'media/chasing-whiskers-v2.mp4' },
-  { yt: 'bynZWyCKVYQ', ytStart: 11, title: 'Sunbeat City', year: 2025, role: 'Tech Designer · Marketing', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
+  { yt: 'bynZWyCKVYQ', ytStart: 0, ytUrl: 'https://www.youtube.com/watch?v=bynZWyCKVYQ&source_ve_path=MTc4NDI0', title: 'Sunbeat City', year: 2025, role: 'Tech Designer · Marketing', engine: 'Unreal Engine 5', tags: ['Unreal Engine'],
     blurb: 'A first-person parkour game across the rooftops of a Solarpunk city. Collect lost instruments and become a soloist to the soundtrack of the city, where every move you make plays a note.',
     info: [['Type','Student'],['Team','~21'],['Genre','FPS Platformer'],['Time','8 to 16 wks'],['Reception','750+ downloads']],
     points: ['Designed, prototyped and iterated the Bouncing Parasol traversal ingredient', 'Built dynamic level ingredients and interactive world elements', 'Concepted and prototyped mission ideas (drone, newspaper bazooka, hackable billboards)'],
@@ -525,7 +526,7 @@ class Component extends DCLogic {
         { num: 180, suffix: '+', label0: '180+', label: 'Wishlists on itch.io', delay: 0.24 },
       ],
       filters: FILTERS.map(f => ({ label: f, count: f === 'All' ? PROJECTS.length : PROJECTS.filter(p => p.tags.includes(f)).length, cls: 'btn ' + (f === filter ? 'btn-primary' : 'btn-ghost'), pick: () => this.setState({ filter: f }) })),
-      projects: list.map((p, i) => ({ ...p, target: /^https?:/.test(p.link) ? '_blank' : '_self', bg: p.poster || p.media, yt: p.yt || '', openYt: () => { document.querySelectorAll('video').forEach(v => { if (!v.paused) { v.dataset.resume = '1'; v.pause(); } }); this.setState({ yt: { id: p.yt, start: p.ytStart || 0, title: p.title } }); }, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', won: !!p.award && !/nominat/i.test(p.award), wins: [p.award, p.award2].filter(t => t && !/nominat/i.test(t)).map(t => ({ t })), awardList: [p.award, p.award2].filter(Boolean).map((t, k) => { const c = TIER[(p.tiers || [])[k] || (/nominat/i.test(t) ? 'pink' : 'gold')]; return { text: t, color: c[0], bg: c[1], bd: c[2] }; }), nominated: /nominat/i.test(p.award || ''), info: p.info.map(([k, v]) => ({ k, v })) })),
+      projects: list.map((p, i) => ({ ...p, target: /^https?:/.test(p.link) ? '_blank' : '_self', bg: p.poster || p.media, yt: p.yt || '', ytUrl: p.ytUrl || '', ytPopup: !!p.yt && !p.ytUrl, openYt: () => { document.querySelectorAll('video').forEach(v => { if (!v.paused) { v.dataset.resume = '1'; v.pause(); } }); this.setState({ yt: { id: p.yt, start: p.ytStart || 0, title: p.title } }); }, video: p.video || '', isImg: !p.video, poster: p.poster || '', num: String(PROJECTS.indexOf(p) + 1).padStart(2, '0'), mediaOrder: i % 2 ? 2 : 0, award: p.award || '', won: !!p.award && !/nominat/i.test(p.award), wins: [p.award, p.award2].filter(t => t && !/nominat/i.test(t)).map(t => ({ t })), awardList: [p.award, p.award2].filter(Boolean).map((t, k) => { const c = TIER[(p.tiers || [])[k] || (/nominat/i.test(t) ? 'pink' : 'gold')]; return { text: t, color: c[0], bg: c[1], bd: c[2] }; }), nominated: /nominat/i.test(p.award || ''), info: p.info.map(([k, v]) => ({ k, v })) })),
       skills: ['Technical Game Design', 'Visual Scripting (Unreal)', 'Unity C#', 'Prototyping', 'Playtesting & Iteration', 'VR Development', 'AR Development', 'UX/UI Design', 'Design Documentation', 'Game Research', 'Scrum'],
       software: ['Unreal Engine', 'Unity', 'Roblox Studio', 'GitHub', 'Perforce', 'Blender', 'Figma', 'Miro', 'Teams', 'Kanbanflow'],
     };
