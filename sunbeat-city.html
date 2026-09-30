@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Sunbeat City · Kevin Duijm</title>
+<meta name="description" content="Sunbeat City case study by Kevin Duijm.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>Sunbeat City · Kevin Duijm</title>
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds_bundle.js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
@@ -118,7 +119,7 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Bouncing Parasol</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:26ch">Turning city props into a momentum-driven traversal mechanic.</h2>
       <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I designed, prototyped, implemented and iterated on the Bouncing Parasol traversal system. The parasols let players bounce across rooftops while keeping their momentum.</p>
-      <figure data-reveal="clip" class="lighten" style="margin:0;aspect-ratio:16/10;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_2e31177f91f84934be08cf45891b2ad0~mv2.png" alt="Bouncing Parasol in Sunbeat City" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveal="clip" class="lighten" style="margin:0;aspect-ratio:16/10;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><video src="media/sc-clip-a.mp4" poster="https://static.wixstatic.com/media/0bf63b_2e31177f91f84934be08cf45891b2ad0~mv2.png" aria-label="Bouncing Parasol in Sunbeat City" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px">
         <sc-for list="{{ parasol }}" as="b" hint-placeholder-count="3">
           <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
@@ -129,11 +130,11 @@ a:hover{color:var(--color-accent-200)}
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
         <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_82e83e0bce77435a9920b70149bf6270f000.jpg" alt="Early parasol prototype" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><video src="media/sc-clip-b.mp4" poster="https://static.wixstatic.com/media/0bf63b_82e83e0bce77435a9920b70149bf6270f000.jpg" aria-label="Early parasol prototype" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
           <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Early parasol prototype, before the opening and closing was removed.</figcaption>
         </figure>
         <figure data-reveal="up" data-delay="0.08" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_1517547c8c924e0faa7dac9e19ece8aff000.jpg" alt="Parasol bounce force with height indicator" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><video src="media/sc-clip-c.mp4" poster="https://static.wixstatic.com/media/0bf63b_1517547c8c924e0faa7dac9e19ece8aff000.jpg" aria-label="Parasol bounce force with height indicator" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
           <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Adjustable bounce force, with a visual indicator of the height you can reach.</figcaption>
         </figure>
       </div>
@@ -152,7 +153,7 @@ a:hover{color:var(--color-accent-200)}
           <p data-reveal="up" style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-300)">We needed more goals and missions, so I came up with hacking billboards to advertise the festival and delivering newspapers to announce it. The drone was a parkour concept that was eventually scrapped.</p>
         </div>
         <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:2/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><img src="https://static.wixstatic.com/media/0bf63b_a9d7709c5db2402bb18030aa86f2a433f000.jpg" alt="Drone prototype" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:2/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)"><video src="media/sc-clip-d.mp4" poster="https://static.wixstatic.com/media/0bf63b_a9d7709c5db2402bb18030aa86f2a433f000.jpg" aria-label="Drone prototype" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
           <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Drone prototype you could hang onto.</figcaption>
         </figure>
       </div>
@@ -216,6 +217,10 @@ class Component extends DCLogic {
     Object.keys(BLU).forEach(k => pal ? st.setProperty(k, pal[k]) : st.removeProperty(k));
   }
   componentDidMount() {
+    const hush = v => { v.muted = true; v.defaultMuted = true; v.volume = 0; v.setAttribute('muted', ''); };
+    document.querySelectorAll('video').forEach(hush);
+    document.addEventListener('play', e => { if (e.target.tagName === 'VIDEO') hush(e.target); }, true);
+    document.addEventListener('volumechange', e => { if (e.target.tagName === 'VIDEO' && !e.target.muted) hush(e.target); }, true);
     this.applyPalette();
     this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
     this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };

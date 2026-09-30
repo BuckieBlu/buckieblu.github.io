@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Baelorn · Kevin Duijm</title>
+<meta name="description" content="Baelorn case study by Kevin Duijm.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>Baelorn · Kevin Duijm</title>
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds_bundle.js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
@@ -119,7 +120,7 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">The UX/UI</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Lost life animations</h2>
       <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_09bbb6d14578492f9f050cc72ea0bcc8f002.jpg" alt="Lost life animation in Baelorn" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-4.mp4" poster="https://static.wixstatic.com/media/0bf63b_09bbb6d14578492f9f050cc72ea0bcc8f002.jpg" aria-label="Lost life animation in Baelorn" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
         </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px">
         <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">As part of the UX and HUD design, I created the interface for player health feedback, which triggers when an enemy catches the player.</p>
@@ -161,11 +162,11 @@ a:hover{color:var(--color-accent-200)}
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
         <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:1/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_abc5c230a5f04d878445280c8721e19bf002.jpg" alt="Kill streak animation" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:1/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-5.mp4" poster="https://static.wixstatic.com/media/0bf63b_abc5c230a5f04d878445280c8721e19bf002.jpg" aria-label="Kill streak animation" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
           <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Plays when you kill a Baelorn and raise your kill streak.</figcaption>
         </figure>
         <figure data-reveal="up" data-delay="0.08" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:1/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_830316ce249d4301a77e5660c59d0fadf002.jpg" alt="Rune streak animation" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:1/1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-6.mp4" poster="https://static.wixstatic.com/media/0bf63b_830316ce249d4301a77e5660c59d0fadf002.jpg" aria-label="Rune streak animation" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
           <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Plays when you collect enough runes to raise your rune streak.</figcaption>
         </figure>
       </div>
@@ -175,7 +176,7 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Designing the enemy</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Enemies you hear before you see.</h2>
       <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_e46ee39b087349e89a119068b00dcdf5f001.jpg" alt="Baelorn enemy" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-7.mp4" poster="https://static.wixstatic.com/media/0bf63b_e46ee39b087349e89a119068b00dcdf5f001.jpg" aria-label="Baelorn enemy" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
         </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:start">
         <div style="display:flex;flex-direction:column;gap:20px">
@@ -194,7 +195,7 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Runes &amp; power-ups</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Runes</h2>
       <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_059f3b55accb4758bbd81f0232d4ce14f002.jpg" alt="Rune collection in Baelorn" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-8.mp4" poster="https://static.wixstatic.com/media/0bf63b_059f3b55accb4758bbd81f0232d4ce14f002.jpg" aria-label="Rune collection in Baelorn" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
         </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:center">
         <div style="display:flex;flex-direction:column;gap:20px">
@@ -208,10 +209,10 @@ a:hover{color:var(--color-accent-200)}
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Power-ups</h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
         <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:961/580;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_b51eb2125f8e4904949a44c11512f830f002.jpg" alt="Power-up turning night into day" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:961/580;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-10.mp4" poster="https://static.wixstatic.com/media/0bf63b_b51eb2125f8e4904949a44c11512f830f002.jpg" aria-label="Power-up turning night into day" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
         </figure>
         <figure data-reveal="up" data-delay="0.08" style="margin:0;display:flex;flex-direction:column;gap:10px">
-          <div data-reveal="clip" class="lighten" style="aspect-ratio:530/320;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><img src="https://static.wixstatic.com/media/0bf63b_7b53b0f2743f4721a586ff7ac735a866f000.jpg" alt="Power-up rune" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <div data-reveal="clip" class="lighten" style="aspect-ratio:530/320;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ba-clip-9.mp4" poster="https://static.wixstatic.com/media/0bf63b_7b53b0f2743f4721a586ff7ac735a866f000.jpg" aria-label="Power-up rune" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
           <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">The power-up rune.</figcaption>
         </figure>
       </div>
@@ -284,6 +285,10 @@ class Component extends DCLogic {
     Object.keys(BLU).forEach(k => pal ? st.setProperty(k, pal[k]) : st.removeProperty(k));
   }
   componentDidMount() {
+    const hush = v => { v.muted = true; v.defaultMuted = true; v.volume = 0; v.setAttribute('muted', ''); };
+    document.querySelectorAll('video').forEach(hush);
+    document.addEventListener('play', e => { if (e.target.tagName === 'VIDEO') hush(e.target); }, true);
+    document.addEventListener('volumechange', e => { if (e.target.tagName === 'VIDEO' && !e.target.muted) hush(e.target); }, true);
     this.applyPalette();
     this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
     this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };

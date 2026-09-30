@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Inspect & Read System · Kevin Duijm</title>
+<meta name="description" content="Item Inspect & Read System for UE5, case study by Kevin Duijm.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>Inspect &amp; Read System · Kevin Duijm</title>
 <link rel="stylesheet" href="ds/styles.css">
 <script src="ds/ds_bundle.js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
@@ -113,6 +114,10 @@ a:hover{color:var(--color-accent-200)}
     <section id="highlights" data-sec="" data-screen-label="Project Highlights" style="padding:40px 0;display:flex;flex-direction:column;gap:28px">
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Project highlights</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">What I built</h2>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ir-clip-11.mp4" aria-label="Comparison between my system and Resident Evil Village" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">My inspection system side by side with Resident Evil Village.</figcaption>
+      </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
         <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="7">
           <div data-reveal="up" data-delay="{{ h.delay }}" style="display:flex;gap:14px;padding:18px;border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
@@ -130,6 +135,10 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Item inspection system</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">View, rotate, zoom and examine.</h2>
       <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I designed an interactive item inspection system that lets players view, rotate, zoom and closely examine objects, feeding their curiosity and pulling them deeper into the world.</p>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ir-clip-12.mp4" aria-label="Creating an inspectable item in UE5" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Creating a new item and making it examinable.</figcaption>
+      </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
         <sc-for list="{{ inspectTrip }}" as="b" hint-placeholder-count="3">
           <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
@@ -144,6 +153,10 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Note reading system</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Multi-page notes for environmental storytelling.</h2>
       <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">The note reading system lets players inspect and read in-game notes. It supports multi-page text and plugs straight into the item inspection framework.</p>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ir-clip-13.mp4" aria-label="Creating a readable note in UE5" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Creating a note and reading it in game.</figcaption>
+      </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
         <sc-for list="{{ readTrip }}" as="b" hint-placeholder-count="3">
           <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
@@ -158,6 +171,10 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Controller support with Common UI</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">UI that follows your input device.</h2>
       <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">The inspection and reading UI has full controller support, and switches its prompts depending on the input device.</p>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ir-clip-14.mp4" aria-label="Input prompts switching between keyboard and controller" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Prompts switch between keyboard and mouse and Xbox controller.</figcaption>
+      </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
         <sc-for list="{{ uiTrip }}" as="b" hint-placeholder-count="3">
           <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
@@ -173,6 +190,10 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Target game research</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">Breaking down Resident Evil Village.</h2>
       <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I researched Resident Evil Village’s inspection system in depth: how it works, what the player experiences, and how it helps the player progress.</p>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ir-clip-15.mp4" aria-label="Resident Evil Village research walkthrough" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">Walking through my Resident Evil Village research.</figcaption>
+      </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
         <sc-for list="{{ researchTrip }}" as="b" hint-placeholder-count="3">
           <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
@@ -188,6 +209,10 @@ a:hover{color:var(--color-accent-200)}
       <div data-reveal="up" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent)">Pipeline documentation</div>
       <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;max-width:24ch">A how-to guide for the tool.</h2>
       <p data-reveal="up" style="margin:0;font-size:16px;line-height:1.7;color:var(--color-neutral-300);max-width:60ch">I wrote a how-to document covering how to import the tool, create new content and adjust it. It also introduces the demo and gym levels where you can try every feature.</p>
+      <figure data-reveal="up" style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div data-reveal="clip" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-surface)"><video src="media/ir-clip-16.mp4" aria-label="Pipeline document walkthrough" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" autoPlay="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+        <figcaption style="font-size:13px;line-height:1.5;color:var(--color-neutral-400)">A walkthrough of the pipeline document.</figcaption>
+      </figure>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
         <sc-for list="{{ pipeTrip }}" as="b" hint-placeholder-count="3">
           <div data-reveal="up" data-delay="{{ b.delay }}" style="display:flex;flex-direction:column;gap:10px">
@@ -246,6 +271,10 @@ class Component extends DCLogic {
     Object.keys(BLU).forEach(k => pal ? st.setProperty(k, pal[k]) : st.removeProperty(k));
   }
   componentDidMount() {
+    const hush = v => { v.muted = true; v.defaultMuted = true; v.volume = 0; v.setAttribute('muted', ''); };
+    document.querySelectorAll('video').forEach(hush);
+    document.addEventListener('play', e => { if (e.target.tagName === 'VIDEO') hush(e.target); }, true);
+    document.addEventListener('volumechange', e => { if (e.target.tagName === 'VIDEO' && !e.target.muted) hush(e.target); }, true);
     this.applyPalette();
     this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
     this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tick(); }); };
